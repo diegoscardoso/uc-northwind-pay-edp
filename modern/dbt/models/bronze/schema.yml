@@ -114,3 +114,15 @@ models:
         tests: [not_null, unique]
       - name: declared_net_amount
         tests: [not_null]
+
+  - name: bronze_merchant_fee_assessment
+    description: "Grain: one row per (batch_id, source_record_number)."
+    columns:
+      - name: batch_id
+        tests: [not_null]
+      - name: source_record_number
+        tests: [not_null]
+      - name: assessed_fee_brl
+        tests: [not_null]
+      - name: calculated_fee_brl
+        tests: [not_null]

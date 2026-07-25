@@ -31,6 +31,7 @@ GOLD_RELATIONS: Mapping[str, str] = {
     "02": "main_gold.gold_instant_payment_reconciliation",
     "03": "main_gold.gold_payment_slip_reconciliation",
     "04": "main_gold.gold_ted_transfer_reconciliation",
+    "05": "main_gold.gold_merchant_fee_reconciliation",
 }
 
 BATCH_ID_LENGTH = 16

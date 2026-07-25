@@ -95,10 +95,11 @@ keyboard-reachable, honours `prefers-reduced-motion`.
 > beat 5 (containment) answers Q2, beats 7–8 (withhold + determinism) answer
 > Q3. If that callback is cut, cut the promise on slide 25 too.
 
-**Built so far: 61 slides — Act 0 (8), Act 1 (18), Act 2 (12), Break (1),
-Act 3A (7), Act 3B (15). No `.todo` tokens remain.** Each act's
-slide-by-slide table and beats live in its own section below; only Act 0 is
-itemised here.
+**Built: all 80 slides — Act 0 (8), Act 1 (18), Act 2 (12), Break (1),
+Act 3A (7), Act 3B (15), Act 4 (11), Act 5 (8). Exactly one `.todo` token
+remains, deliberately: the pre-sale price on slide 78, blocked on open
+item 4.** Each act's slide-by-slide table and beats live in its own section
+below; only Act 0 is itemised here.
 
 | # | Slide | State |
 |---|---|---|
@@ -115,6 +116,8 @@ itemised here.
 | 39 | **Break** — the question, alone | done |
 | 40–46 | **Act 3A — 7 slides** | done · see the Act 3A section |
 | 47–61 | **Act 3B — 15 slides** | done · see the Act 3B section |
+| 62–72 | **Act 4 — 11 slides** | done · see the Act 4 section |
+| 73–80 | **Act 5 — 8 slides** | done · see the Act 5 section |
 
 **Assets.** Four cinematic backgrounds generated with Higgsfield
 (`soul_location`, 16:9 → 2048×1152, downsampled to the repo's `*-opt.jpg`
@@ -155,6 +158,17 @@ human anywhere), `df-gates-opt.jpg` (a row of heavy gates standing wide open
 in a dark corridor, amber light behind them — gates that cannot fail). All
 three came back clean on the first attempt with the enumerated no-text ban.
 
+**Act 4 runs deliberately image-light.** The Higgsfield connector was
+offline when Act 4 was built, and on reflection that was the right constraint:
+Act 4 is the *receipts* act, and it should read like evidence rather than
+atmosphere. Only the divider carries a photograph (`darkfactory-bg-opt.jpg`,
+reused from Act 1 slide 24 so the flywheel promise and its payment share an
+image). Slide 70 instead uses the template's **spinning concentric-ring
+mandala** — pure SVG, seven rings at seven speeds and directions, recoloured
+to gold — behind the doctrine line. That was one of only two template patterns
+the deck had never used. If you want photographs for Act 4 later, slides 63,
+69 and 72 are the candidates.
+
 **New design-system components (2026-07-25), appended to the style block:**
 - `.fog` / `.fog-inner` / `.fog-seal` — the **silhouette treatment**. A real
   artefact is rendered inside and then blurred and hatched, with a seal
@@ -168,6 +182,22 @@ three came back clean on the first attempt with the enumerated no-text ban.
 - `.wh-row` / `.wh-ch` / `.wh-verd` — the **withhold matrix** on slide 54:
   one row per removed evidence channel, the withheld one struck through in
   red, the verdict on the right. Five rows carry the whole money shot.
+- `.lg-*` — the **transformation ledger**, built for Act 4 slide 65 when the
+  first version of that slide came out looking like a spreadsheet. Each row
+  carries the metric in display serif with a mono descriptor beneath it, the
+  legacy value **struck through in red** (with its qualifier outside the
+  strike, so the rule never crosses the word), a pair of micro-bars whose
+  lengths *are* the measured ratio, the new value, and the gain as a solid
+  chip. Two hero rows (42× and ~98%) get filled chips and a halo; the middle
+  four get outline chips. The "after" bar is always green regardless of the
+  row's category colour, with `min-width:7px` so a 1% ratio still reads as a
+  deliberate mark rather than as nothing.
+  **It also carries the deck's first height-aware media query**
+  (`@media (max-height: 820px)`): at 1366×768 the header sub-labels, the
+  per-row legends and one trailing clause are shed and the rows tighten, which
+  takes the slide from 92px of overflow to fitting with 11px to spare. The
+  1600×900 rendering is untouched. If you add rows to this table, re-measure
+  both resolutions — six is what fits.
 
 **Act 0 data — landed 2026-07-25.** Pulled from the `applications` export
 (`product = dark-factory-v1`, 703 submissions from 561 distinct people,
@@ -986,35 +1016,155 @@ and sees what it is worth in money. (Monetization lands here, grounded
 in measured numbers, not projections. Play it immediately after the
 AHA, energy hot.)
 
+**Built: 11 slides (62–72), 2026-07-25.** Every figure traces to
+`docs/kurv-edp-v2.pdf` — the condensed engineering reference, compiled
+2026-07-24, whose own cover states *"metrics measured at compile time."*
+The act's structure is borrowed from that document's own opening pages:
+a four-stat hero row, then four labelled quadrants, then the tables.
+
+| # | Slide | Shape |
+|---|---|---|
+| 62 | Act 4 divider — The receipts | poster over `darkfactory-bg` |
+| 63 | Not a demo trick — the twin | silent · NorthWind ↔ KurvPay |
+| 64 | One repository, two products | 4 stats + 4 quadrant cards |
+| 65 | Numbers somebody had to defend | 6-row measured table |
+| 66 | Eight gates. And exactly one human decision. | **pipeline SVG** |
+| 67 | Two to three months, or about eight hours | 2 cards + 4-step timeline |
+| 68 | When the two systems disagree, who is wrong? | 4 stats + **the triage tree** |
+| 69 | Two types stalled — the golden was wrong | 2 cards + the cost callout |
+| 70 | The golden is evidence, not truth | silent · **ring mandala** |
+| 71 | Sixty lessons became five skills | promotion rule + skills table |
+| 72 | Tonight was the trailer | silent · hands off to Act 5 |
+
+### ⚠ Four number corrections — 2026-07-25
+
+Reading the source properly contradicted the Numbers Bank in four places.
+**The figures below are now what §5 says and what the slides show.**
+
+| Was | Is | Where it came from |
+|---|---|---|
+| "29/32 types migrated" | **32 of 32 onboarded, status complete** | the v2 reference, twice |
+| — | **26 of 28 *matched* types golden-signed, 2 stalled** | `match-state.yaml`, the parity ledger |
+| "4 permanent skills" | **5 promoted skills** | the promotion table |
+| "~55–60 lessons" | **60 numbered + 9 global** | `memory.md` |
+
+The 32 / 28 / 26 relationship matters on stage and is easy to fumble:
+**32** types were onboarded; **28** of those have a legacy counterpart to
+match against; **26** of those 28 are signed; **2** stalled. Saying "26 of
+32" would be wrong and would undersell the work.
+
+The fifth skill is **`golden-match`**, promoted out of the diff-triage batch
+— which is why Act 1 slide 24's promise now reads *five*, and why slide 71's
+heading is "five skills and three gates."
+
+### Two things in the source that were too good to leave out
+
+1. **The diff-triage tree (slide 68).** The engagement's own framing:
+   *"the reflex 'edit the parser until the diff vanishes' is the single most
+   dangerous move in the program."* So every dirty column is classified
+   before anyone touches code — representation (config only) · fixture
+   defect (the golden is wrong) · legacy manufacture (the old system
+   invented a value) · parser bug (**the only branch allowed to edit code,
+   and only with a citation**). *No citation, no edit: stall with proof.*
+   This is the slide that answers the question Act 3B leaves hanging, and
+   it carries the number the whole discipline exists to protect: **0
+   uncited edits.**
+2. **The full doctrine line (slide 70).** We had been using half of it. The
+   source says: *"the golden is evidence, not truth — the raw bytes plus the
+   proc are truth."* The second clause is what makes it actionable rather
+   than merely wise, and slide 70 now carries both.
+
+### The Act 1 obligation, paid
+
+Act 1 slide 24 promises the flywheel "will be counted in Act 4." Slide 71
+is that payment: the three-part promotion rule (recurrence across ≥3 types ·
+high cost if wrong · mechanizable), the five skills with what each one
+prevents, and the detail that makes it real — **the loop creates the skill
+itself and does not defer to a human**, then retires the lesson into a
+pointer and retrofits one existing caller as proof.
+
+It also closes a loop with Act 3B: three of the sharpest lessons became
+**deterministic guards**, each shipped with **a verified negative control** —
+somebody broke the code on purpose and watched the guard go red. That is
+exactly Act 3B slide 61's second practice, invented independently by the
+people who needed it.
+
+### Operator decisions still open
+
+- **Naming.** The slides say "KurvPay" (as the run of show always has) and
+  describe the client only as "a client." The source names the client
+  entity; the deck deliberately does not. **Confirm that is the boundary you
+  want** before doors open — 249 people will read these slides.
+- **62 or 63 subagents?** The reference's cover stat says 63; its body says
+  "62 instantiated." Slide 64 uses **62** because the body is the more
+  specific claim. Change both the stat and its source line together if you
+  prefer 63.
+
 **Beats**
-1. **The reveal.** "What you just watched is not a demo trick.
-   NorthWind Pay is the didactic, open-source twin of a real
-   production engagement."
-2. **The numbers** (see Numbers Bank): 29/32 types · 42s → 1s per
-   file · 11.6h → 2s per thousand files · ~$2,500 → ~$25/month ·
-   2–3 months per type by hand → ~8h agentic · golden-match signed
-   against the original system, real money in the loop.
-3. **The scar story — the same discipline, the other direction.** Two
-   types stalled because the *golden itself* was defective (goldens
-   exported from a different day / different year), proven from the
-   golden's own header rows — and kicked back to the client rather
-   than faked green. Doctrine: **"the golden is evidence, not
-   truth."** On stage tonight the source lied; on that engagement the
-   golden lied. The discipline holds either way, even when
-   inconvenient.
-4. **The frame.** "The demo was the trailer. This is the poster from a
-   theater where it already played."
+1. **The reveal.** *"What you just watched is not a demo trick."* NorthWind
+   Pay is the didactic, open-source twin of a live production engagement —
+   and every architectural choice from tonight came from doing it for money
+   first.
+2. **The engagement at a glance.** 32 types · 62 subagents · 8 gated stages ·
+   60 lessons. Then the four quadrants: the business, the engineering, the
+   agentic system, the dark factory. Note out loud that the four-layer parser
+   and the COBOL overpunch are things they *already saw* on the twin.
+3. **The measured numbers.** One file 42s → 1s. A thousand files 11.6h → 2s.
+   Deploy 4h with 6+ people → 15 min with one. Recovery 2h → 16 min. Monthly
+   cost $2,500 → $25. And the row nobody expects: **parser code 7,600 lines →
+   1,555.** Less code is less surface for a wrong cent to hide in.
+4. **Eight gates, one human.** Walk the pipeline. Land two things: *stall,
+   never halt* (one type's failure stalls that type; the queue carries on;
+   the operator cadence is a morning review) and the honest answer to "is it
+   really unattended?" — **no, and that is the design.** Cloud deploy is a
+   human decision by written rule, because that is where a mistake stops
+   being reversible.
+5. **Months or hours.** 2–3 months of T-SQL archaeology per type versus ~8
+   hours agentic — and the 8 hours is **measured**, read off session
+   transcripts with token and cost counts, not asserted. Then the timeline:
+   kick-off 2025-11-25 → four types 2026-02-02 → the full 32-type surface
+   2026-06-29 → the sign-off crank 2026-07-13/16.
+6. **The triage tree.** See above. This is the intellectual centre of the act.
+7. **The scar story.** Two types stalled on defective goldens — one exported
+   on the wrong day, one a 2025 golden against a 2026 input, proven **from
+   the golden's own header row** and kicked back to the client rather than
+   faked green. Say the expensive part out loud: reporting 26 of 28 instead
+   of 28 of 28 costs you the number a client wants to hear, and buys the only
+   thing that makes the other twenty-six mean anything.
+8. **The doctrine.** *The golden is evidence, not truth — the raw bytes plus
+   the specification are truth.* Tonight the source lied; on the engagement
+   the golden lied, twice. **Same discipline, tested from opposite
+   directions. It only counts as a principle if it costs you something.**
+9. **The flywheel, counted.** See the obligation above.
+10. **The frame.** *"Tonight was the trailer. This is the poster from a
+    theatre where it already played."* Then hand off: *"which raises the only
+    question left — and it is about you, not about the factory."*
 
-**Slide/screen topics**
-- The reveal slide (NorthWind ↔ KurvPay twin)
-- Numbers table (before/after, measured)
-- Stalled-types scar story (the golden's own header as evidence)
-- "The golden is evidence, not truth" doctrine slide
+**Key lines**
+- "What you just watched is not a demo trick."
+- "The legacy stack is retired — and then kept, because it becomes the golden."
+- "Less code is less surface for a wrong cent to hide in."
+- "Stall, never halt."
+- "Is it really unattended? No — and that is the design."
+- "The eight-hour figure is measured, not asserted."
+- "Edit the parser until the diff goes away — the single most dangerous move
+  in the entire programme."
+- "No citation, no edit: stall with proof."
+- "When this system says signed, it means signed."
+- "The golden is evidence, not truth — the raw bytes plus the specification
+  are truth."
+- "It only counts as a principle if it costs you something."
+- "Tonight was the trailer. This is the poster from a theatre where it
+  already played."
 
-**Assets/sources.** `docs/kurv-edp-v2.pdf` (numbers, stalled types,
-flywheel lessons).
+**Assets/sources.** `docs/kurv-edp-v2.pdf` — every number, the eight stages,
+the triage tree, the promotion rule, the two stalled types, and the doctrine
+line. Each slide carries its own source line. Slide 62 reuses
+`images/gen/darkfactory-bg-opt.jpg`; slide 70 uses the ring-mandala SVG
+adapted from `tmpl-agentic-engineering.html`.
 
-**Gate.** Real beyond the stage; worth known in money.
+**Gate.** Real beyond the stage; worth known in money; and the room has
+watched the same discipline hold when it was inconvenient.
 
 ---
 
@@ -1023,34 +1173,51 @@ flywheel lessons).
 **Objective.** The room feels the gap between watching and mastering —
 and receives the Factory Ladder as the path, at the peak of intention.
 
-**Beats**
-1. **The honest bridge.** "You watched the factory run. What you did
-   NOT see is how each piece was built — inside Converge, inside the
-   task-specs, the harness, the referee, the fleet. That is not
-   unlockable by watching. That is the Bootcamp."
-2. **The ruler, one last time.** "Most of you live at L3. You just
-   watched L5. The distance is engineering — and it's teachable."
-3. **Your Monday (10 min max).** Generosity beat: 2–3 daily
-   productivity workflows applicable immediately — the "what changes
-   Monday" route the FAQ promises. Short, concrete, no internals.
-   (Content to be selected — open item.)
-4. **The Factory Ladder (offer).** Bootcamp pre-sale: Semana included,
-   price locked before any public lot, credit flowing to Formação.
-   Price ladder visible; credit rule explicit — 100%, no fine print.
-5. **Close on honesty, not urgency.** "We showed what's real and where
-   the limits are. The Bootcamp is where you build it with your own
-   hands."
-
-**Slide/screen topics**
-- The bridge slide (seen vs. not-seen columns)
-- Ladder recap with the L3→L5 gap highlighted
-- Monday workflows (2–3 cards)
-- The Factory Ladder offer screen (price ladder + credit rule)
-- Honest close slide
-
-**Assets/sources.** Offer mechanics:
+**Built: 8 slides (73–80), 2026-07-25.** The offer mechanics come from
 `docs/wrksp-secret-dark-factory-v1.pdf` §13–14 (Escada da Fábrica,
-credit-that-flows, bundle logic).
+credit-that-flows, bundle logic); that document is never cited on-slide —
+it is the internal alignment doc, and the slides carry its numbers, not
+its name.
+
+| # | Slide | Shape |
+|---|---|---|
+| 73 | Act 5 divider — The bridge | poster over `ato8-travessia` (purple bridge to a lit door — the act's whole argument in one image) |
+| 74 | You watched it run — you did not watch it being built | seen vs not-seen columns |
+| 75 | You live at L3. You just watched L5. | **staircase recap** + the gap bar |
+| 76 | What changes Monday morning | 3 workflows × 3 ticks — **interactive checklist** |
+| 77 | The Factory Ladder | 3 rung cards + the 3 things pre-sale buys |
+| 78 | The ladder, priced in the open | **price staircase** + the credit rule |
+| 79 | We did not sell you magic | silent · the honesty contract honoured |
+| 80 | The lights are off. The factory is still running. | silent · end card |
+
+**Notes, in build order.**
+- **Slide 74's not-seen column uses only stage-safe silhouette words** —
+  grounded harness, eval-as-contract, adversary, fleet — the exact list
+  Bloco 4's own script puts on stage. Nothing from the R1 banned list
+  (Converge, the passes, Fork, safe-to-delegate, HMAC), and "signed gate"
+  was deliberately left out: it is on the hidden list, not the script.
+- **Slide 75 reuses the slide-20 `.rung` staircase**, compressed (name +
+  one-line verdict, no car analogies), with Shapiro's real level names.
+  L0–L2 are dimmed, L3 carries "seven in ten of this room", L4 "three in
+  ten" (both from the Act 0 room data), and the gold→green gap bar says
+  quote 18's second half. The callback is visual, as required.
+- **Slide 76 is the `.ck` interactive checklist's first and only use** —
+  it was the last unused template pattern. The three workflows (repo
+  agent-brief · a falsifiable check per task · one-task-one-worktree)
+  deliberately do not overlap Act 3B slide 61's four takeaways, which are
+  repository disciplines; these are weekly working habits. Tick them live
+  or leave them — both read fine.
+- **Slide 78 carries the deck's one remaining `.todo`: the pre-sale
+  price.** The source doc literally writes "R$[X]" — the number does not
+  exist yet (open item 4). The two anchor rungs are real: Semana lot
+  R$997, public lot R$1.997. The credit rule shown is the one the agenda
+  locked: 100%, released the day the Bootcamp ends, stacking on the
+  bundle discount. Validity window is *not* on the slide — it is still
+  undecided, and inventing it would violate the no-fine-print promise.
+- **Slides 74/76 carry the same 1366×768 lesson as the Act 4 ledger**:
+  row and checklist spacings are vh-clamped so both fit at 768px with
+  nothing to spare (768/768 and 766/768). If you add a row to either,
+  re-measure both resolutions first.
 
 **Gate.** Gap felt; ladder received at peak intention.
 
@@ -1144,16 +1311,37 @@ credit-that-flows, bundle logic).
   and so compared the contract with itself). Act 3B slide 60 carries all six,
   labelled by who found them.
 
-**KurvPay (real engagement — Act 4)**
-- 29/32 file types migrated (didactic docs also cite 26/28
-  golden-signed at an earlier cut — use 29/32 as current)
-- Per-file processing: 42s → 1s (~42×)
-- 1,000 files: 11.6h → 2s
-- Infra cost: ~$2,500/month → ~$25/month (~98% reduction)
-- Per-type effort: 2–3 months by hand → ~8h agentic
-- 2 types stalled honestly: defective goldens, kicked back to client
-- Flywheel: ~55–60 lessons distilled → 4 permanent skills
-  (money, overpunch, positional, reconciliation)
+**KurvPay (real engagement — Act 4).** All from
+`docs/kurv-edp-v2.pdf`, compiled 2026-07-24, "metrics measured at compile
+time." **Four figures were corrected on 2026-07-25 — see the Act 4 section.**
+- **32 of 32** file types onboarded, status complete
+- **26 of 28** *matched* types golden-signed · **2 stalled**. Say the
+  relationship carefully: 32 onboarded, 28 have a legacy counterpart, 26 of
+  those signed. "26 of 32" is wrong.
+- ~160k rows compared value-for-value · **9 cited parser fixes · 0 uncited
+  edits**
+- One file: ~42s → ~1s (**42×**) · 1,000 files: ~11.6h serial → ~2s parallel
+- Parser code, four types: ~7,600 → ~1,555 lines (**6.8× less**)
+- Deploy: ~4h with 6+ people → ~15 min with 1 dev (**16×**)
+- Recovery: ~2h → ~16 min (**8×**)
+- Monthly infra cost: ~$2,500 → ~$25 (**~98%**)
+- Per-type effort: 2–3 months by hand → **~8h agentic, measured** (read off
+  session transcripts with token/cost counts — not asserted)
+- 62 instantiated subagents, 28 of them parser experts · 29 commands ·
+  12 skills · 10 rules *(the reference's cover says 63 subagents; its body
+  says 62 — the deck uses 62)*
+- 8 gated factory stages + a manual deploy runbook; the deploy gate is the
+  only human decision
+- Flywheel: **60 numbered lessons + 9 global** → **5 promoted skills**
+  (money-field · positional-hierarchical · cobol-overpunch · reconciliation ·
+  golden-match) + **3 deterministic guards**, each with a verified negative
+  control
+- Programme shape: kicked off 2025-11-25 · 4 types by 2026-02-02 · full
+  32-type surface 2026-06-29 · sign-off crank 2026-07-13→16 · 666 commits,
+  ~210 branches
+- The 2 stalled types: a golden exported on a different day, and a 2025
+  golden against a 2026 input — both proven from the golden's own header row
+  and kicked back to the client
 
 **The legacy case (didactic — Act 2)**
 - 30+ raw file types on SFTP
@@ -1237,7 +1425,7 @@ credit-that-flows, bundle logic).
 
 | Source | Feeds |
 |---|---|
-| `presentation/workshop-dark-factory.html` | **The deck itself** — Acts 0 and 1 built (17 slides), Acts 2–5 pending |
+| `presentation/workshop-dark-factory.html` | **The deck itself** — all 80 slides built (Acts 0–5 + break). One `.todo` remains: the pre-sale price, slide 78 |
 | `presentation/tmpl-agentic-engineering.html` | Design system, components, chrome, runtime JS — template only, never presented. Also the source of the rings / orbital / curve **geometry** reused in Act 1 slides 15, 18, 21 and 24 |
 | Shapiro · “The Five Levels” (danshapiro.com, Jan 2026) | The autonomy ruler — Act 1 slides 20–21, Act 5 recap. **Use his level names**, not our paraphrases |
 | METR · RCT 2025 · arXiv:2507.09089 | The L2/L3 trap, measured — Act 1 slide 22 |
@@ -1255,7 +1443,7 @@ credit-that-flows, bundle logic).
 | `docs/asd-agentic-loop-v1.0.html` | Five layers, hop map, misconceptions, two seats (Acts 1, 3A) |
 | `docs/cvg-aut-systems-spine-steps-v5.pdf` | Converge silhouette (Act 3A) — updates pending |
 | `docs/task-spec-v3.2.0.pdf` | Task-Spec silhouette (Act 3A) — updates pending |
-| `docs/kurv-edp-v2.pdf` | Numbers, stalled types, flywheel (Act 4) |
+| `docs/kurv-edp-v2.pdf` | **The whole of Act 4** — every number, the 8 gated stages, the diff-triage tree, the promotion rule, the two stalled types, and the full doctrine line. Compiled 2026-07-24; metrics measured at compile time |
 | `README.md`, `plans/legacy.md` | Legacy topology, boundary rules, four truth roles, proof ledgers (Act 2) |
 | `contracts/types/registry.yaml` + each `layout.yaml` | The five types and their grammars — Act 2 slides 30–31 |
 | `contracts/types/01-card-settlement/` (`layout` · `privacy` · `reconciliation`) | The BRD's thirty rules — Act 2 slide 34 |
@@ -1265,22 +1453,16 @@ credit-that-flows, bundle logic).
 
 ## 8. Open items
 
-1. **Acts 4 and 5 slides** — not yet authored into
-   `workshop-dark-factory.html`. Acts 0–3B are the built reference for tone,
-   density, and component use. **Act 4 is next** (KurvPay, 20 min, gold) and
-   it is the easiest remaining act: the numbers exist in §5, the scar story
-   is written, and `docs/kurv-edp-v2.pdf` is the single source. Act 5 (30
-   min, purple) is the last one and it has two genuine unknowns — the Monday
-   workflows and the offer numbers.
-   *Note for Act 4:* the flywheel forward-reference on Act 1 slide 24
-   promises "~55–60 lessons distilled into 4 permanent skills" will be
-   counted here. Land it or cut the promise.
-   *Note for Act 5:* the ladder recap must use Shapiro's real level names
-   (see the Act 1 correction) and should reuse the slide-20 staircase so
-   the callback is visual, not just verbal. Act 3B slide 61 already gives the
-   room four free takeaways, so Act 5's "your Monday" beat must not repeat
-   them — pick different material.
-2. **Track B is unbuilt and out of reach for today.** A sixth file type
+1. *(closed 2026-07-25)* **Act 5 slides** — built, 8 slides (73–80); see
+   the Act 5 section. All four constraints honoured: Shapiro's real level
+   names on the recap, the slide-20 staircase reused, the Monday workflows
+   distinct from slide 61's takeaways, the act opening on the person (the
+   bridge image is one person before a lit door), and the `.ck` checklist
+   carrying the Monday beat.
+2. *(closed 2026-07-25)* Act 1 slide 24's forward-reference was corrected in
+   the same pass — it now reads "60 lessons distilled into 5 permanent skills
+   and 3 gates", matching Act 4 slide 71.
+3. **Track B is unbuilt and out of reach for today.** A sixth file type
    arriving live needs a Type 06 kit (~2 days). If it is ever prepared,
    Act 3B slides 48–49 are the splice point. Recorded so the option is not
    silently forgotten.

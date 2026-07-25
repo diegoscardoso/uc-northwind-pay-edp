@@ -201,55 +201,23 @@ body::after {
   opacity: 0; transition: opacity 0.3s ease;
 }
 .deck-progress.live::after { opacity: 1; }
+/* counter estampado — só os números, no registro do badge "Dark Factory Operation" */
 .deck-counter {
   position: fixed; bottom: clamp(14px,2.2vh,26px); right: clamp(14px,2.2vw,28px); z-index: 100;
-  display: flex; flex-direction: column; gap: 9px; min-width: clamp(230px,19vw,300px);
-  padding: 11px 15px 10px; border-radius: 15px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.012) 45%, rgba(0,0,0,0.20)), rgba(10,11,14,0.72);
-  border: 1px solid var(--border-bright);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px -20px rgba(0,0,0,0.85);
-  transition: border-color .6s var(--spring), box-shadow .6s var(--spring);
-  --dc-c: var(--purple); --dc-glow: rgba(167,139,250,0.45);
+  display: inline-flex; align-items: baseline;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 800;
+  letter-spacing: 3px; text-transform: uppercase; color: #000;
+  padding: 7px 16px; border-radius: 5px;
+  background: var(--dc-c);
+  box-shadow: 0 6px 22px var(--dc-glow), 0 0 0 1px var(--dc-ring), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: background .6s var(--spring), box-shadow .6s var(--spring);
+  --dc-c: var(--purple); --dc-glow: rgba(167,139,250,0.4); --dc-ring: rgba(167,139,250,0.6);
 }
-.deck-counter::after { /* halo de canto na cor do ato */
-  content: ''; position: absolute; top: -46px; right: -46px; width: 150px; height: 150px;
-  border-radius: 50%; background: radial-gradient(circle, var(--dc-glow), transparent 70%);
-  pointer-events: none; opacity: 0.55; transition: background .6s var(--spring);
-}
-.deck-counter > * { position: relative; z-index: 1; }
-.dc-top { display: flex; align-items: center; gap: 11px; }
-.dc-act {
-  display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
-  font-family: var(--font-mono); font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--dc-c); transition: color .6s var(--spring);
-}
-.dc-act::before {
-  content: ''; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-  background: var(--dc-c); box-shadow: 0 0 10px var(--dc-c);
-  animation: counter-pulse 2.5s var(--drift) infinite;
-}
-.dc-pos { display: flex; align-items: baseline; gap: 2px; margin-left: auto; flex-shrink: 0; }
-.dc-n {
-  font-family: var(--font-display); font-size: 27px; line-height: 1; letter-spacing: -0.5px;
-  color: var(--dc-c); transition: color .6s var(--spring);
-}
-.dc-sep { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); opacity: 0.5; margin: 0 3px; }
-.dc-tot { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
-.dc-name {
-  font-family: var(--font-editorial); font-style: italic;
-  font-size: clamp(12px,1.15vw,14.5px); line-height: 1.25; color: var(--text-dim);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.dc-bar { display: flex; gap: 3px; }
-.dc-seg {
-  height: 3px; flex: 1 1 0; min-width: 6px; border-radius: 2px;
-  background: rgba(255,255,255,0.13);
-  transition: background .45s var(--spring), box-shadow .45s var(--spring), transform .45s var(--spring);
-}
-.dc-seg.passed { background: rgba(255,255,255,0.38); }
-.dc-seg.current { background: var(--dc-c); box-shadow: 0 0 12px var(--dc-glow); transform: scaleY(1.5); }
-@media (max-width: 768px) { .deck-counter { min-width: 0; } .dc-name { display: none; } }
+.deck-counter::before { content: '\25C6'; margin-right: 9px; opacity: 0.75; }
+.deck-counter::after  { content: '\25C6'; margin-left: 9px; opacity: 0.75; }
+.dc-n { font-size: 13px; }
+.dc-sep { opacity: 0.55; margin: 0 5px; }
+.dc-tot { opacity: 0.75; }
 @keyframes counter-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 .deck-tracker {
@@ -936,6 +904,101 @@ body.anim-ready .slide--silent .reveal.in > *, body.anim-ready .slide--title .re
 .wh-verd { font-family:var(--font-mono); font-size:clamp(9px,0.88vw,11.5px); font-weight:800; letter-spacing:1.2px; text-align:right; color:var(--red); }
 .wh-row--all .wh-verd { color:var(--green); }
 @media (max-width: 900px) { .wh-row { grid-template-columns:1fr; } .wh-verd { text-align:left; } }
+/* ── LEDGER — the transformation table (Act 4 slide 65) ─────────────── */
+.lg-head {
+  display:grid; grid-template-columns:var(--lg-cols); gap:clamp(11px,1.3vw,24px);
+  align-items:end; padding:0 clamp(15px,1.4vw,24px) clamp(8px,1.3vh,12px);
+  border-bottom:1px solid var(--border-bright);
+}
+.lg-h {
+  font-family:var(--font-mono); font-size:clamp(8.5px,0.82vw,10.5px); font-weight:800;
+  letter-spacing:2.2px; text-transform:uppercase; color:var(--text-dim); opacity:0.75;
+}
+.lg-h em { display:block; font-family:var(--font-editorial); font-style:italic; font-size:1.25em;
+  letter-spacing:0; text-transform:none; font-weight:400; opacity:0.8; margin-top:3px; }
+
+.lg-row {
+  display:grid; grid-template-columns:var(--lg-cols); gap:clamp(11px,1.3vw,24px);
+  align-items:center; position:relative; overflow:hidden;
+  padding:clamp(9px,1.4vh,14px) clamp(15px,1.4vw,24px);
+  border:1px solid var(--border); border-left:3px solid var(--lg-c, var(--silver));
+  border-radius:13px;
+  background:linear-gradient(90deg, var(--lg-fill, rgba(176,190,197,0.05)), var(--surface) 62%);
+  transition:transform .5s var(--spring), box-shadow .5s var(--spring), border-color .5s var(--spring);
+}
+.lg-row::after { /* corner halo in the row's colour */
+  content:''; position:absolute; top:-70px; right:-70px; width:200px; height:200px;
+  background:radial-gradient(circle, var(--lg-halo, transparent), transparent 70%);
+  pointer-events:none;
+}
+.lg-row > * { position:relative; z-index:1; }
+.lg-row:hover { transform:translateX(4px); border-color:var(--lg-c, var(--silver));
+  box-shadow:0 12px 34px -18px rgba(0,0,0,0.7), 0 0 34px -14px var(--lg-halo, transparent); }
+.lg-row--hero { border-width:1px; border-color:var(--lg-c); box-shadow:0 0 36px -16px var(--lg-halo); }
+
+.lg-name { font-family:var(--font-display); font-size:clamp(15px,1.5vw,21px); line-height:1.08; color:var(--text); }
+.lg-sub {
+  font-family:var(--font-mono); font-size:clamp(8.5px,0.82vw,10.5px); letter-spacing:1.3px;
+  text-transform:uppercase; color:var(--text-dim); opacity:0.72; margin-top:5px;
+}
+.lg-was {
+  display:inline-block;
+  font-family:var(--font-numeric); font-size:clamp(14px,1.45vw,20px); color:var(--text-dim);
+  text-decoration-line:line-through; text-decoration-color:rgba(248,81,73,0.75); text-decoration-thickness:2px;
+  white-space:nowrap;
+}
+/* the qualifier sits OUTSIDE the struck value, so the rule never crosses it */
+.lg-wasu { font-family:var(--font-mono); font-size:clamp(8px,0.76vw,9.5px); letter-spacing:0.9px;
+  text-transform:uppercase; color:var(--text-dim); opacity:0.6; margin-top:4px; white-space:nowrap; }
+.lg-now { font-family:var(--font-numeric); font-size:clamp(17px,1.75vw,25px); color:var(--text); white-space:nowrap; }
+.lg-now small { font-family:var(--font-mono); font-size:0.5em; letter-spacing:0.6px; display:block; margin-top:3px; color:var(--text-dim); }
+
+/* the ratio pair — two micro-bars whose lengths ARE the measured ratio */
+.lg-bars { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.lg-track { position:relative; height:5px; border-radius:3px; background:rgba(255,255,255,0.045); overflow:hidden; }
+.lg-track i { position:absolute; inset:0 auto 0 0; border-radius:3px; display:block; }
+.lg-track--was i { background:linear-gradient(90deg, rgba(248,81,73,0.85), rgba(248,81,73,0.3)); width:100%; }
+.lg-track--now i {
+  min-width:7px; /* a 1% ratio must still read as a deliberate mark, not as nothing */
+  background:linear-gradient(90deg, #3fb950, rgba(63,185,80,0.45));
+  box-shadow:0 0 14px -1px rgba(63,185,80,0.9), 0 0 0 1px rgba(63,185,80,0.35);
+}
+.lg-legend { font-family:var(--font-mono); font-size:clamp(7.5px,0.72vw,9px); letter-spacing:1.4px; text-transform:uppercase; color:var(--text-dim); opacity:0.55; margin-top:2px; }
+
+.lg-gain {
+  justify-self:end; font-family:var(--font-numeric); font-weight:700;
+  font-size:clamp(14px,1.5vw,21px); letter-spacing:-0.3px; color:#000;
+  background:var(--lg-c, var(--silver)); padding:clamp(5px,0.85vh,8px) clamp(10px,1vw,16px);
+  border-radius:8px; white-space:nowrap;
+  box-shadow:0 5px 18px -6px var(--lg-halo, rgba(0,0,0,0.4)), inset 0 1px 0 rgba(255,255,255,0.32);
+}
+.lg-gain--soft {
+  color:var(--lg-c, var(--silver)); background:transparent;
+  border:1px solid var(--lg-c, var(--silver)); box-shadow:none;
+  font-size:clamp(13px,1.35vw,19px);
+}
+.lg-gain--note { color:var(--lg-c); background:transparent; border:1px dashed var(--lg-c);
+  box-shadow:none; font-family:var(--font-editorial); font-style:italic; font-weight:400;
+  font-size:clamp(11px,1.1vw,15px); letter-spacing:0; }
+@media (max-width: 1100px) {
+  .lg-head { display:none; }
+  .lg-row { grid-template-columns:1fr; row-gap:8px; }
+  .lg-gain { justify-self:start; }
+}
+.lg-body { display:flex; flex-direction:column; gap:clamp(7px,1.15vh,12px); margin-top:clamp(9px,1.5vh,14px); }
+.lg-foot { margin-bottom:clamp(52px,7.5vh,80px); }
+/* short projectors (1366×768 and friends): shed the nice-to-haves, keep the table */
+@media (max-height: 820px) {
+  .lg-h em { display:none; }
+  .lg-legend { display:none; }
+  .lg-row { padding-top:8px; padding-bottom:8px; }
+  .lg-name { font-size:clamp(14px,1.4vw,18px); }
+  .lg-sub { margin-top:3px; }
+  .lg-body { gap:6px; margin-top:9px; }
+  .lg-foot { margin-bottom:42px; }
+  .lg-foot .callout { padding:clamp(11px,1.5vh,15px) clamp(14px,1.3vw,20px); }
+  .lg-aside { display:none; }
+}
 </style>
 </head>
 <body>
@@ -2115,7 +2178,7 @@ AGENT (final)  : The paid revenue in the fixture is <span class="n">240.00</span
         <p class="slide__body" style="max-width:490px;margin-top:clamp(14px,2.4vh,24px);font-size:clamp(16px,1.7vw,22px);">Every run leaves a <b>lesson</b>. Lessons become <b>memory</b> — notes on disk, not vibes. A lesson that keeps recurring gets promoted to a <b>skill</b>: a folder with instructions, references and scripts the agent loads only when the task needs it. Better skills make better agents; <b>better agents run better executions.</b></p>
         <div style="font-family:var(--font-mono);font-size:clamp(10px,1vw,12.5px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:clamp(12px,2vh,20px);">execute · learn · rewrite itself</div>
         <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(12.5px,1.25vw,16.5px);color:var(--text-dim);margin-top:clamp(10px,1.6vh,16px);">Autonomous <b style="color:var(--text);font-style:normal;">inside a fenced path</b> — no human in the middle of the loop, while the goals, the permissions, the evals and the accountability <b style="color:var(--text);font-style:normal;">stay human</b>.</p>
-        <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(12px,1.15vw,15.5px);color:var(--text-dim);margin-top:clamp(9px,1.4vh,14px);">You will see this counted in Act 4, on a real engagement: <b style="color:var(--gold);font-style:normal;">~55–60 lessons distilled into 4 permanent skills.</b></p>
+        <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(12px,1.15vw,15.5px);color:var(--text-dim);margin-top:clamp(9px,1.4vh,14px);">You will see this counted in Act 4, on a real engagement: <b style="color:var(--gold);font-style:normal;">60 lessons distilled into 5 permanent skills and 3 gates.</b></p>
       </div>
       <div class="reveal">
         <div style="position:relative;width:min(100%,clamp(460px,62vh,660px));aspect-ratio:1;margin:0 auto;">
@@ -3972,6 +4035,841 @@ run 2  <span class="g" style="color:#86efac;">sha256:2ba123ee0dfd24d31dc12db93e3
           <div class="co-body">A machine migrated a financial file type with nobody in the loop, found a one-cent lie its own inputs were telling, named the liar with evidence, <b>and refused to name anyone at all the moment I took a witness away.</b></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ACT 4 · KURVPAY — THE RECEIPTS ═══════════════ -->
+
+  <!-- S62 · ACT 4 DIVIDER — the receipts (gold over the dark factory floor) -->
+  <section class="slide slide--hands" data-act="ACT 4" data-act-name="KurvPay — the receipts" data-accent="gold">
+    <div class="hands-bg" style="background-image:url('images/gen/darkfactory-bg-opt.jpg');background-position:center 42%;" aria-hidden="true"></div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(8,8,10,0.95) 0%,rgba(8,8,10,0.88) 40%,rgba(8,8,10,0.6) 72%,rgba(8,8,10,0.42) 100%),linear-gradient(180deg,rgba(8,8,10,0.55) 0%,transparent 24%,transparent 58%,rgba(8,8,10,0.82) 100%);" aria-hidden="true"></div>
+    <div class="aurora aurora--gold" style="z-index:1;" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;width:100%;max-width:1460px;">
+      <div class="act-marker" style="font-size:clamp(11px,1.1vw,14px);">Act 4 · 20 min</div>
+      <div class="slide__display slide__display--act gradient-gold" style="font-size:clamp(110px,16vw,230px);text-shadow:0 4px 40px rgba(0,0,0,0.7);">4.</div>
+      <h2 class="slide__heading" style="margin-top:6px;font-size:clamp(38px,5.8vw,78px);text-shadow:0 3px 30px rgba(0,0,0,0.7);">The receipts</h2>
+      <p class="slide__body" style="max-width:1000px;margin-top:clamp(16px,2.6vh,26px);font-size:clamp(19px,2.1vw,27px);line-height:1.5;text-wrap:balance;">Everything so far ran on a didactic repository built to teach. <b>Now the same pattern, on a real engagement, with real money and a real client</b> — and every number in this act was measured, not projected.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(9px,1vw,15px);margin-top:clamp(20px,3.2vh,32px);">
+        <span class="pill gold">measured</span>
+        <span class="pill gold">dated</span>
+        <span class="pill red">including the two that failed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S63 · THE REVEAL — NorthWind is the twin -->
+  <section class="slide slide--silent" data-act="ACT 4" data-act-name="The reveal" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;max-width:1440px;">
+      <div style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(19px,2.3vw,32px);color:var(--text-dim);">What you have been watching all night</div>
+      <div class="slide__display" style="font-size:clamp(30px,4.9vw,74px);line-height:1.04;margin-top:clamp(12px,2vh,22px);">is not <span class="gradient-gold">a demo trick</span>.</div>
+
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,1.8vw,32px);align-items:center;margin-top:clamp(26px,4.2vh,46px);text-align:left;">
+        <div style="border:1px solid rgba(167,139,250,0.4);border-top:3px solid var(--purple);border-radius:16px;background:linear-gradient(180deg,rgba(167,139,250,0.08),var(--surface) 64%);padding:clamp(17px,2.6vh,26px) clamp(16px,1.5vw,25px);">
+          <div style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;">what you saw</div>
+          <div style="font-family:var(--font-display);font-size:clamp(21px,2.2vw,31px);line-height:1.05;color:var(--text);">NorthWind Pay EDP</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.45;color:var(--text-dim);margin-top:9px;">Synthetic. Open source. Five file types. Built to be <b style="color:var(--text);font-weight:600;">understood in one evening</b> — and to run on a laptop.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px;">
+          <span style="font-family:var(--font-display);font-size:clamp(24px,2.8vw,42px);color:var(--gold);text-shadow:0 0 26px rgba(212,175,55,0.6);">≡</span>
+          <span style="font-family:var(--font-mono);font-size:clamp(8.5px,0.82vw,10.5px);letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);">same pattern</span>
+        </div>
+        <div style="border:1px solid rgba(212,175,55,0.5);border-top:3px solid var(--gold);border-radius:16px;background:linear-gradient(180deg,rgba(212,175,55,0.11),var(--surface) 64%);padding:clamp(17px,2.6vh,26px) clamp(16px,1.5vw,25px);box-shadow:0 0 40px -16px rgba(212,175,55,0.5);">
+          <div style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">what it is a twin of</div>
+          <div class="gradient-gold" style="font-family:var(--font-display);font-size:clamp(21px,2.2vw,31px);line-height:1.05;">KurvPay EDP</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.45;color:var(--text-dim);margin-top:9px;">A live production engagement. <b style="color:var(--text);font-weight:600;">Thirty-two file types.</b> Real payment data, a real legacy system being retired, and a client who signs off field by field.</p>
+        </div>
+      </div>
+
+      <p class="slide__body" style="max-width:1120px;margin:clamp(24px,3.8vh,40px) auto 0;font-size:clamp(16px,1.75vw,23px);text-wrap:balance;">The synthetic one exists so that this act can be honest. <b>Every architectural choice you saw tonight — the frozen oracle, the four truth roles, the independent second implementation, the gates that refuse — came from doing it for money first.</b></p>
+    </div>
+  </section>
+
+  <!-- S64 · ONE REPOSITORY, TWO PRODUCTS — the engagement at a glance -->
+  <section class="slide" data-act="ACT 4" data-act-name="One repository, two products" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1760px;margin:0 auto;">
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">the platform, and the factory that builds the platform — in the same repository</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">One repository, <span class="gradient-gold">two products</span></h2>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(11px,1.2vw,20px);margin-top:clamp(16px,2.8vh,30px);">
+        <div class="stat-cell sc-gold"><div class="sc-num">32</div><div class="sc-label">file types · all onboarded</div><div class="sc-src">status: 32 of 32 complete</div></div>
+        <div class="stat-cell sc-purple"><div class="sc-num">62</div><div class="sc-label">specialised subagents</div><div class="sc-src">28 are parser experts · 29 commands · 12 skills</div></div>
+        <div class="stat-cell sc-cyan"><div class="sc-num">8</div><div class="sc-label">gated factory stages</div><div class="sc-src">+ one manual deploy runbook</div></div>
+        <div class="stat-cell sc-green"><div class="sc-num">60</div><div class="sc-label">lessons in the memory flywheel</div><div class="sc-src">plus 9 global · 5 promoted to skills</div></div>
+      </div>
+
+      <div class="two-col" style="margin-top:clamp(14px,2.4vh,26px);">
+        <div class="card accent">
+          <div class="card-inner">
+            <div class="slide__label">the business</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.32vw,17.5px);line-height:1.45;color:var(--text-dim);">Payment-data processing being modernised for a client. The legacy stack is <b style="color:var(--text);font-weight:600;">retired — and then kept</b>, because it becomes the golden ground truth every new pipeline validates against, field for field, before anyone signs anything.</p>
+          </div>
+        </div>
+        <div class="card cyan">
+          <div class="card-inner">
+            <div class="slide__label cyan">the engineering</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.32vw,17.5px);line-height:1.45;color:var(--text-dim);">Four-layer parsers — <b style="color:var(--text);font-weight:600;">model, parser, schema, writer</b> — in isolated cloud functions feeding a governed lakehouse. Decimal-only money. COBOL overpunch. <i>You have seen all three of those tonight, on the synthetic twin.</i></p>
+          </div>
+        </div>
+        <div class="card purple">
+          <div class="card-inner">
+            <div class="slide__label purple">the agentic system</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.32vw,17.5px);line-height:1.45;color:var(--text-dim);">Sixty-two subagents, twenty-eight of them experts on one file type each, <b style="color:var(--text);font-weight:600;">grounded in a machine-readable knowledge base before any of them is allowed near a financial parser.</b></p>
+          </div>
+        </div>
+        <div class="card gold">
+          <div class="card-inner">
+            <div class="slide__label gold">the dark factory</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.32vw,17.5px);line-height:1.45;color:var(--text-dim);">An eight-stage gated pipeline plus the lesson flywheel, <b style="color:var(--text);font-weight:600;">fired unattended over a queue</b> — with a human touching it at exactly one point. We will look at that point in a moment.</p>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:0.5px;color:var(--text-dim);opacity:0.7;margin-top:clamp(12px,2vh,20px);padding-top:8px;margin-bottom:clamp(56px,8vh,84px);border-top:1px solid var(--border);">source: <code style="font-family:var(--font-mono);">docs/kurv-edp-v2.pdf</code> — condensed engineering reference, compiled 2026-07-24 · metrics measured at compile time</div>
+    </div>
+  </section>
+
+  <!-- S65 · THE MEASURED NUMBERS — the transformation ledger -->
+  <section class="slide" data-act="ACT 4" data-act-name="The measured numbers" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1780px;margin:0 auto;--lg-cols:minmax(0,1.5fr) clamp(96px,9.5vw,138px) minmax(0,1.15fr) clamp(104px,10vw,146px) clamp(74px,7vw,104px);">
+
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:5px;">not a slide of projections — a table lifted out of a performance document, with a filename</div>
+      <h2 class="slide__heading" style="font-size:clamp(24px,3.6vw,47px);">What it was worth, <span class="gradient-gold">in numbers somebody had to defend</span></h2>
+
+      <div class="lg-head" style="margin-top:clamp(13px,2.2vh,24px);">
+        <span class="lg-h">the metric<em>what was actually measured</em></span>
+        <span class="lg-h" style="text-align:right;">before<em>legacy</em></span>
+        <span class="lg-h" style="text-align:center;">the collapse<em>drawn to scale</em></span>
+        <span class="lg-h" style="text-align:right;">after<em>the new pipeline</em></span>
+        <span class="lg-h" style="text-align:right;">gain</span>
+      </div>
+
+      <div class="lg-body">
+
+        <div class="lg-row lg-row--hero" style="--lg-c:var(--gold);--lg-fill:rgba(212,175,55,0.11);--lg-halo:rgba(212,175,55,0.45);">
+          <div>
+            <div class="lg-name">One file, end to end</div>
+            <div class="lg-sub">raw bytes → governed bronze</div>
+          </div>
+          <div class="lg-was" style="text-align:right;">~42 s</div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:2.4%;"></i></div>
+            <div class="lg-legend">2.4% of the time it used to take</div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~1 s</div>
+          <div class="lg-gain">42×</div>
+        </div>
+
+        <div class="lg-row" style="--lg-c:var(--gold);--lg-fill:rgba(212,175,55,0.055);--lg-halo:rgba(212,175,55,0.22);">
+          <div>
+            <div class="lg-name">A thousand files</div>
+            <div class="lg-sub">serial → parallel · same work</div>
+          </div>
+          <div style="text-align:right;"><span class="lg-was">~11.6 h</span><div class="lg-wasu">serial</div></div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:1.2%;"></i></div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~2 s<small>parallel</small></div>
+          <div class="lg-gain lg-gain--note">massive</div>
+        </div>
+
+        <div class="lg-row" style="--lg-c:var(--cyan);--lg-fill:rgba(34,211,238,0.055);--lg-halo:rgba(34,211,238,0.24);">
+          <div>
+            <div class="lg-name">Parser code, four types</div>
+            <div class="lg-sub">lines a human has to be able to read</div>
+          </div>
+          <div style="text-align:right;"><span class="lg-was">~7,600</span><div class="lg-wasu">lines</div></div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:20.5%;"></i></div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~1,555<small>lines</small></div>
+          <div class="lg-gain lg-gain--soft">6.8×</div>
+        </div>
+
+        <div class="lg-row" style="--lg-c:var(--accent);--lg-fill:rgba(74,158,255,0.055);--lg-halo:rgba(74,158,255,0.24);">
+          <div>
+            <div class="lg-name">A deploy</div>
+            <div class="lg-sub">6+ people in a room → one developer</div>
+          </div>
+          <div style="text-align:right;"><span class="lg-was">~4 h</span><div class="lg-wasu">6+ people</div></div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:6.25%;"></i></div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~15 min<small>1 dev</small></div>
+          <div class="lg-gain lg-gain--soft">16×</div>
+        </div>
+
+        <div class="lg-row" style="--lg-c:var(--accent);--lg-fill:rgba(74,158,255,0.055);--lg-halo:rgba(74,158,255,0.24);">
+          <div>
+            <div class="lg-name">Recovery from a failure</div>
+            <div class="lg-sub">time before the numbers are trustworthy again</div>
+          </div>
+          <div class="lg-was" style="text-align:right;">~2 h</div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:13.3%;"></i></div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~16 min</div>
+          <div class="lg-gain lg-gain--soft">8×</div>
+        </div>
+
+        <div class="lg-row lg-row--hero" style="--lg-c:var(--green);--lg-fill:rgba(63,185,80,0.13);--lg-halo:rgba(63,185,80,0.45);">
+          <div>
+            <div class="lg-name">Monthly infrastructure cost</div>
+            <div class="lg-sub">the line item on somebody's budget</div>
+          </div>
+          <div class="lg-was" style="text-align:right;">~$2,500</div>
+          <div class="lg-bars">
+            <div class="lg-track lg-track--was"><i></i></div>
+            <div class="lg-track lg-track--now"><i style="width:1%;"></i></div>
+            <div class="lg-legend">one percent of the bill</div>
+          </div>
+          <div class="lg-now" style="text-align:right;">~$25</div>
+          <div class="lg-gain">~98%</div>
+        </div>
+
+      </div>
+
+      <div class="lg-foot" style="display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(14px,1.7vw,30px);align-items:center;margin-top:clamp(11px,1.9vh,20px);margin-bottom:0;">
+        <div class="callout gold" style="margin:0;">
+          <div class="co-kicker">the row nobody expects to be the important one</div>
+          <div class="co-body">Ninety-eight percent off the bill is what gets you into the room. <b>Six-point-eight times less parser code is what keeps you there</b> — less code is less surface for a wrong cent to hide in.</div>
+        </div>
+        <div>
+          <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(12px,1.22vw,16px);line-height:1.45;color:var(--text-dim);margin:0;">Both bars are <b style="color:var(--text);font-style:normal;">drawn to the measured ratio</b>, not to taste.<span class="lg-aside"> The green sliver on the first row is 2.4% of the red one, because one second is 2.4% of forty-two.</span></p>
+        </div>
+      </div>
+      <div class="lg-foot" style="font-family:var(--font-mono);font-size:clamp(8.5px,0.84vw,10.5px);letter-spacing:0.6px;color:var(--text-dim);opacity:0.7;margin-top:clamp(9px,1.5vh,15px);padding-top:7px;border-top:1px solid var(--border);max-width:62%;">source: <code style="font-family:var(--font-mono);">docs/perf-tsys-tsql-aws-lambda.md</code>, via the condensed engineering reference</div>
+    </div>
+  </section>
+
+  <!-- S66 · THE EIGHT-STAGE PIPELINE AND THE ONE HUMAN GATE -->
+  <section class="slide" data-act="ACT 4" data-act-name="Eight gates, one human" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1860px;margin:0 auto;">
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">the assembly line that took one file type from a specification to deployed production data</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">Eight gates. <span class="gradient-gold">And exactly one human decision.</span></h2>
+
+      <svg viewBox="0 0 1840 300" style="width:100%;height:auto;display:block;margin-top:clamp(16px,2.8vh,30px);" xmlns="http://www.w3.org/2000/svg" aria-label="Eight gated factory stages from scaffold to end-to-end, each refusing to advance on failure, followed by a separate manual deploy runbook">
+        <defs>
+          <marker id="a4-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9 L3 5 Z" fill="#6e7a8c"></path></marker>
+          <linearGradient id="a4-rail" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#b0bec5" stop-opacity="0.5"></stop><stop offset="82%" stop-color="#d4af37" stop-opacity="0.85"></stop><stop offset="100%" stop-color="#3fb950" stop-opacity="0.85"></stop></linearGradient>
+        </defs>
+
+        <line x1="26" y1="118" x2="1814" y2="118" stroke="url(#a4-rail)" stroke-width="1.6" stroke-opacity="0.45"></line>
+
+        <g><rect x="26" y="70" width="176" height="96" rx="12" fill="rgba(176,190,197,0.07)" stroke="#b0bec5" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="114" y="96" fill="#b0bec5" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">01 · SCAFFOLD</text>
+        <text x="114" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">the skeleton</text>
+        <text x="114" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: imports resolve</text></g>
+        <line x1="208" y1="118" x2="228" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="234" y="70" width="176" height="96" rx="12" fill="rgba(74,158,255,0.07)" stroke="#4a9eff" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="322" y="96" fill="#4a9eff" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">02 · KB-AGENT</text>
+        <text x="322" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">the spec, grounded</text>
+        <text x="322" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: every field cited</text></g>
+        <line x1="416" y1="118" x2="436" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="442" y="70" width="176" height="96" rx="12" fill="rgba(34,211,238,0.07)" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="530" y="96" fill="#22d3ee" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">03 · MODELS</text>
+        <text x="530" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">the four layers</text>
+        <text x="530" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: parses the sample</text></g>
+        <line x1="624" y1="118" x2="644" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="650" y="70" width="176" height="96" rx="12" fill="rgba(34,211,238,0.07)" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="738" y="96" fill="#22d3ee" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">04 · TESTS</text>
+        <text x="738" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">unit + integration</text>
+        <text x="738" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: green · cover ≥ 80%</text></g>
+        <line x1="832" y1="118" x2="852" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="858" y="62" width="184" height="112" rx="12" fill="rgba(212,175,55,0.11)" stroke="#d4af37" stroke-opacity="0.6" stroke-width="1.5"></rect>
+        <text x="950" y="88" fill="#d4af37" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">05 · PREFLIGHT</text>
+        <text x="950" y="114" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">eight gates inside</text>
+        <text x="950" y="138" fill="#e6cf8a" font-family="Fira Code" font-size="9.5" text-anchor="middle">lint · SAST · build</text>
+        <text x="950" y="156" fill="#e6cf8a" font-family="Fira Code" font-size="9.5" text-anchor="middle">parity · e2e · config</text></g>
+        <line x1="1048" y1="118" x2="1068" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="1074" y="70" width="176" height="96" rx="12" fill="rgba(167,139,250,0.07)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="1162" y="96" fill="#a78bfa" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">06 · LAMBDA</text>
+        <text x="1162" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">least-privilege</text>
+        <text x="1162" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: local invoke</text></g>
+        <line x1="1256" y1="118" x2="1276" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="1282" y="70" width="176" height="96" rx="12" fill="rgba(167,139,250,0.07)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1.3"></rect>
+        <text x="1370" y="96" fill="#a78bfa" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">07 · LAKEFLOW</text>
+        <text x="1370" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">Bronze pipeline</text>
+        <text x="1370" y="150" fill="#6e7a8c" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: the glob matches</text></g>
+        <line x1="1464" y1="118" x2="1484" y2="118" stroke="#6e7a8c" stroke-width="1.2" marker-end="url(#a4-arr)"></line>
+
+        <g><rect x="1490" y="62" width="184" height="112" rx="12" fill="rgba(63,185,80,0.12)" stroke="#3fb950" stroke-opacity="0.6" stroke-width="1.5"></rect>
+        <text x="1582" y="88" fill="#3fb950" font-family="Fira Code" font-size="10.5" letter-spacing="1.4" text-anchor="middle">08 · END TO END</text>
+        <text x="1582" y="114" fill="#eaedf2" font-family="Instrument Serif" font-size="17" text-anchor="middle">reparse + reconcile</text>
+        <text x="1582" y="138" fill="#a8e6b4" font-family="Fira Code" font-size="9.5" text-anchor="middle">gate: detail count ==</text>
+        <text x="1582" y="156" fill="#a8e6b4" font-family="Fira Code" font-size="9.5" text-anchor="middle">the reconciliation basis</text></g>
+
+        <line x1="1680" y1="118" x2="1706" y2="118" stroke="#d4af37" stroke-width="1.6" stroke-dasharray="5 4"></line>
+        <g><rect x="1712" y="70" width="102" height="96" rx="12" fill="rgba(212,175,55,0.09)" stroke="#d4af37" stroke-opacity="0.7" stroke-width="1.6" stroke-dasharray="6 4"></rect>
+        <text x="1763" y="98" fill="#d4af37" font-family="Fira Code" font-size="9.5" letter-spacing="1.2" text-anchor="middle">09</text>
+        <text x="1763" y="122" fill="#eaedf2" font-family="Instrument Serif" font-size="16" text-anchor="middle">DEPLOY</text>
+        <text x="1763" y="146" fill="#e6cf8a" font-family="Fira Code" font-size="9" text-anchor="middle">a human</text></g>
+
+        <text x="850" y="34" fill="#6e7a8c" font-family="Fira Code" font-size="10.5" letter-spacing="2.2" text-anchor="middle">EVERY GATE MUST PASS BEFORE THE NEXT STAGE RUNS · A FAILURE STALLS THAT TYPE AND THE QUEUE KEEPS GOING</text>
+        <text x="1763" y="212" fill="#d4af37" font-family="Newsreader" font-style="italic" font-size="15" text-anchor="middle">not a stage —</text>
+        <text x="1763" y="232" fill="#d4af37" font-family="Newsreader" font-style="italic" font-size="15" text-anchor="middle">a manual runbook</text>
+        <text x="850" y="256" fill="#9fb2bb" font-family="Newsreader" font-style="italic" font-size="17" text-anchor="middle">Cloud deployment is human-invoked, by written rule. The factory builds and proves; a person decides to ship.</text>
+      </svg>
+
+      <div class="two-col" style="margin-top:clamp(14px,2.4vh,26px);">
+        <div class="callout gold" style="margin:0;">
+          <div class="co-kicker">stall, never halt</div>
+          <div class="co-body">One type's failure stalls <b>that type</b>, with the exact stage and reason recorded — and the queue carries on. The operator cadence is a <b>morning review</b>: the loop works the queue overnight, and a stall is not urgent until breakfast.</div>
+        </div>
+        <div class="callout accent" style="margin:0;">
+          <div class="co-kicker">the honest answer to “is it really unattended?”</div>
+          <div class="co-body"><b>No — and that is the design.</b> Eight stages run with nobody watching. Cloud deployment is a human decision, written down as a rule, because that is the boundary where a mistake stops being reversible.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S67 · TWO TO THREE MONTHS, OR EIGHT HOURS -->
+  <section class="slide" data-act="ACT 4" data-act-name="Per type: months or hours" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1720px;margin:0 auto;">
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">the same unit of work, priced two ways</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">One file type: <span class="gradient-red">two to three months</span>, or <span class="gradient-green">about eight hours</span></h2>
+
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,1.7vw,32px);align-items:stretch;margin-top:clamp(18px,3vh,32px);">
+        <div class="card red">
+          <div class="card-inner">
+            <div class="slide__label red">by hand · 2–3 months</div>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.1vw,29px);line-height:1.06;color:var(--text);">A T-SQL archaeology project</div>
+            <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,12px);margin-top:clamp(12px,2vh,18px);">
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--red);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Read a stored procedure nobody has touched in years.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--red);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Decode fixed-width offsets and COBOL sign conventions. <i>You watched this at 173.45.</i></span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--red);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Rebuild the schema, wire the compute, stand up the pipeline.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--red);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Then prove the numbers — which is most of the time, and all of the risk.</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;">
+          <span style="font-family:var(--font-display);font-size:clamp(26px,3vw,44px);color:var(--gold);text-shadow:0 0 26px rgba(212,175,55,0.6);">→</span>
+          <span style="font-family:var(--font-mono);font-size:clamp(8.5px,0.82vw,10.5px);letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);writing-mode:vertical-rl;text-orientation:mixed;">same output</span>
+        </div>
+        <div class="card green">
+          <div class="card-inner">
+            <div class="slide__label green">agentic · ~8 hours</div>
+            <div class="gradient-green" style="font-family:var(--font-display);font-size:clamp(20px,2.1vw,29px);line-height:1.06;">Eight gated stages, unattended</div>
+            <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,12px);margin-top:clamp(12px,2vh,18px);">
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">The same eight stages run for every type — no bespoke plan per file.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Every lesson from the previous thirty-one types is <b style="color:var(--text);font-weight:600;">read before stage one</b>.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">Proving the numbers is a <b style="color:var(--text);font-weight:600;">gate</b>, not a phase — it happens continuously.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:12px;flex-shrink:0;margin-top:2px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);">And the eight-hour figure is <b style="color:var(--green);font-weight:600;">measured, not asserted</b> — read off the session transcripts with token and cost counts attached.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-rule" style="margin:clamp(16px,2.6vh,28px) 0 clamp(12px,2vh,18px);">how the surface actually grew</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.1vw,18px);">
+        <div style="border:1px solid var(--border-bright);border-left:3px solid var(--silver);border-radius:11px;background:linear-gradient(90deg,rgba(176,190,197,0.06),var(--surface) 60%);padding:clamp(11px,1.7vh,16px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.4px;color:var(--silver);margin-bottom:6px;">2025 · 11 · 25</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.22vw,16px);line-height:1.4;color:var(--text-dim);">External kick-off. The mandate: <b style="color:var(--text);font-weight:600;">retire the SQL Server.</b></div>
+        </div>
+        <div style="border:1px solid var(--border-bright);border-left:3px solid var(--accent);border-radius:11px;background:linear-gradient(90deg,rgba(74,158,255,0.06),var(--surface) 60%);padding:clamp(11px,1.7vh,16px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.4px;color:var(--accent);margin-bottom:6px;">2026 · 02 · 02</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.22vw,16px);line-height:1.4;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">Four types</b> working. The factory does not exist yet — it is being learned.</div>
+        </div>
+        <div style="border:1px solid var(--border-bright);border-left:3px solid var(--cyan);border-radius:11px;background:linear-gradient(90deg,rgba(34,211,238,0.06),var(--surface) 60%);padding:clamp(11px,1.7vh,16px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.4px;color:var(--cyan);margin-bottom:6px;">2026 · 06 · 29</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.22vw,16px);line-height:1.4;color:var(--text-dim);">The full <b style="color:var(--text);font-weight:600;">32-type surface</b>, run in unattended batches.</div>
+        </div>
+        <div style="border:1px solid rgba(63,185,80,0.45);border-left:3px solid var(--green);border-radius:11px;background:linear-gradient(90deg,rgba(63,185,80,0.09),var(--surface) 60%);padding:clamp(11px,1.7vh,16px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.4px;color:var(--green);margin-bottom:6px;">2026 · 07 · 13–16</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.22vw,16px);line-height:1.4;color:var(--text-dim);">The sign-off crank: type by type, <b style="color:var(--green);font-weight:600;">prove it against the system it replaces.</b></div>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:0.5px;color:var(--text-dim);opacity:0.7;margin-top:clamp(11px,1.8vh,18px);padding-top:8px;border-top:1px solid var(--border);">666 commits · ~210 branches · eight months from kick-off to a signed 32-type surface</div>
+    </div>
+  </section>
+
+  <!-- S68 · THE SCOREBOARD AND THE DIFF-TRIAGE TREE -->
+  <section class="slide" data-act="ACT 4" data-act-name="The diff-triage tree" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1800px;margin:0 auto;">
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">a hundred and sixty thousand rows compared value for value — and then the only question that matters</div>
+      <h2 class="slide__heading" style="font-size:clamp(26px,4vw,52px);">When the two systems disagree, <span class="gradient-gold">who is wrong?</span></h2>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.1vw,18px);margin-top:clamp(14px,2.4vh,26px);">
+        <div class="stat-cell sc-green"><div class="sc-num">26</div><div class="sc-label">of 28 matched types signed</div><div class="sc-src">match-state.yaml · the parity ledger</div></div>
+        <div class="stat-cell sc-gold"><div class="sc-num">160k</div><div class="sc-label">rows compared value for value</div><div class="sc-src">a 4-stage diff vs the legacy system</div></div>
+        <div class="stat-cell sc-accent"><div class="sc-num">9</div><div class="sc-label">parser fixes — every one of them cited</div><div class="sc-src">to a procedure, a DDL, or a raw byte</div></div>
+        <div class="stat-cell sc-red"><div class="sc-num">0</div><div class="sc-label">uncited edits</div><div class="sc-src">the number the whole discipline exists to protect</div></div>
+      </div>
+
+      <div class="callout red" style="margin-top:clamp(14px,2.4vh,24px);">
+        <div class="co-kicker">the single most dangerous move in the entire programme</div>
+        <div class="co-body">“Edit the parser until the diff goes away.” It always works, it is always available, and it <b>destroys the evidence</b> that anything was ever wrong. So every dirty column gets classified <b>before</b> anyone is allowed to touch code.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.1vw,18px);margin-top:clamp(14px,2.4vh,26px);">
+        <div style="border:1px solid var(--border-bright);border-top:3px solid var(--silver);border-radius:14px;background:linear-gradient(180deg,rgba(176,190,197,0.07),var(--surface) 62%);padding:clamp(13px,2vh,19px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--silver);margin-bottom:9px;">branch 01</div>
+          <div style="font-family:var(--font-display);font-size:clamp(17px,1.7vw,24px);line-height:1.05;color:var(--text);">Representation</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.12vw,15px);line-height:1.42;color:var(--text-dim);margin-top:8px;">Naming, datetime, decimals, padding. The values agree; the shapes do not. <b style="color:var(--text);font-weight:600;">A configuration edit only</b> — never a parser change.</p>
+        </div>
+        <div style="border:1px solid rgba(248,81,73,0.5);border-top:3px solid var(--red);border-radius:14px;background:linear-gradient(180deg,rgba(248,81,73,0.10),var(--surface) 62%);padding:clamp(13px,2vh,19px) clamp(12px,1.15vw,18px);box-shadow:0 0 30px -14px rgba(248,81,73,0.5);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--red);margin-bottom:9px;">branch 02</div>
+          <div style="font-family:var(--font-display);font-size:clamp(17px,1.7vw,24px);line-height:1.05;color:var(--text);">Fixture defect</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.12vw,15px);line-height:1.42;color:var(--text-dim);margin-top:8px;"><b style="color:var(--red);font-weight:600;">The golden side is wrong.</b> Exclude it with a cited exception — never by quietly bending the parser to match a bad reference.</p>
+        </div>
+        <div style="border:1px solid var(--border-bright);border-top:3px solid var(--gold);border-radius:14px;background:linear-gradient(180deg,rgba(212,175,55,0.08),var(--surface) 62%);padding:clamp(13px,2vh,19px) clamp(12px,1.15vw,18px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);margin-bottom:9px;">branch 03</div>
+          <div style="font-family:var(--font-display);font-size:clamp(17px,1.7vw,24px);line-height:1.05;color:var(--text);">Legacy manufacture</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.12vw,15px);line-height:1.42;color:var(--text-dim);margin-top:8px;">The old system invented a value — an empty string silently becoming zero. <b style="color:var(--text);font-weight:600;">The procedure decides</b> whether the new one inherits the quirk or stays faithful.</p>
+        </div>
+        <div style="border:1px solid rgba(63,185,80,0.5);border-top:3px solid var(--green);border-radius:14px;background:linear-gradient(180deg,rgba(63,185,80,0.10),var(--surface) 62%);padding:clamp(13px,2vh,19px) clamp(12px,1.15vw,18px);box-shadow:0 0 30px -14px rgba(63,185,80,0.5);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--green);margin-bottom:9px;">branch 04</div>
+          <div class="gradient-green" style="font-family:var(--font-display);font-size:clamp(17px,1.7vw,24px);line-height:1.05;">Parser bug</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.12vw,15px);line-height:1.42;color:var(--text-dim);margin-top:8px;"><b style="color:var(--green);font-weight:600;">The only branch allowed to edit code</b> — and only with a citation to a procedure, a schema, or a raw byte. <b style="color:var(--text);font-weight:600;">No citation, no edit: stall with proof.</b></p>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:0.5px;color:var(--text-dim);opacity:0.7;margin-top:clamp(12px,2vh,20px);padding-top:8px;margin-bottom:clamp(56px,8vh,84px);border-top:1px solid var(--border);">one fixture-defect fingerprint recurred across <b style="color:var(--text-dim);">8 different types</b> — the reference system had coerced a routing number into a float</div>
+    </div>
+  </section>
+
+  <!-- S69 · THE TWO THAT STALLED — the scar story -->
+  <section class="slide" data-act="ACT 4" data-act-name="The two that stalled" data-accent="red">
+    <div class="aurora aurora--red" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1700px;margin:0 auto;">
+      <div class="gradient-red" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">twenty-six signed. and then two that did not, and were not made to.</div>
+      <h2 class="slide__heading" style="font-size:clamp(26px,4vw,52px);">Two types stalled — because <span class="gradient-red">the golden itself was wrong</span></h2>
+
+      <div class="two-col" style="margin-top:clamp(18px,3vh,32px);">
+        <div class="card red">
+          <div class="card-inner">
+            <div class="slide__label red">stalled type 01</div>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.1vw,29px);line-height:1.06;color:var(--text);">A golden exported on a different day</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13px,1.28vw,17px);line-height:1.45;color:var(--text-dim);margin-top:clamp(11px,1.8vh,16px);">The reference file and the input file did not describe the same business day. Every single row disagreed — <b style="color:var(--text);font-weight:600;">which is exactly what a real defect never looks like.</b></p>
+          </div>
+        </div>
+        <div class="card red">
+          <div class="card-inner">
+            <div class="slide__label red">stalled type 02</div>
+            <div style="font-family:var(--font-display);font-size:clamp(20px,2.1vw,29px);line-height:1.06;color:var(--text);">A 2025 golden against a 2026 input</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(13px,1.28vw,17px);line-height:1.45;color:var(--text-dim);margin-top:clamp(11px,1.8vh,16px);">Off by a <b style="color:var(--text);font-weight:600;">year</b>. And provable — not by argument, but from <b style="color:var(--text);font-weight:600;">the golden's own header row</b>, which states the period it covers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.7vw,30px);align-items:center;margin-top:clamp(18px,3vh,32px);">
+        <div>
+          <div class="section-rule" style="margin:0 0 clamp(12px,2vh,18px);">what happened next</div>
+          <div style="display:flex;flex-direction:column;gap:clamp(9px,1.5vh,14px);">
+            <div style="display:flex;gap:11px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;flex-shrink:0;margin-top:2px;">✓</span><span style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.35vw,18px);line-height:1.45;color:var(--text-dim);">Both were <b style="color:var(--text);font-weight:600;">kicked back to the client for re-export</b>, with the proof attached.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;flex-shrink:0;margin-top:2px;">✓</span><span style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.35vw,18px);line-height:1.45;color:var(--text-dim);">Both stayed on the ledger as <b style="color:var(--text);font-weight:600;">stalled</b> — visible, dated, not quietly reclassified.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;"><span style="color:var(--red);font-family:var(--font-mono);font-size:13px;flex-shrink:0;margin-top:2px;">✕</span><span style="font-family:var(--font-editorial);font-size:clamp(13.5px,1.35vw,18px);line-height:1.45;color:var(--text-dim);">Neither was <b style="color:var(--text);font-weight:600;">faked into a green</b> — and it would have taken about ten minutes to do it.</span></div>
+          </div>
+        </div>
+        <div class="callout red" style="margin:0;">
+          <div class="co-kicker">why this is the most expensive slide in the deck</div>
+          <div class="co-body">Reporting <b>26 of 28</b> instead of <b>28 of 28</b> costs you the number a client wants to hear. It buys the only thing that makes the other twenty-six worth anything: <b>when this system says signed, it means signed.</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S70 · THE GOLDEN IS EVIDENCE, NOT TRUTH — doctrine, over the ring mandala -->
+  <section class="slide slide--silent" data-act="ACT 4" data-act-name="Evidence, not truth" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <svg viewBox="0 0 800 800" aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vh,820px);height:min(92vh,820px);z-index:0;opacity:.8;">
+      <circle class="ring-spin" style="animation-duration:44s;animation-direction:normal;" cx="400" cy="400" r="110" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="60 40" opacity="0.5"/>
+      <circle class="ring-spin" style="animation-duration:53s;animation-direction:reverse;" cx="400" cy="400" r="148" fill="none" stroke="#b0bec5" stroke-width="1.5" stroke-dasharray="90 58" opacity="0.38"/>
+      <circle class="ring-spin" style="animation-duration:62s;animation-direction:normal;" cx="400" cy="400" r="186" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="120 76" opacity="0.42"/>
+      <circle class="ring-spin" style="animation-duration:71s;animation-direction:reverse;" cx="400" cy="400" r="224" fill="none" stroke="#f85149" stroke-width="1.5" stroke-dasharray="150 94" opacity="0.34"/>
+      <circle class="ring-spin" style="animation-duration:80s;animation-direction:normal;" cx="400" cy="400" r="262" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="180 112" opacity="0.3"/>
+      <circle class="ring-spin" style="animation-duration:89s;animation-direction:reverse;" cx="400" cy="400" r="300" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-dasharray="210 130" opacity="0.28"/>
+      <circle class="ring-spin" style="animation-duration:98s;animation-direction:normal;" cx="400" cy="400" r="338" fill="none" stroke="#b0bec5" stroke-width="1.5" stroke-dasharray="240 148" opacity="0.22"/>
+    </svg>
+    <div class="reveal" style="position:relative;z-index:2;max-width:1340px;">
+      <div style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(18px,2.2vw,30px);color:var(--text-dim);">One sentence carried both halves of tonight</div>
+      <div class="slide__display" style="font-size:clamp(34px,5.4vw,84px);line-height:1.03;margin-top:clamp(12px,2vh,22px);">The golden is <span class="gradient-gold">evidence</span>,<br>not <span class="gradient-gold">truth</span>.</div>
+      <p class="slide__body" style="max-width:1040px;margin:clamp(22px,3.4vh,36px) auto 0;font-size:clamp(16px,1.75vw,23px);text-wrap:balance;">And the full version, which is better: <b>the raw bytes plus the specification are truth.</b> The golden is the best available witness to them — and a witness can be mistaken.</p>
+
+      <div class="two-col" style="margin-top:clamp(22px,3.6vh,38px);text-align:left;">
+        <div style="border:1px solid rgba(248,81,73,0.4);border-left:3px solid var(--red);border-radius:13px;background:linear-gradient(90deg,rgba(248,81,73,0.09),var(--surface) 62%);padding:clamp(14px,2.2vh,20px) clamp(14px,1.3vw,21px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">tonight, on this stage</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(13px,1.3vw,17px);line-height:1.45;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">The source lied</b> by one cent, and three implementations preserved the lie rather than correcting it.</div>
+        </div>
+        <div style="border:1px solid rgba(212,175,55,0.45);border-left:3px solid var(--gold);border-radius:13px;background:linear-gradient(90deg,rgba(212,175,55,0.1),var(--surface) 62%);padding:clamp(14px,2.2vh,20px) clamp(14px,1.3vw,21px);">
+          <div style="font-family:var(--font-mono);font-size:9.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">on the real engagement</div>
+          <div style="font-family:var(--font-editorial);font-size:clamp(13px,1.3vw,17px);line-height:1.45;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">The golden lied</b> — twice — and the system refused to sign rather than bend to it.</div>
+        </div>
+      </div>
+      <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(14.5px,1.6vw,20px);color:var(--text-dim);margin-top:clamp(20px,3.2vh,34px);">Same discipline, tested from opposite directions. <b style="color:var(--gold);font-style:normal;">It only counts as a principle if it costs you something.</b></p>
+    </div>
+  </section>
+
+  <!-- S71 · THE FLYWHEEL, COUNTED — pays the Act 1 slide 24 promise -->
+  <section class="slide" data-act="ACT 4" data-act-name="The flywheel, counted" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1800px;margin:0 auto;">
+      <div class="gradient-gold" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">in Act 1 I promised you this would be counted — here it is</div>
+      <h2 class="slide__heading" style="font-size:clamp(26px,4vw,52px);">Sixty lessons became <span class="gradient-gold">five skills</span> and three gates</h2>
+
+      <div style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(16px,1.9vw,34px);align-items:start;margin-top:clamp(16px,2.8vh,30px);">
+
+        <div>
+          <div class="code-block" data-lang="the promotion rule" style="font-size:clamp(10.5px,1.02vw,13.5px);line-height:1.9;">
+a lesson earns a callable skill when
+<span class="k">all three</span> hold:
+
+  <span class="n">1.</span> <span class="s">recurrence</span>   cited across <span class="n">≥ 3</span> types
+  <span class="n">2.</span> <span class="s">high cost</span>    financial · data-corruption
+                 · cloud-failure class
+  <span class="n">3.</span> <span class="s">mechanizable</span> a deterministic decision
+                 tree — not a judgement call
+
+<span class="c">the loop creates the skill itself.</span>
+<span class="c">it does not defer to a human.</span>
+</div>
+          <div class="callout gold" style="margin-top:clamp(13px,2.2vh,22px);">
+            <div class="co-kicker">and then it proves the promotion</div>
+            <div class="co-body">The lesson is retired into a pointer — <i>“now enforced by the skill”</i> — and <b>one existing caller is retrofitted as proof</b> that the skill produces identical output with less code. A promotion that is not demonstrated is not a promotion.</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;flex-direction:column;gap:clamp(7px,1.1vh,11px);">
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(6px,1vh,10px) clamp(13px,1.2vw,19px);font-family:var(--font-mono);font-size:clamp(9px,0.86vw,11px);letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);">
+              <span>the skill</span><span>what it stops from ever happening again</span>
+            </div>
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(9px,1.4vh,14px) clamp(13px,1.2vw,19px);border:1px solid rgba(212,175,55,0.45);border-left:3px solid var(--gold);border-radius:11px;background:linear-gradient(90deg,rgba(212,175,55,0.1),var(--surface) 58%);">
+              <code style="font-family:var(--font-mono);font-size:clamp(10.5px,1.02vw,13px);color:#e6cf8a;">money-field</code>
+              <span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.4;color:var(--text-dim);">The <b style="color:var(--text);font-weight:600;">hundred-fold scaling bug</b>. Cited across ten types before it earned a skill.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(9px,1.4vh,14px) clamp(13px,1.2vw,19px);border:1px solid var(--border-bright);border-left:3px solid var(--cyan);border-radius:11px;background:linear-gradient(90deg,rgba(34,211,238,0.06),var(--surface) 58%);">
+              <code style="font-family:var(--font-mono);font-size:clamp(10.5px,1.02vw,13px);color:#8ae4f2;">positional-hierarchical</code>
+              <span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.4;color:var(--text-dim);">Wrong slices, broken parent-child identity, silently empty tables.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(9px,1.4vh,14px) clamp(13px,1.2vw,19px);border:1px solid rgba(248,81,73,0.45);border-left:3px solid var(--red);border-radius:11px;background:linear-gradient(90deg,rgba(248,81,73,0.09),var(--surface) 58%);">
+              <code style="font-family:var(--font-mono);font-size:clamp(10.5px,1.02vw,13px);color:#fda4a4;">cobol-overpunch</code>
+              <span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.4;color:var(--text-dim);"><b style="color:var(--red);font-weight:600;">Flipped-sign money corruption.</b> The byte you learned to read in Act 2, turned into a gate.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(9px,1.4vh,14px) clamp(13px,1.2vw,19px);border:1px solid var(--border-bright);border-left:3px solid var(--accent);border-radius:11px;background:linear-gradient(90deg,rgba(74,158,255,0.06),var(--surface) 58%);">
+              <code style="font-family:var(--font-mono);font-size:clamp(10.5px,1.02vw,13px);color:#7dc4ff;">reconciliation</code>
+              <span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.4;color:var(--text-dim);">Silently dropped records — the five different bases a record count can be taken against.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:clamp(150px,15vw,220px) 1fr;gap:clamp(11px,1.3vw,20px);align-items:center;padding:clamp(11px,1.7vh,16px) clamp(13px,1.2vw,19px);border:1px solid rgba(63,185,80,0.5);border-left:3px solid var(--green);border-radius:11px;background:linear-gradient(90deg,rgba(63,185,80,0.12),var(--surface) 58%);box-shadow:0 0 30px -14px rgba(63,185,80,0.5);">
+              <code style="font-family:var(--font-mono);font-size:clamp(10.5px,1.02vw,13px);color:#a8e6b4;">golden-match</code>
+              <span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.4;color:var(--text-dim);"><b style="color:var(--green);font-weight:600;">Uncited parser edits.</b> The triage tree you just read, promoted into a callable skill.</span>
+            </div>
+          </div>
+
+          <div class="callout green" style="margin-top:clamp(13px,2.2vh,22px);">
+            <div class="co-kicker">and the sharpest lessons did not become skills at all</div>
+            <div class="co-body">Three became <b>deterministic guards</b> — scripts that fail the build if the mistake ever recurs. Each shipped with <b>a verified negative control</b>: somebody broke the code on purpose first and watched the guard go red. <i>That is Act 3B's second practice, done by the people who invented it for themselves.</i></div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:0.5px;color:var(--text-dim);opacity:0.7;margin-top:clamp(12px,2vh,20px);padding-top:8px;margin-bottom:clamp(56px,8vh,84px);border-top:1px solid var(--border);">60 numbered lessons + 9 global ones · read before stage one of every onboarding, appended to after every ship</div>
+    </div>
+  </section>
+
+  <!-- S72 · THE TRAILER AND THE POSTER — the frame that closes Act 4 -->
+  <section class="slide slide--silent" data-act="ACT 4" data-act-name="Trailer and poster" data-accent="gold">
+    <div class="aurora aurora--gold" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;max-width:1400px;">
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(10px,1.2vw,18px);margin-bottom:clamp(22px,3.6vh,38px);">
+        <span class="pill gold">32 of 32 onboarded</span>
+        <span class="pill green">26 of 28 signed</span>
+        <span class="pill red">2 stalled, honestly</span>
+      </div>
+      <div class="slide__display" style="font-size:clamp(30px,4.9vw,74px);line-height:1.04;">Tonight was <span class="gradient-purple">the trailer</span>.</div>
+      <div class="slide__display" style="font-size:clamp(30px,4.9vw,74px);line-height:1.04;margin-top:clamp(8px,1.4vh,16px);">This is <span class="gradient-gold">the poster</span> from a theatre<br>where it already played.</div>
+      <p class="slide__body" style="max-width:1100px;margin:clamp(26px,4vh,42px) auto 0;font-size:clamp(16px,1.75vw,23px);text-wrap:balance;">You did not watch a rehearsal for something that might work. You watched a scaled-down, open-source, fully inspectable copy of something that <b>has already been delivered, measured, and signed off by somebody who was paying for it.</b></p>
+      <p style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(15px,1.65vw,21px);color:var(--text-dim);margin-top:clamp(20px,3.2vh,34px);">Which raises the only question left — <b style="color:var(--text);font-style:normal;">and it is about you, not about the factory.</b></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ACT 5 · THE BRIDGE ═══════════════ -->
+
+  <!-- S73 · ACT 5 DIVIDER — the bridge (purple over the crossing) -->
+  <section class="slide slide--hands" data-act="ACT 5" data-act-name="The Bridge" data-accent="purple">
+    <div class="hands-bg" style="background-image:url('images/gen/ato8-travessia-opt.jpg');background-position:center 38%;" aria-hidden="true"></div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(8,8,10,0.95) 0%,rgba(8,8,10,0.88) 40%,rgba(8,8,10,0.55) 72%,rgba(8,8,10,0.35) 100%),linear-gradient(180deg,rgba(8,8,10,0.55) 0%,transparent 24%,transparent 58%,rgba(8,8,10,0.82) 100%);" aria-hidden="true"></div>
+    <div class="aurora aurora--purple" style="z-index:1;" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;width:100%;max-width:1460px;">
+      <div class="act-marker" style="font-size:clamp(11px,1.1vw,14px);">Act 5 · 30 min</div>
+      <div class="slide__display slide__display--act gradient-purple" style="font-size:clamp(110px,16vw,230px);text-shadow:0 4px 40px rgba(0,0,0,0.7);">5.</div>
+      <h2 class="slide__heading" style="margin-top:6px;font-size:clamp(38px,5.8vw,78px);text-shadow:0 3px 30px rgba(0,0,0,0.7);">The bridge</h2>
+      <p class="slide__body" style="max-width:1000px;margin-top:clamp(16px,2.6vh,26px);font-size:clamp(19px,2.1vw,27px);line-height:1.5;text-wrap:balance;">The factory has run and the receipts are on the table. The last thirty minutes are not about the machine at all — <b>they are about the distance between the person who watched it and the person who can build it.</b></p>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(9px,1vw,15px);margin-top:clamp(20px,3.2vh,32px);">
+        <span class="pill purple">the gap, named honestly</span>
+        <span class="pill purple">a path, priced in the open</span>
+        <span class="pill green">nothing sold as magic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S74 · THE HONEST BRIDGE — what you saw vs what you did not -->
+  <section class="slide" data-act="ACT 5" data-act-name="The honest bridge" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1760px;margin:0 auto;">
+      <div class="gradient-purple" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">the honest bridge — both columns are true at the same time</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">You watched the factory run. <span class="gradient-purple">You did not watch it being built.</span></h2>
+
+      <div class="two-col" style="margin-top:clamp(16px,2.8vh,30px);">
+        <div class="card green">
+          <div class="card-inner">
+            <div class="slide__label green">what you saw tonight</div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">A factory migrate a file type on its own</b> — spec in, four layers out, RED fed back, GREEN opened the PR.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">Three strangers agree on 173.45</b> — Java, SQL and Python, sharing no code, against a source that declared 173.44.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">An indictment with evidence</b> — the source named as the liar; the cent never entered the database.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">A refusal</b> — one witness removed, and the machine declined to conclude at all.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--green);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">The receipts</b> — the same pattern delivered for money: 32 of 32 types, measured, signed.</span></div>
+          </div>
+        </div>
+        <div class="card purple">
+          <div class="card-inner">
+            <div class="slide__label purple">what you did not see</div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--purple);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">How the harness is grounded</b> — the control-plane under the floor that makes an ordinary model converge.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--purple);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">How an eval becomes a contract</b> — written to say “no” before any code exists.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--purple);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">How the adversary is leashed</b> — a rival vendor’s model paid to refute the plan, and when its objections count.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--purple);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">How the fleet runs at 3 a.m.</b> — who dispatches, who isolates, who watches the watchers.</span></div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-top:clamp(6px,1.15vh,10px);"><span style="color:var(--purple);font-family:var(--font-mono);font-size:13px;line-height:1.35;flex-shrink:0;margin-top:1px;">▸</span><span style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.42;color:var(--text-dim);"><b style="color:var(--text);font-weight:600;">How a lesson becomes a skill</b> — the promotion rule that turned sixty lessons into five permanent skills.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(14px,1.7vw,30px);align-items:center;margin-top:clamp(12px,2.2vh,32px);">
+        <div class="slide__heading" style="font-size:clamp(21px,2.9vw,40px);line-height:1.14;">None of the right column is unlockable by watching. <span class="gradient-purple">Watching it twice will not teach it either.</span></div>
+        <div class="callout accent" style="margin:0;">
+          <div class="co-kicker">the honest sentence</div>
+          <div class="co-body">The left column was tonight, and it is over. The right column is five nights of engineering, built with your own hands — <b>that is the Bootcamp, and it is the only place the right column exists.</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S75 · THE RULER, ONE LAST TIME — slide-20 staircase, compressed, gap highlighted -->
+  <section class="slide" data-act="ACT 5" data-act-name="The ruler, one last time" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1820px;margin:0 auto;">
+      <div class="gradient-purple" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.85vw,26px);line-height:1.15;margin-bottom:6px;">the same ruler from three hours ago — now that you have seen the top of it</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">You live at L3. <span class="gradient-purple">You just watched L5.</span></h2>
+
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(8px,0.9vw,14px);align-items:end;margin-top:clamp(14px,2.6vh,26px);">
+        <div class="rung" style="--rg-c:var(--silver);--rg-glow:rgba(176,190,197,0.35);min-height:clamp(120px,16vh,175px);opacity:0.55;background:linear-gradient(180deg,rgba(176,190,197,0.05),rgba(176,190,197,0.01));border-color:rgba(176,190,197,0.20);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L0</span>
+          <span class="rg-name" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">Spicy<br>autocomplete</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">a faster keyboard</span>
+        </div>
+        <div class="rung" style="--rg-c:var(--accent);--rg-glow:rgba(74,158,255,0.4);min-height:clamp(135px,18vh,200px);opacity:0.55;background:linear-gradient(180deg,rgba(74,158,255,0.06),rgba(74,158,255,0.01));border-color:rgba(74,158,255,0.24);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L1</span>
+          <span class="rg-name" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">The coding<br>intern</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">typing speed</span>
+        </div>
+        <div class="rung" style="--rg-c:var(--cyan);--rg-glow:rgba(34,211,238,0.4);min-height:clamp(150px,20vh,225px);opacity:0.55;background:linear-gradient(180deg,rgba(34,211,238,0.07),rgba(34,211,238,0.01));border-color:rgba(34,211,238,0.28);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L2</span>
+          <span class="rg-name" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">The junior<br>developer</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">~90% of “AI-native” live here</span>
+        </div>
+        <div class="rung" style="--rg-c:var(--gold);--rg-glow:rgba(212,175,55,0.4);min-height:clamp(175px,24vh,265px);background:linear-gradient(180deg,rgba(212,175,55,0.10),rgba(212,175,55,0.01));border-color:rgba(212,175,55,0.4);box-shadow:0 10px 40px -14px rgba(212,175,55,0.4);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L3</span>
+          <span class="rg-name" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">The<br>developer</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">seven in ten of this room</span>
+        </div>
+        <div class="rung" style="--rg-c:var(--purple);--rg-glow:rgba(167,139,250,0.4);min-height:clamp(200px,28vh,305px);opacity:0.8;background:linear-gradient(180deg,rgba(167,139,250,0.08),rgba(167,139,250,0.01));border-color:rgba(167,139,250,0.30);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L4</span>
+          <span class="rg-name" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">The engineering<br>team</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">three in ten of this room</span>
+        </div>
+        <div class="rung" style="--rg-c:var(--green);--rg-glow:rgba(63,185,80,0.45);min-height:clamp(230px,32vh,350px);background:linear-gradient(180deg,rgba(63,185,80,0.12),rgba(63,185,80,0.01));border-color:rgba(63,185,80,0.42);box-shadow:0 12px 46px -12px rgba(63,185,80,0.4);padding:clamp(11px,1.5vh,18px) clamp(10px,0.95vw,16px);">
+          <span class="rg-num" style="font-size:clamp(8px,0.78vw,10px);padding:4px 9px;margin-bottom:9px;">L5</span>
+          <span class="rg-name gradient-green" style="font-size:clamp(14px,1.45vw,21px);margin-bottom:5px;">The dark<br>software factory</span>
+          <span class="rg-verdict" style="font-size:clamp(10.5px,1vw,14px);white-space:normal;padding-top:8px;">you watched it run tonight</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:clamp(12px,1.4vw,22px);margin-top:clamp(14px,2.4vh,24px);">
+        <span class="pill gold">L3 · where you live</span>
+        <div style="flex:1;position:relative;height:2px;background:linear-gradient(90deg,var(--gold),var(--green));border-radius:2px;">
+          <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#08080a;padding:4px 14px;font-family:var(--font-editorial);font-style:italic;font-size:clamp(13px,1.4vw,18px);color:var(--text);white-space:nowrap;">the distance is engineering — <b style="font-style:normal;">and it’s teachable</b></span>
+        </div>
+        <span class="pill green">L5 · what you watched</span>
+      </div>
+      <span style="display:block;font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:0.5px;color:var(--text-dim);opacity:0.7;margin-top:clamp(10px,1.6vh,16px);">source: Dan Shapiro · “The Five Levels” · danshapiro.com · January 2026</span>
+    </div>
+  </section>
+
+  <!-- S76 · YOUR MONDAY — three workflows on the interactive checklist (.ck's first use) -->
+  <section class="slide" data-act="ACT 5" data-act-name="Your Monday" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1760px;margin:0 auto;">
+      <div class="gradient-purple" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">three workflows that fit into one week — no factory required, nothing to buy</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">What changes <span class="gradient-purple">Monday morning</span></h2>
+      <p class="slide__body" style="max-width:1240px;margin-top:clamp(9px,1.5vh,15px);font-size:clamp(15px,1.5vw,19.5px);">Act 3B gave you four disciplines for your repository. These are different — <b>three working habits for your week, at personal scale.</b> Tick them off as we go.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,22px);margin-top:clamp(16px,2.8vh,30px);">
+
+        <div class="card purple" style="--ck-c:var(--purple);--ck-rgb:167,139,250;">
+          <div class="card-inner">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:clamp(26px,2.8vw,40px);line-height:1;color:rgba(167,139,250,0.35);">01</div>
+            <div style="font-family:var(--font-display);font-size:clamp(18px,1.8vw,26px);line-height:1.05;color:var(--text);margin-top:6px;">Brief the machine once</div>
+            <div style="margin-top:clamp(8px,1.4vh,14px);">
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">write your repo’s <b style="color:var(--text);font-style:normal;">agent brief</b> — conventions, gotchas, what “done” means</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">add the <b style="color:var(--text);font-style:normal;">three commands</b> that must pass before anything merges</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">name the <b style="color:var(--text);font-style:normal;">landmines</b> — the modules that look simple and are not</span></div>
+            </div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:clamp(8px,1.4vh,13px);">Thirty minutes of writing that pays on every dispatch after it.</p>
+          </div>
+        </div>
+
+        <div class="card cyan" style="--ck-c:var(--cyan);--ck-rgb:34,211,238;">
+          <div class="card-inner">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:clamp(26px,2.8vw,40px);line-height:1;color:rgba(34,211,238,0.35);">02</div>
+            <div style="font-family:var(--font-display);font-size:clamp(18px,1.8vw,26px);line-height:1.05;color:var(--text);margin-top:6px;">No check, no dispatch</div>
+            <div style="margin-top:clamp(8px,1.4vh,14px);">
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">before the prompt, finish the sentence <b style="color:var(--text);font-style:normal;">“this is done when…”</b> — with a command</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">make it <b style="color:var(--text);font-style:normal;">runnable</b> — a one-liner that exits red today</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">let the <b style="color:var(--text);font-style:normal;">check decide the merge</b> — not your patience at 6 p.m.</span></div>
+            </div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:clamp(8px,1.4vh,13px);">“No eval, no task” — at personal scale it is one sentence and one line of bash.</p>
+          </div>
+        </div>
+
+        <div class="card green" style="--ck-c:var(--green);--ck-rgb:63,185,80;">
+          <div class="card-inner">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:clamp(26px,2.8vw,40px);line-height:1;color:rgba(63,185,80,0.35);">03</div>
+            <div style="font-family:var(--font-display);font-size:clamp(18px,1.8vw,26px);line-height:1.05;color:var(--text);margin-top:6px;">One task, one worktree</div>
+            <div style="margin-top:clamp(8px,1.4vh,14px);">
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">pick <b style="color:var(--text);font-style:normal;">tonight</b> the task you will dispatch at nine tomorrow</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">give it a <b style="color:var(--text);font-style:normal;">worktree of its own</b>, so your tree stays yours while it works</span></div>
+              <div class="ck" style="padding:clamp(6px,1.15vh,14px) 0;" onclick="this.classList.toggle('done')" role="button" tabindex="0"><span class="ck-box" aria-hidden="true"></span><span class="ck-t">review the outcome <b style="color:var(--text);font-style:normal;">against the check</b> — merge it or discard it, without mercy</span></div>
+            </div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:clamp(8px,1.4vh,13px);">The habit the fleet is made of, practised with a fleet of one.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout accent" style="margin-top:clamp(10px,1.9vh,28px);">
+        <div class="co-kicker">why these three</div>
+        <div class="co-body">Each is one rung of the same posture — <b>specify, dispatch, verify.</b> None of them needs the factory. All of them are what the factory is made of.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S77 · THE FACTORY LADDER — the offer's shape: three rungs, one climb -->
+  <section class="slide" data-act="ACT 5" data-act-name="The Factory Ladder" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1760px;margin:0 auto;">
+      <div class="gradient-purple" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">not three courses — one ladder, and your money climbs it with you</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">The <span class="gradient-purple">Factory Ladder</span></h2>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,22px);margin-top:clamp(16px,2.8vh,30px);">
+        <div class="card cyan">
+          <div class="card-inner">
+            <div class="slide__label cyan">a semana · 10–14 aug · <i>do</i></div>
+            <div style="font-family:var(--font-display);font-size:clamp(19px,1.9vw,28px);line-height:1.05;color:var(--text);margin-top:4px;">The method in your own hands</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.45;color:var(--text-dim);margin-top:9px;">Five days, hands on the keyboard. <b style="color:var(--text);font-weight:600;">One loop closed end to end, by you</b> — specify, dispatch, verify, on a real task. The week the base pays R$97 for.</p>
+          </div>
+        </div>
+        <div class="card purple" style="box-shadow:0 0 44px -14px rgba(167,139,250,0.5);">
+          <div class="card-inner">
+            <div class="slide__label purple">the bootcamp · 24–28 aug · <i>master</i></div>
+            <div class="gradient-purple" style="font-family:var(--font-display);font-size:clamp(19px,1.9vw,28px);line-height:1.05;margin-top:4px;">You build the factory</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.45;color:var(--text-dim);margin-top:9px;">Five nights. The grounded harness, the gates, the adversary, the fleet — <b style="color:var(--text);font-weight:600;">with your own hands, on the case you watched tonight.</b> The right column of the bridge slide, delivered.</p>
+          </div>
+        </div>
+        <div class="card gold">
+          <div class="card-inner">
+            <div class="slide__label gold">a formação · beyond · <i>complete</i></div>
+            <div style="font-family:var(--font-display);font-size:clamp(19px,1.9vw,28px);line-height:1.05;color:var(--text);margin-top:4px;">The full journey</div>
+            <p style="font-family:var(--font-editorial);font-size:clamp(12.5px,1.25vw,16.5px);line-height:1.45;color:var(--text-dim);margin-top:9px;">The complete engineering curriculum past the factory — <b style="color:var(--text);font-weight:600;">waiting with your credit already inside it.</b></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="slide__body" style="max-width:1240px;margin-top:clamp(16px,2.6vh,26px);font-size:clamp(15px,1.5vw,19.5px);">Buying at the pre-sale — tonight, in this room — is <b>all three moves at once:</b></p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(11px,1.2vw,20px);margin-top:clamp(10px,1.8vh,18px);">
+        <div class="stat-cell sc-cyan"><div class="sc-num">1</div><div class="sc-label">a semana — included</div><div class="sc-src">the R$97 week rides along, yours</div></div>
+        <div class="stat-cell sc-purple"><div class="sc-num">2</div><div class="sc-label">the price — locked</div><div class="sc-src">pre-sale, before any public lot exists</div></div>
+        <div class="stat-cell sc-green"><div class="sc-num">3</div><div class="sc-label">the credit — 100%</div><div class="sc-src">everything you pay flows to the formação</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S78 · THE LADDER, PRICED — price staircase + the credit rule.
+       The pre-sale figure is the deck's one remaining .todo — open item 4 in the agenda. -->
+  <section class="slide" data-act="ACT 5" data-act-name="The ladder, priced" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="width:100%;max-width:1760px;margin:0 auto;">
+      <div class="gradient-purple" style="font-family:var(--font-display);font-style:italic;font-size:clamp(17px,1.9vw,26px);line-height:1.15;margin-bottom:6px;">a locked price is only real if the ladder it sits under is visible</div>
+      <h2 class="slide__heading" style="font-size:clamp(27px,4.1vw,54px);">The ladder, <span class="gradient-purple">priced in the open</span></h2>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,22px);align-items:end;margin-top:clamp(18px,3vh,32px);">
+        <div style="border:1px solid rgba(63,185,80,0.5);border-top:3px solid var(--green);border-radius:15px;background:linear-gradient(180deg,rgba(63,185,80,0.12),var(--surface) 62%);box-shadow:0 0 40px -14px rgba(63,185,80,0.5);padding:clamp(15px,2.3vh,22px) clamp(14px,1.3vw,20px);min-height:clamp(140px,19vh,210px);display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--green);">tonight · pre-sale</div>
+          <div style="font-family:var(--font-display);font-size:clamp(30px,3.4vw,50px);line-height:1;color:var(--text);margin-top:8px;"><span class="todo">R$ •••</span></div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:8px;">Locked in this room — <b style="color:var(--text);font-weight:600;">under both rungs to the right</b>, and it never comes back.</p>
+        </div>
+        <div style="border:1px solid rgba(212,175,55,0.4);border-top:3px solid var(--gold);border-radius:15px;background:linear-gradient(180deg,rgba(212,175,55,0.09),var(--surface) 62%);padding:clamp(15px,2.3vh,22px) clamp(14px,1.3vw,20px);min-height:clamp(180px,25vh,275px);display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);">10 aug · semana lot</div>
+          <div style="font-family:var(--font-display);font-size:clamp(30px,3.4vw,50px);line-height:1;color:var(--text);margin-top:8px;">R$997</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:8px;">The first public rung, when A Semana opens.</p>
+        </div>
+        <div style="border:1px solid var(--border-bright);border-top:3px solid var(--silver);border-radius:15px;background:linear-gradient(180deg,rgba(176,190,197,0.07),var(--surface) 62%);padding:clamp(15px,2.3vh,22px) clamp(14px,1.3vw,20px);min-height:clamp(220px,31vh,340px);display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--silver);">after · public lot</div>
+          <div style="font-family:var(--font-display);font-size:clamp(30px,3.4vw,50px);line-height:1;color:var(--text);margin-top:8px;">R$1.997</div>
+          <p style="font-family:var(--font-editorial);font-size:clamp(11.5px,1.1vw,14.5px);line-height:1.42;color:var(--text-dim);margin-top:8px;">The price with no ladder under it.</p>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:clamp(16px,2.8vh,30px);">
+        <div class="callout gold" style="margin:0;">
+          <div class="co-kicker">the credit rule — explicit, no fine print</div>
+          <div class="co-body"><b>100% of what you pay tonight becomes credit toward the Formação.</b> Released the day the Bootcamp ends — exactly when you have just built the factory with your own hands.</div>
+        </div>
+        <div class="callout accent" style="margin:0;">
+          <div class="co-kicker">and it stacks</div>
+          <div class="co-body">At the end of the Bootcamp the Formação appears as a bundle with its own discount. <b>Your credit sits on top of that discount, not instead of it.</b> You started paying for it tonight without feeling it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S79 · THE HONEST CLOSE — act 0's contract, honoured -->
+  <section class="slide slide--silent" data-act="ACT 5" data-act-name="The honest close" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;max-width:1400px;">
+      <div style="font-family:var(--font-editorial);font-style:italic;font-size:clamp(19px,2.3vw,32px);color:var(--text-dim);">the contract from the first ten minutes, honoured in the last</div>
+      <div class="slide__display" style="font-size:clamp(30px,4.9vw,74px);line-height:1.04;margin-top:clamp(12px,2vh,22px);">We did not sell you <span class="gradient-purple">magic</span>.</div>
+      <div class="slide__display" style="font-size:clamp(30px,4.9vw,74px);line-height:1.04;margin-top:clamp(8px,1.4vh,16px);">We showed you what is real —<br><span class="gradient-purple">and where the limits are.</span></div>
+      <p class="slide__body" style="max-width:1100px;margin:clamp(26px,4vh,42px) auto 0;font-size:clamp(16px,1.75vw,23px);text-wrap:balance;">Nothing tonight put a factory in your hands; that was never the promise. If you stop here, you leave with four disciplines, three Monday workflows and proof that Level 5 exists. <b>If you want to build the thing you watched — that is the Bootcamp, with your own hands, from the 24th of August.</b></p>
+    </div>
+  </section>
+
+  <!-- S80 · LIGHTS OFF — the end card -->
+  <section class="slide slide--silent" data-act="ACT 5" data-act-name="Lights off" data-accent="purple">
+    <div class="aurora aurora--purple" aria-hidden="true"><b></b></div>
+    <div class="reveal" style="position:relative;z-index:2;max-width:1400px;">
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(10px,1.2vw,18px);margin-bottom:clamp(22px,3.6vh,38px);">
+        <span class="pill purple">zero lines written by hand</span>
+        <span class="pill green">nobody in the loop</span>
+        <span class="pill gold">every claim measured</span>
+      </div>
+      <div class="slide__display" style="font-size:clamp(34px,5.4vw,84px);line-height:1.04;">The lights are off.</div>
+      <div class="slide__display gradient-purple" style="font-size:clamp(34px,5.4vw,84px);line-height:1.04;margin-top:clamp(8px,1.4vh,16px);">The factory is still running.</div>
+      <p class="slide__body" style="max-width:1000px;margin:clamp(26px,4vh,42px) auto 0;font-size:clamp(16px,1.75vw,23px);text-wrap:balance;">Right now the real one is in production, doing this for money — with nobody watching. <b>Thank you for watching this one.</b></p>
+      <span style="display:block;font-family:var(--font-mono);font-size:clamp(9px,0.88vw,11px);letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);opacity:0.7;margin-top:clamp(24px,3.8vh,40px);">Dark Factory Operation · Engenharia de Dados Academy · 25.07.2026</span>
     </div>
   </section>
 

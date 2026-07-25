@@ -17,6 +17,12 @@ sources:
         description: One privacy-safe Type 02 event per source record.
       - name: instant_payment_event_control
         description: Per-batch Type 02 controls published by the writer.
+      - name: merchant_fee_assessment
+        description: One privacy-safe Type 05 assessment per source row.
+      - name: merchant_fee_assessment_control
+        description: >-
+          Per-batch Type 05 controls published by the writer, carrying the
+          source-owned declaration unchanged.
       - name: ted_transfer_movement
         description: One privacy-safe Type 04 movement per source record.
       - name: ted_transfer_movement_control

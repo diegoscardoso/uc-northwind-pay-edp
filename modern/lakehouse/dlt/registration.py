@@ -28,6 +28,7 @@ TABLE_BY_TYPE = {
     "02": "instant_payment_event",
     "03": "payment_slip_settlement",
     "04": "ted_transfer_movement",
+    "05": "merchant_fee_assessment",
 }
 
 
@@ -50,6 +51,7 @@ def landing_files(landing_root: Path, type_number: str) -> list[Path]:
         "02": "NW_INSTANT_PAYMENT",
         "03": "NW_PAYMENT_SLIP",
         "04": "NW_TED_SETTLEMENT",
+        "05": "NW_MERCHANT_FEES",
     }[type_number]
     return sorted(
         path

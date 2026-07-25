@@ -68,3 +68,21 @@ models:
           - not_null
           - accepted_values:
               values: ["MATCHED", "MISMATCHED"]
+
+  - name: gold_merchant_fee_reconciliation
+    description: >-
+      Grain: one row per Type 05 batch and currency, matching the legacy
+      reporting grain.
+    columns:
+      - name: batch_id
+        tests: [not_null, unique]
+      - name: currency
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["BRL"]
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["MATCHED", "MISMATCHED"]

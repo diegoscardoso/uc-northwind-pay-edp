@@ -37,7 +37,7 @@ from canonical import (  # noqa: E402
     fixture_projection,
     identity_bytes,
 )
-from config import DetectorConfiguration  # noqa: E402
+from detector_config import DetectorConfiguration  # noqa: E402
 from errors import (  # noqa: E402
     AttributionInconclusiveError,
     DarkFactoryError,

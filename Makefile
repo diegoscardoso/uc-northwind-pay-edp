@@ -289,6 +289,9 @@ df-check: ## Run Dark Factory contract, unit, and security suites plus strict ty
 		factory/src \
 		factory/tools/tree_manifest.py
 	@$(RUNNER_PYTHON) -m json.tool factory/contracts/finding.schema.json >/dev/null
+# The acceptance suite is not in the mypy scope, so a stale import in it can
+# survive every other gate. Executing --help resolves every module it needs.
+	@PYTHONPATH=$(DF_SRC) $(RUNNER_PYTHON) $(DF_SUITE) --help >/dev/null
 
 df-detect: ## Run the detector for one TYPE against a deployed legacy runtime.
 	@case "$(TYPE)" in 01|02|03|04|05) ;; \
