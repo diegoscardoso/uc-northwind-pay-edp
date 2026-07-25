@@ -25,3 +25,10 @@ sources:
         description: One privacy-safe Type 03 settlement per A/B segment pair.
       - name: payment_slip_settlement_control
         description: Per-batch Type 03 controls published by the writer.
+      - name: merchant_fee_assessment
+        description: One privacy-safe Type 05 fee assessment per source row.
+      - name: merchant_fee_assessment_control
+        description: >-
+          Per-batch Type 05 controls published by the writer. Carries all four
+          source-owned declarations (count, gross, assessed, calculated)
+          unchanged, even when one is wrong.

@@ -51,3 +51,19 @@ models:
         tests: [not_null, unique]
       - name: amount_brl
         tests: [not_null]
+
+  - name: silver_merchant_fee_assessment
+    description: "Grain: one conformed Type 05 assessment."
+    columns:
+      - name: batch_id
+        tests: [not_null]
+      - name: assessment_id
+        tests: [not_null, unique]
+      - name: gross_amount_brl
+        tests: [not_null]
+      - name: assessed_fee_brl
+        tests: [not_null]
+      - name: calculated_fee_brl
+        tests: [not_null]
+      - name: assessment_date
+        tests: [not_null]

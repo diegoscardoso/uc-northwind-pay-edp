@@ -94,6 +94,13 @@ SCENARIOS: Mapping[str, tuple[tuple[str, str], ...]] = {
         ("valid-boundary", "B200002290000302"),
         ("all-returned-zero-net", "B202607230000304"),
     ),
+    "05": (
+        ("malformed", "B202607230000403"),
+        ("valid-minimal", "B202607230000401"),
+        ("DF-SOURCE-005", "B202607230000405"),
+        ("valid-boundary", "B200002290000402"),
+        ("rounding-half-up", "B202607230000404"),
+    ),
 }
 
 CONTRACT_SLUG: Mapping[str, str] = {
@@ -101,6 +108,7 @@ CONTRACT_SLUG: Mapping[str, str] = {
     "02": "02-instant-payment-events",
     "03": "03-payment-slip-settlement",
     "04": "04-ted-transfer-settlement",
+    "05": "05-merchant-fee-assessment",
 }
 
 EXPECTED_ARTIFACT: Mapping[str, Mapping[str, tuple[str, str]]] = {
@@ -148,6 +156,17 @@ EXPECTED_ARTIFACT: Mapping[str, Mapping[str, tuple[str, str]]] = {
             "expected-all-returned-zero-net-reconciliation.yaml",
         ),
     },
+    "05": {
+        "valid-minimal": ("expected-sanitized.csv", "expected-reconciliation.yaml"),
+        "valid-boundary": (
+            "expected-valid-boundary-sanitized.csv",
+            "expected-valid-boundary-reconciliation.yaml",
+        ),
+        "rounding-half-up": (
+            "expected-rounding-half-up-sanitized.csv",
+            "expected-rounding-half-up-reconciliation.yaml",
+        ),
+    },
 }
 
 REJECTION_ARTIFACT: Mapping[str, Mapping[str, str]] = {
@@ -166,6 +185,10 @@ REJECTION_ARTIFACT: Mapping[str, Mapping[str, str]] = {
     "04": {
         "malformed": "expected-malformed-rejection.yaml",
         "DF-SOURCE-004": "expected-df-source-004-finding.yaml",
+    },
+    "05": {
+        "malformed": "expected-malformed-rejection.yaml",
+        "DF-SOURCE-005": "expected-df-source-005-finding.yaml",
     },
 }
 
@@ -197,6 +220,10 @@ def _handler(type_number: str):
         from northwind_pay.types.type04_ted_transfer_settlement import handler as type04
 
         return type04
+    if type_number == "05":
+        from northwind_pay.types.type05_merchant_fee_assessment import handler as type05
+
+        return type05
     raise SystemExit(f"type {type_number} is not implemented in the modern pipeline")
 
 
@@ -314,6 +341,7 @@ def read_gold(type_number: str) -> dict[str, dict[str, Any]]:
         "02": "main_gold.gold_instant_payment_reconciliation",
         "03": "main_gold.gold_payment_slip_reconciliation",
         "04": "main_gold.gold_ted_transfer_reconciliation",
+        "05": "main_gold.gold_merchant_fee_reconciliation",
     }[type_number]
     connection = duckdb.connect(str(DUCKDB_PATH), read_only=True)
     try:
@@ -377,6 +405,7 @@ def _legacy_reporting(batch_id: str, type_number: str) -> dict[str, Any] | None:
         "02": "reporting.instant_payment_reconciliation",
         "03": "reporting.payment_slip_settlement_reconciliation",
         "04": "reporting.ted_transfer_reconciliation",
+        "05": "reporting.merchant_fee_reconciliation",
     }[type_number]
     return _legacy_row(f"select * from {relation} where batch_id = %s", (batch_id,))
 

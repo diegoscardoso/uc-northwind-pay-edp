@@ -28,6 +28,7 @@ TABLE_BY_TYPE = {
     "02": "instant_payment_event",
     "03": "payment_slip_settlement",
     "04": "ted_transfer_movement",
+    "05": "merchant_fee_assessment",
 }
 
 
@@ -50,6 +51,7 @@ def landing_files(landing_root: Path, type_number: str) -> list[Path]:
         "02": "NW_INSTANT_PAYMENT",
         "03": "NW_PAYMENT_SLIP",
         "04": "NW_TED_SETTLEMENT",
+        "05": "NW_MERCHANT_FEES",
     }[type_number]
     return sorted(
         path
@@ -76,7 +78,25 @@ def _batch_controls(files: list[Path], type_number: str) -> Iterator[dict[str, o
         if not manifest_path.is_file():
             continue
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        # A writer may publish more declared/computed control pairs than the
+        # canonical four keys below — Type 05's contract declares four separate
+        # money controls. They travel as text for the same reason net_amount
+        # does, and passing them through here is what lets Gold compare a real
+        # source declaration instead of aliasing a staged total.
+        extra_controls = {
+            key: str(manifest[key])
+            for key in sorted(manifest)
+            if key.startswith(("declared_", "computed_"))
+            and key
+            not in {
+                "declared_detail_count",
+                "computed_detail_count",
+                "declared_net_amount",
+                "computed_net_amount",
+            }
+        }
         yield {
+            **extra_controls,
             "batch_id": str(manifest["batch_id"]),
             "computed_detail_count": int(manifest["computed_detail_count"]),
             # Monetary controls travel as the contract's own canonical text and
