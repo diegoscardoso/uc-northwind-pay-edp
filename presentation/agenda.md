@@ -1273,7 +1273,8 @@ its name.
       analogy kept as the subtitle. **Rehearse the new words:** the old
       paraphrases ("L1 delegated tasks", "L2 pairing", "you became a
       manager") must not come out on stage, and Act 5's recap has to
-      match.
+      match. *(It does — slide 75 was built with Shapiro's names,
+      2026-07-25.)*
 - [ ] **Sources legible from the back row** — Act 1 carries eight
       on-slide citations at ~9–11px mono. Check them on the real
       projector; if they do not read, they still belong in the deck for
@@ -1287,7 +1288,9 @@ its name.
       thirty rules in total. **Still to do:** rehearse it as a
       *conversation*, not a reading. Decide in advance which two layers you
       open live; opening all six burns the act's whole budget.
-- [ ] **Offer screens final:** price ladder + credit rule locked.
+- [ ] **Offer screens final:** only the pre-sale price is missing — lock
+      it and replace the `.todo` on slide 78. The ladder, both lot prices
+      and the credit rule are already on slides 77–78.
 - [ ] **Schedule confirmed:** internal ementa says 19h30–23h30; public
       page says 09h00–13h00 BRT. Resolve before publishing timings.
 
@@ -1342,6 +1345,17 @@ time." **Four figures were corrected on 2026-07-25 — see the Act 4 section.**
 - The 2 stalled types: a golden exported on a different day, and a 2025
   golden against a 2026 input — both proven from the golden's own header row
   and kicked back to the client
+
+**The offer (Act 5, slides 77–78).** From
+`docs/wrksp-secret-dark-factory-v1.pdf` §14 — never cite the document on
+stage.
+- Ladder: pre-sale = **R$[X], still unlocked** (the deck's one `.todo`) ·
+  Semana lot = **R$997** · public lot = **R$1.997**
+- Credit rule: **100%** of the pre-sale price becomes Formação credit,
+  released the day the Bootcamp ends, stacking on the bundle discount.
+  Validity window undecided — not on any slide.
+- Pre-sale includes A Semana (the week the base pays **R$97** for)
+- Dates said on stage: Semana **10–14/08** · Bootcamp **24–28/08**
 
 **The legacy case (didactic — Act 2)**
 - 30+ raw file types on SFTP
@@ -1466,8 +1480,16 @@ time." **Four figures were corrected on 2026-07-25 — see the Act 4 section.**
    arriving live needs a Type 06 kit (~2 days). If it is ever prepared,
    Act 3B slides 48–49 are the splice point. Recorded so the option is not
    silently forgotten.
-3. **Monday workflows** — select the 2–3 to show in Act 5.
-4. **Offer screens** — price ladder + credit rule numbers for Act 5.
+3. *(closed 2026-07-25)* **Monday workflows** — selected and built into
+   slide 76: repo agent-brief · a falsifiable check per task ·
+   one-task-one-worktree. Chosen to be weekly habits, not repository
+   disciplines, so they cannot collide with slide 61.
+4. **Offer screens — one number missing.** Slides 77–78 already carry the
+   ladder (Semana lot R$997 · public lot R$1.997), the 100% credit rule and
+   the bundle-stacking line. The pre-sale price is the only gap — the
+   source doc says "R$[X]". When it is locked, replace the `.todo` on
+   slide 78 and decide the credit's validity window (not shown on-slide;
+   still undecided).
 5. **Schedule conflict** — internal 19h30–23h30 vs public 09h00–13h00
    BRT. Resolve before publishing timings, then run the time-of-day sweep
    over the deck (§0.2 item 7).
