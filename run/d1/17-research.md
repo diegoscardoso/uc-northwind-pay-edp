@@ -3,11 +3,11 @@
 - Slide: DEBRIEF · Research (42), then Next (43), silent Tomorrow (44)
 - Slice: **Close** (after F · Spine)
 - Who: room, through their agent + the Second Brain + OntoLayer
-- Next: none — the day closes. Next on the deck is the walk-out.
+- Next: none — the Night closes. Next on the deck is the walk-out.
 
-At the end of each day, the room does not re-read. It **queries**. Role skills
+At the end of each Night, the room does not re-read. It **queries**. Role skills
 name the seat, deliverables name what you hold, Research names what you query —
-so tomorrow starts with understanding, not a blank stare.
+so Day 2 starts with understanding, not a blank stare.
 
 ## Do
 
@@ -25,5 +25,5 @@ grain of the reconciliation, and the five seams. Citations, not guesses.
 
 ## If fail
 
-A query with no citation is a hallucination. Re-ask, or mark it open for the
-morning. Do not invent an answer to close the night.
+A query with no citation is a hallucination. Re-ask, or mark it open for
+Day 2. Do not invent an answer to close the Night.

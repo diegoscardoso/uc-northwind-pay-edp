@@ -15,7 +15,7 @@ Blank slate. They have never used these kits. **Ask first. Install second.** Ton
 
 ```text
 You are sitting Day 1 of NorthWind Pay. You have not written product code.
-Read README.md. You may also read docs/cvg-aut-systems-spine-steps.html if it is on disk.
+Read README.md and docs/README.md. You may also read presentation/cvg-aut-systems-spine-steps.html if it is on disk.
 
 Answer, in this order, from the repo — not from memory:
 
@@ -42,8 +42,8 @@ Do not ask OntoLayer these questions. The graph is Postgres, not the spine.
 | Seamwise | The lanes. Seam → swimlane → leg. Attaches at **Decompose (Pass 3)**. Not tonight. |
 | Brief-Spec | The reading interface. Names the hour (explore, decide, implement, review). |
 | Tonight | **0 Capture** (BRD from the brain) and **1 Intent** (tech-spec, no stack). Stop. |
-| How Capture | Agent drafts from Second Brain + `spec/`. `cvg capture --draft` gates. `spec/` is inbound. `contracts/` is the judge. |
-| How Intent | Agent drafts a tech-spec that answers the brief. `cvg intent --draft` gates. No lakehouse. No ADRs. |
+| How Capture | Agent drafts from Second Brain + `spec/` into `docs/brd-…`. `cvg capture --draft` gates. `spec/` is inbound. `contracts/` is the judge. |
+| How Intent | Agent drafts `docs/tech-spec-…` that answers the brief. `cvg intent --draft` gates. No lakehouse. No ADRs. |
 
 If they invent “Converge writes Java” or “Task-Spec is tonight” — correct from the table. Do not debug the model.
 

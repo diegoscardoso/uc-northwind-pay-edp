@@ -12,8 +12,11 @@ It is not the student brief. It is not the deck.
 | [`presentation/`](../presentation/README.md) | What the room sees. |
 | **This folder** | What the three of you execute, in order. |
 
-One folder per night. One file per beat, numbered, so you can
-execute in lockstep with the deck.
+One folder per night. One file per beat, numbered. **One Night** — no
+morning / afternoon split. Converge papers: [`docs/`](../docs/README.md).
+
+Night 1 HTML is live — lockstep with [`d1-archaeologist.html`](../presentation/d1-archaeologist.html).
+Night 2 HTML is live — lockstep with [`d2/`](d2/README.md) and [`d2-translator-java2py.html`](../presentation/d2-translator-java2py.html) (34 slides, five Hands-On boards). Identify Night 2 slides by `data-act-name`. Days 3–5 are stubs until those decks exist.
 
 ```text
 run/
@@ -27,7 +30,14 @@ run/
     13         Slice E · OntoLayer
     14–16      Slice F · Converge Capture → Intent · no Pass 2
     17         Close · Research, then walk
-  d2.md        stub — Translator (deck file exists, not signed off)
+  d2/          live — 12 beats, same mold as d1 (prompts + proofs)
+    README.md  slices A–E + Close
+    01–02      A · Recap (status, papers)
+    03–04      B · Harness (prompt, fail closed)
+    05–06      C · Query (brain, graph)
+    07–10      D · Pass 2–4 (kits, ADRs, seams, sign)
+    11         E · Task-Spec
+    12         Close · Research
   d3.md        stub — Constructor
   d4.md        stub — Orchestrator
   d5.md        stub — Dark Factory

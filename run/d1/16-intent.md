@@ -3,7 +3,7 @@
 - Slide: DIG · Show · Converge · the spine, then Hands-On Execute 14–16
 - Slice: **F · Spine**
 - Who: every seat, through **their** agent, gated by `cvg`
-- Next: [`17-research.md`](17-research.md) — then the day closes. Structure is tomorrow.
+- Next: [`17-research.md`](17-research.md) — then the Night closes. Tomorrow recaps 0–1, Binds, then Structure.
 
 The tech-spec **answers the BRD**. It does not pick a lakehouse. Make it as clear as the brief. If `cvg` is missing, still write the file.
 

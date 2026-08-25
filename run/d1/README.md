@@ -2,7 +2,7 @@
 
 Staff execute folder. Scope: [`agenda/d1.md`](../../agenda/d1.md). Deck: [`presentation/d1-archaeologist.html`](../../presentation/d1-archaeologist.html) — **44 slides**, six blocks, HUD `01`–`44`.
 
-Stage is keyboards down. Hands-on is **six slices**. Show the slice board, send the room into the numbered beats, **look up** at the proof, then the deck continues. Do not flip a slide per prompt. Do not skip a Show slide for its Hands-On.
+**One Night.** No morning / afternoon. Stage is keyboards down. Hands-on is **six slices**. Show the slice board, send the room into the numbered beats, **look up** at the proof, then the deck continues. Do not flip a slide per prompt. Do not skip a Show slide for its Hands-On.
 
 House stack: Oh My Pi → OpenRouter → **a workspace** (CMUX, ORCA, Super Engineering, or BYO) → DeepSeek. The gates are graded, not the vendor.
 
@@ -22,7 +22,7 @@ If a table dies, they follow your screen. Do not debug a provider, an installer,
 
 Pack for Slice D: [`brain/notebooklm/northwind-pay-brain.zip`](../../brain/notebooklm/northwind-pay-brain.zip). Unzip, upload the **nine** `.md` files — not the zip. Rebuild with `bash brain/notebooklm/build.sh`. Days 2–5 query this notebook. Type `06` is not in it.
 
-Capture writes `docs/brd-type-01-card-settlement.md`. Intent writes `docs/tech-spec-type-01-card-settlement.md`. `evidence/` is gitignored — open it in the **terminal**.
+Capture writes `docs/brd-type-01-card-settlement.md`. Intent writes `docs/tech-spec-type-01-card-settlement.md`. That folder is the Converge paper trail for the week — map: [`docs/README.md`](../../docs/README.md). `evidence/` is gitignored — open it in the **terminal**.
 
 Tonight is Pass **0** and **1** only. No ADRs. No seams. No Consensus. No `modern/`. No Type `06`.
 

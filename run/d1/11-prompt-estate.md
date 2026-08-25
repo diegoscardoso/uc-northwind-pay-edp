@@ -31,7 +31,7 @@ Do not create modern/.
 
 ### Proof
 
-Read: `README.md`, `spec/`, `plans/`, `legacy/` (read-only). Write: nothing frozen. Neither: do not create `modern/`. `evidence/` is gitignored — the agent may not “fix” a missing folder in Git.
+Read: `README.md`, `spec/`, `plans/`, `legacy/` (read-only), `docs/README.md` (map only). Write: nothing frozen; do not write `docs/` until Capture (15). Neither: do not create `modern/`. `evidence/` is gitignored — the agent may not “fix” a missing folder in Git.
 
 ## Prompt 3 — evidence (verbatim)
 

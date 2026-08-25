@@ -70,8 +70,11 @@ Modern does not reuse this first write. Its first write is Parquet in
 
 [`spec/`](../spec/README.md) is not this plant. It is the inbound
 customer drop the week unpacks before building beside Java. Day 1 feeds
-it to the Second Brain and OntoLayer and stops at Intent. The first
-modern write is Day 2, after Consensus — see [`modern.md`](modern.md).
+it to the Second Brain and OntoLayer and stops at Intent
+([`docs/`](../docs/README.md)). The first modern write is landing Parquet
+**after Bind and Consensus** — designed on Day 2, not required on disk
+Tuesday — see [`modern.md`](modern.md). Method manuals
+live in [`presentation/`](../presentation/README.md), not under `docs/`.
 
 This baseline reproduces the legacy process. It does not replace Java or
 PostgreSQL, and it does not implement the modern fabric or the detector.
@@ -174,7 +177,7 @@ uc-northwind-pay-edp/
 │   ├── security/
 │   ├── postgres/
 │   └── end-to-end/
-├── docs/
+├── docs/                         Converge paper trail (BRD, tech-spec, ADRs) — not the manuals
 ├── evidence/                     runtime evidence, normally ignored
 └── plans/
 ```

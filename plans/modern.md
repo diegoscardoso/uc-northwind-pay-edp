@@ -10,8 +10,8 @@ that is already here.
 
 | Moment | What you take from here |
 |---|---|
-| Day 1 | **Do not write a parser.** Capture + Intent only. Brain + graph exist; ADRs wait. |
-| Day 2, before writing a parser | Independence rules, the type map, the five-file package. Close the ten questions as ADRs. Consensus first. |
+| Day 1 | **Do not write a parser.** Capture + Intent only (`docs/brd-…`, `docs/tech-spec-…`). Brain + graph exist; ADRs wait. |
+| Day 2, before writing a parser | Recap 0–1. Bind the Agent Harness. Independence rules, the type map, the five-file package. Close or park the ten questions as ADRs in [`docs/adrs/`](../docs/README.md). Consensus (`docs/consensus.md`) first. |
 | Closing a type | The [completion checklist](#completion-checklist-for-each-type) and golden-match classifications |
 | A source-defect batch | The two questions stay separate. Classification is `CONFIRMED_SOURCE_DEFECT` |
 | Day 5 red pill | Type `06` unseen. A numeric miss may be `CONFIRMED_LEGACY_DEFECT` — the main system, not the file |
@@ -27,6 +27,8 @@ factory on **Type `06`** — a kit the room has not unpacked — and the
 finds it; it does not edit `legacy/` to hide it.
 
 Week clock: [`agenda/`](../agenda/README.md). Day 1 staff: [`run/d1/`](../run/d1/README.md).
+Day 2 staff: [`run/d2/`](../run/d2/README.md). Papers: [`docs/`](../docs/README.md).
+**One Night.** Bind is on before any `modern/` write.
 
 Nothing in this document authorizes empty scaffolding on day zero, and
 nothing puts Type `06` in `spec/` before that day.
@@ -455,8 +457,8 @@ Map to the nights (see [`agenda/`](../agenda/README.md)):
 
 | Night | What this file is for |
 |---|---|
-| 1 | Not this fabric. Brain + graph + Capture → Intent. Stop. |
-| 2 | Milestone 0 as ADRs, Consensus, then Milestone 1 (Type `01` landing) |
+| 1 | Not this fabric. Brain + graph + Capture → Intent in `docs/`. Stop. |
+| 2 | Recap 0–1. Bind. Milestone 0 as ADRs in `docs/adrs/` (close or park). Consensus, then Milestone 1 (Type `01` landing) |
 | 3 | Milestones 2–3 (dlt → Gold, golden-match attach) |
 | 4 | Dagster + Type `05` unattended. Small `HALF_UP` pill |
 | 5 | Repeat the order on sealed Type `06`. Classify, do not patch |
@@ -464,13 +466,16 @@ Map to the nights (see [`agenda/`](../agenda/README.md)):
 ### Milestone 0 — approve the modern task specification
 
 - Use Type `01` as the first slice.
-- Freeze the raw, Parquet, Bronze, Silver, Gold, and comparison grains.
-- Decide Python packaging, schema tooling, Parquet canonicalization, and dlt's
-  exact role.
+- Freeze landing facts: first write is Parquet, five-file package, Decimal,
+  privacy at the parser, source lie kept.
+- Freeze or **park** (named owner) the raw / Bronze / Silver / Gold /
+  comparison grains and dlt's exact role — those are Day 3 unless decided.
+- Decide Python packaging, schema tooling, Parquet canonicalization for
+  landing. Write ADRs under `docs/adrs/`. Bind is on before any write.
 - Define privacy and evidence gates before production code.
 
 **Gate:** every handoff has one owner, one input contract, and one accepted
-output.
+output. No sign in `docs/consensus.md` → no Milestone 1.
 
 ### Milestone 1 — Type 01 Python-to-Parquet
 
@@ -585,20 +590,25 @@ Parquet, lakehouse, dbt, or Gold artifacts that were never created.
 ### Closed during the week (Converge / Seamwise, not in this file)
 
 These ten questions have no binding answer on this tree. Last run's
-ADRs were removed so the room would write them. **Close them on Day 2
-as Pass 2 Structure** — facts from the Second Brain and OntoLayer, never
-how to build — **before** the code that depends on them exists. They are
-not Day 1 work.
+ADRs were removed so the room would write them. **Close or park them on
+Day 2 as Pass 2 Structure** under [`docs/adrs/`](../docs/README.md) —
+facts from the Second Brain and OntoLayer, never how to build —
+**before** the code that depends on them exists. They are not Day 1 work.
+
+Tonight **must** close the landing facts (first write is Parquet, five-file
+package, Decimal, privacy at the parser, source lie kept). Questions that
+belong to Days 3–4 (dlt, DuckLake, Gold, Dagster, FastAPI) may be **parked
+with an owner**. A question without a sentence is not closed.
 
 1. Python version, packaging tool, and validation libraries.
 2. Canonical Parquet schema, compression, ordering, partitioning, and metadata.
-3. Exact dlt loading or registration role.
-4. DuckLake storage and catalog placement.
-5. Bronze, Silver, and Gold grains and keys.
-6. Rule allocation between ingestion and dbt.
-7. Record and aggregate keys for golden-match.
-8. Dagster asset, partition, retry, and backfill model.
-9. First read-only FastAPI endpoint and MCP tools.
+3. Exact dlt loading or registration role. *(park for Day 3 if not decided)*
+4. DuckLake storage and catalog placement. *(park for Day 3)*
+5. Bronze, Silver, and Gold grains and keys. *(park for Day 3)*
+6. Rule allocation between ingestion and dbt. *(park for Day 3)*
+7. Record and aggregate keys for golden-match. *(park for Day 3)*
+8. Dagster asset, partition, retry, and backfill model. *(park for Day 4)*
+9. First read-only FastAPI endpoint and MCP tools. *(park for Day 4)*
 10. Whether any later CI surface is even in scope — default remains no.
 
 A decision that is not written is not closed. Do not copy last run's

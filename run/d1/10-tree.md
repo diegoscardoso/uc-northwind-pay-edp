@@ -14,6 +14,9 @@ Do not dump Java. Do not `tree` the whole repo. Point at the folders that carry 
 | `spec/` | inbound — mail, meetings, Type 01 samples. Not the judge. |
 | `contracts/` | the judge. Frozen. Outranks code. |
 | `gen/` `infra/` `legacy/` | frozen plant. Do not write. |
+| `docs/` | Converge paper trail. Capture + Intent write here tonight. Not the HTML manuals. |
+| `brain/` | Second Brain pack. Upload tonight. Query all week. Do not dump Java into it. |
+| `ontology/` | OntoLayer over live Postgres. Ask without, then with. |
 | `validation/` | oracle. Recomputes. Never repairs. |
 | `Makefile` | the operator surface every agent reads. |
 | `evidence/` | the run. Gitignored. Open in the **terminal**. |

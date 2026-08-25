@@ -11,7 +11,7 @@ Companion documents:
 |---|---|
 | [`legacy.md`](legacy.md) | What the frozen oracle is and how it was proven |
 | [`modern.md`](modern.md) | What the independent second implementation must be |
-| [`agenda/d5.md`](../agenda/d5.md) | Night-five scope. Type `06` is not in the Day 1 Second Brain zip |
+| [`agenda/d5.md`](../agenda/d5.md) | Night-five scope. Type `06` is not in the Day 1 Second Brain zip. Papers: [`docs/`](../docs/README.md) |
 
 ---
 
@@ -312,10 +312,11 @@ Days 1–4 prove the **source** can lie (Day 1 sees Type `01` 173.44 vs
 173.45; Day 4 is the Type `05` `HALF_UP` pill). Java already refuses
 those five `DF-SOURCE-*` batches. The room has seen that movie. The
 week notebook ([`brain/notebooklm/`](../brain/notebooklm/README.md))
-covers types `01`–`05` only — Type `06` is a new drop this morning.
+covers types `01`–`05` only — Type `06` is a new drop, not in the zip.
 
 Day 5 is a different pill. A **new type** arrives — sealed, not in
-`spec/` until that morning. The factory builds it. Golden-match finds
+`spec/` until that Night. Full Converge 0–8 writes under
+[`docs/`](../docs/README.md). The factory builds it. Golden-match finds
 a one-cent (or one-cent-equivalent) miss where the **legacy plant** —
 Java, procedures, or the report — disagrees with the contract and
 with an independent computation.

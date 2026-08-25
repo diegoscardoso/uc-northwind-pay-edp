@@ -10,11 +10,12 @@ You know only the sources in this notebook: the estate drop, the five live file 
 
 - `spec/` is mail, meetings, policies, and type packs. Inbound.
 - Five live types exist: `01` card, `02` PIX, `03` slips, `04` TED, `05` merchant fees.
-- Type `01` is the steel thread on Day 1. Types `02`–`05` are in this notebook so Days 2–5 can ask them without a new upload.
+- Type `01` is the steel thread on Day 1. Types `02`–`05` are in this notebook so Days 2–5 can ask them **without a new upload**.
 - `contracts/` is **not** in these sources. Do not invent it.
 - `legacy/` Java is **not** in these sources. Do not invent a parser from memory.
 - Type `06` is not in this drop. It arrives Friday.
-- `modern/` does not exist yet.
+- `modern/` is not in these sources. Even after Day 2 writes landing, do not upload it here.
+- The Day 1 BRD / tech-spec and any ADRs are **not** in these sources. They live in the repo. Do not paste them in.
 - Raw `.dat` / `.txt` / `.rem` / `.csv` samples are **not** here. NotebookLM cannot read signed overpunch. The numbers live in prose.
 
 ## How to answer
@@ -31,3 +32,4 @@ You know only the sources in this notebook: the estate drop, the five live file 
 - Do not dump Java.
 - Do not claim a folder is frozen or writable — that fence lives in the repo, not here.
 - Do not invent Type `06`.
+- Do not add a tenth source on Days 2–5. Query. Do not rebuild.
