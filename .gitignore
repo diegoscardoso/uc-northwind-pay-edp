@@ -3,6 +3,7 @@
 .runtime/
 .idea/
 .vscode/
+.vs/
 evidence/
 gen/output/
 gen/.venv/
@@ -20,5 +21,6 @@ ontology/output/
 # agent tooling (local, not repo content)
 .agents/
 .claude/
+.grok/
 skills-lock.json
 *.egg-info/
