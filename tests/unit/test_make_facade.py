@@ -32,6 +32,8 @@ class MakeFacadeTest(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         for target in (
+            "init",
+            "deploy",
             "gen",
             "migrate",
             "publish",
@@ -41,6 +43,10 @@ class MakeFacadeTest(unittest.TestCase):
             "run-file",
             "worker",
             "worker-once",
+            "ontology",
+            "ontology-ask",
+            "ontology-ask-sql",
+            "ontology-mcp",
             "test-contracts",
             "test-gen",
             "test-python",
@@ -59,11 +65,19 @@ class MakeFacadeTest(unittest.TestCase):
         self.assertIn("POLL_INTERVAL=secs", result.stdout)
         self.assertIn("MAX_BATCHES=count", result.stdout)
         self.assertIn("BATCH and BUNDLE are mutually exclusive.", result.stdout)
+        self.assertIn("ontology-ask-sql (without), then ontology-ask (with).", result.stdout)
+        self.assertIn("There is no dlt, dbt, or modern target.", result.stdout)
+        self.assertNotRegex(result.stdout, r"(?m)^  dlt\s")
+        self.assertNotRegex(result.stdout, r"(?m)^  dbt\s")
 
     def test_deploy_applies_migrations_before_runtime_status(self) -> None:
         result = run_make("-n", "deploy")
 
         self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(
+            "docker compose up -d --build --force-recreate --wait sftp postgres",
+            result.stdout,
+        )
         migration_position = result.stdout.index("legacy/postgres/migrate.py")
         status_position = result.stdout.index("legacy/runner/runtime_status.py")
         self.assertLess(migration_position, status_position)

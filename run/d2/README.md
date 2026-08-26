@@ -9,7 +9,7 @@ Deck: [`presentation/d2-translator.html`](../../presentation/d2-translator.html)
 
 `java2py` = second plant, not a port of `legacy/processor/src`. Papers: [`docs/README.md`](../../docs/README.md). Factory Pass 6–8 is Day 4.
 
-Seamwise and Task-Spec are **separate kits**. Night deck = spine + boards. Leave this HUD, teach the kit, **return** to the numbered beat. Seamwise kit: [`presentation/seamwise.html`](../../presentation/seamwise.html). Task-Spec kit is presented off this Night file (the Dig Show is the cue, not the manual).
+Seamwise and Task-Spec are **separate kits**. Night deck = spine + boards. Leave this HUD, teach the kit, **return** to the numbered beat. Seamwise kit: [`presentation/seamwise.html`](../../presentation/seamwise.html). Task-Spec kit: [`presentation/task-spec.html`](../../presentation/task-spec.html) (Dig Show is the cue; park, teach, return).
 
 | Slice | Beats | Deck (`data-act-name`) | Look up when |
 |---|---|---|---|

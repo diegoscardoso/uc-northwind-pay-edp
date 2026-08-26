@@ -33,7 +33,7 @@ help: ## [base] List supported targets, compatibility aliases, and input variabl
 	@awk 'BEGIN { \
 		FS = ":.*## "; \
 		print ""; \
-		print "Graph — catalog over live Postgres (not the use case):"; \
+		print "Graph — catalog over live Postgres (not the use case, not Gold):"; \
 	} \
 	/^[a-zA-Z0-9_-]+:.*## \[graph\] / { \
 		sub(/^\[graph\] /, "", $$2); \
@@ -65,7 +65,9 @@ help: ## [base] List supported targets, compatibility aliases, and input variabl
 		print "  Q=text             Optional question for ontology-ask / ontology-ask-sql."; \
 		print ""; \
 		print "BATCH and BUNDLE are mutually exclusive."; \
-		print "Day 1 graph contrast: ontology-ask-sql (without), then ontology-ask (with)."; \
+		print "Graph contrast (nights 1-3): ontology-ask-sql (without), then ontology-ask (with)."; \
+		print "Default Q is the Type 01 paid question. MCP catalog_ask is the same catalog."; \
+		print "There is no dlt, dbt, or modern target. Type 01 Gold is agent-authored after lakehouse Consensus."; \
 	}' $(MAKEFILE_LIST)
 
 init: ## [base] Create local Python environments, .env, and container builds.
@@ -77,8 +79,8 @@ init: ## [base] Create local Python environments, .env, and container builds.
 	@docker compose build sftp processor
 	@echo "local development environment initialized"
 
-deploy: ## [base] Start services, migrate PostgreSQL, and verify runtime health.
-	@docker compose up -d --build --wait sftp postgres
+deploy: ## [base] Recreate SFTP + Postgres, migrate PostgreSQL, and verify runtime health.
+	@docker compose up -d --build --force-recreate --wait sftp postgres
 	@$(RUNNER_PYTHON) legacy/runner/bootstrap_runtime.py
 	@$(MAKE) --no-print-directory migrate
 	@$(RUNNER_PYTHON) legacy/runner/runtime_status.py
@@ -262,7 +264,7 @@ ontology: ## [graph] Crawl live Postgres into ontology/output (graph, not the us
 ontology-clean: ## [graph] Delete ontology/output crawl artifacts.
 	@rm -rf ontology/output
 
-ontology-ask: ## [graph] Ask the catalog graph (Q=... defaults to the Day 1 paid question).
+ontology-ask: ## [graph] Ask the catalog graph (Q=... defaults to the Type 01 paid question).
 	@test -f ontology/output/graph.json || $(MAKE) --no-print-directory ontology
 	@PYTHONPATH=ontology/src $(RUNNER_PYTHON) ontology/scripts/ask.py $(if $(Q),"$(Q)",)
 

@@ -1,100 +1,28 @@
-# CONTEXT — shared vocabulary
+# CONTEXT — Type 01 domain terms
 
-Pass 2 Structure glossary. This file says what terms **mean**; the
-`adrs/` say what is **true** (facts and constraints). Terms only —
-pinned as they crystallize, not a second decision log.
+Pass 2 Structure glossary. Not inbound. Not the judge. Not a stack.
+Papers live in `docs/`, not `cvg/docs/`.
 
-## Steel thread
+| Term | Meaning here |
+|---|---|
+| **Inbound** | `spec/` — mail, meetings, layouts, samples. Contradictions allowed. `cover.md` is mail. |
+| **Judge** | `contracts/` — signed layouts and oracles. Outranks inbound prose and outranks code. |
+| **Frozen plant** | `legacy/`, `contracts/`, `gen/`, `infra/`. Do not write. |
+| **Steel thread** | Type 01 card settlement, `CRD_SETTLE01`, `.dat`. Tonight’s slice. Types 02–05 exist; Type 06 does not. |
+| **Five-file package** | `model → parser → schema → writer → handler`. The Type 01 unit (ADR 0002). |
+| **Landing** | `modern/landing/` — first write of the second plant: sanitized Parquet + readiness manifest. **Not SFTP** (ADR 0001). |
+| **First write (legacy)** | Sanitized CSV on SFTP `csv/outgoing`. Comparison observation only for modern. |
+| **MATCHED** | Source, stage, and books agree to the cent: counts equal, nets equal, `reject_count` 0. Type 01 happy path: net `173.45`, two records, `amount_delta` `0.00`. |
+| **Paid (Type 01)** | Observed on `reporting.card_settlement_reconciliation`. Grain: `batch_id` + `currency`. Writer: `reporting.refresh_card_settlement_reconciliation`. Staging is not paid. (OntoLayer / `make ontology-ask`.) |
+| **Source lie** | Declared control ≠ independently computed control. Type 01: trailer **173.44** vs rows **173.45**, batch `B202607230000004`, code `SOURCE_CONTROL_TOTAL_MISMATCH`. Keep the declaration (ADR 0005). |
+| **Refuse the batch** | Stable terminal: quarantine that batch, no sanitized rows, no business mutation, peers continue. Not a crash. Modern: **zero Parquet**. |
+| **Net amount** | Layout / contract name for trailer bytes 16–30 (`net_amount_brl`). |
+| **Settlement total** | Ops mail noun for the same bytes (Marina). Does not outrank the contract. Parked (ADR 0006). |
+| **Overpunch** | Last digit carries the sign. Scale 2. Example: `00000001234E` → `123.45`. |
+| **Decimal** | Exact money. Never binary float (ADR 0003). Tolerances are zero. |
+| **Privacy boundary** | Clear PAN and CPF die at the parser. Token + last4 / `*******` + last4 before landing (ADR 0004). Live line: Java. Second plant: the Type 01 parser, not a Java import. |
+| **Bind** | Rails on the harness. Frozen trees refuse writes. A polite prompt is not a fence. |
+| **Consensus** | Pass 4. Owner signs. No sign → no parser. |
+| **Lakehouse / dlt / dbt / Dagster** | Later nights. Not chosen in Structure (ADR 0006). |
 
-The single narrowest end-to-end slice that proves the whole shape
-works before the rest is built. Tonight's steel thread is **Type 01**
-card settlement; types 02–05 exist in the drop for later nights; Type
-06 is not in the drop. (`docs/brd-type-01-card-settlement.md` §1–2)
-
-## Five-file package
-
-The unit of build for one settlement file type: **model, parser,
-schema, writer, handler** — one handler per type, no sixth file.
-Decided 2026-06-09 (D1). See ADR 0002.
-
-## Overpunch
-
-A COBOL fixed-width encoding where the final character of a numeric
-field carries both the last digit and the sign (`positive_characters`
-/ `negative_characters` alphabets), at a fixed decimal scale. Type 01
-uses it for `amount_brl` and `net_amount_brl`, scale 2.
-(`contracts/types/01-card-settlement/layout.yaml`)
-
-## Sanitize
-
-The act of turning a raw parsed record into one safe to persist or
-emit: applying each field's approved privacy transform (tokenize,
-mask, last4) and validating it against the type's schema. "Privacy
-dies at the parser" (ADR 0004) names *where* sanitize happens for the
-modern plant.
-
-## Tokenize vs. mask
-
-Two distinct approved transforms, not synonyms. **Tokenize** (PAN):
-HMAC-SHA-256 keyed by `NWP_TOKENIZATION_KEY`, output
-`tok_<24-hex-chars>`, fails closed if the key is missing. **Mask**
-(CPF): retain last 4 digits, output `*******<last4>`.
-(`contracts/types/01-card-settlement/privacy.yaml`)
-
-## Source lie / kept source lie
-
-A batch where the source's own declared control total (trailer
-`net_amount_brl`) does not match the independently computed sum of its
-detail records — on purpose, so the plant proves it does not silently
-correct the source. "Keep the lie" means: keep the declared number
-exactly as sent, record the computed number separately, and refuse the
-batch. Never means patch the declaration to match. See ADR 0005.
-
-## Net amount vs. settlement total
-
-Two names for the same trailer bytes (positions 16–30 in the Type 01
-layout): the layout PDF calls it **net amount**; Marina Alves's ops
-mail calls it **settlement total**. Both refer to the same field. This
-is an open, owned contradiction (`docs/brd-type-01-card-settlement.md`
-§2, §5) — not resolved here. The judge (`contracts/`) uses "net
-amount"; ops prose may keep saying "settlement total."
-
-## Quarantine (batch-scoped)
-
-When a batch is refused, only that one batch is held — no sanitized
-output, no business mutation for it — while every unrelated batch
-keeps moving. Decided 2026-06-09 (D3): "Quarantine is batch-scoped."
-
-## MATCHED
-
-The reconciliation status meaning: source, staged, and applied net
-amounts and counts all agree, with zero amount/count delta. The
-canonical happy-path example is batch `B202607230000001`,
-`valid-minimal`, net `173.45`.
-
-## Landing
-
-`modern/landing/` — the modern plant's first artifact write: sanitized
-Parquet, produced only by its own independent parser, never by
-reusing Java or legacy's stored procedures. See ADR 0001. Distinct
-from legacy's first write, which is CSV on `SFTP csv/outgoing`.
-
-## Frozen plant
-
-`legacy/`, `contracts/`, `gen/`, `infra/` — must not be edited to make
-a later gate pass, by anyone, for any reason. (`README.md`)
-
-## Judge
-
-`contracts/` — the source of correctness once a type's contract is
-installed. Outranks inbound prose (`spec/`) and outranks code. A
-meeting using the wrong noun for a field (see "Net amount vs.
-settlement total" above) is never grounds to edit the contract.
-
-## Bronze / Silver / Gold, medallion
-
-Terminology from the 2026-06-09 sync's architecture sketch. Recorded
-here as **vocabulary the drop uses**, not as a Pass 2 decision — no
-stack or lakehouse layout is chosen by this glossary or by ADR 0001.
-Whether, and how, this vocabulary is adopted is a Decompose/Consensus
-question.
+Do not upload this file into NotebookLM.

@@ -16,10 +16,11 @@ Handout: [`northwind-pay-brain.zip`](northwind-pay-brain.zip)
 | `07-type-05-inbound.md` | Merchant fees — HALF_UP. Day 4 lives here. |
 | `08-the-lie.md` | Same shape of lie on every live type. |
 
-Staff beat (Day 1 upload): [`../../run/d1/12-notebooklm.md`](../../run/d1/12-notebooklm.md)  
-Staff beat (Day 2 query): [`../../run/d2/05-query-brain.md`](../../run/d2/05-query-brain.md)
+Staff: Day 1 upload [`../../run/d1/12-notebooklm.md`](../../run/d1/12-notebooklm.md) · Day 2 query [`../../run/d2/05-query-brain.md`](../../run/d2/05-query-brain.md) · Day 3 query [`../../run/d3/02-query-brain.md`](../../run/d3/02-query-brain.md) · Day 3 SA mermaids [`../../run/d3/04-prompt-sa-plan.md`](../../run/d3/04-prompt-sa-plan.md) · Day 3 research [`../../run/d3/13-research.md`](../../run/d3/13-research.md)
 
-**Day 2 does not add a tenth source.** The room queries this notebook. Specs, the graph, and `docs/` answer “what we build.” Java, contracts, the tech-spec, ADRs, and `modern/` stay out.
+**Days 2–4 do not add a tenth source.** The room **queries** this notebook. Specs, OntoLayer, and `docs/` answer “what we build.” Java, contracts, the tech-spec, ADRs, dlt/dbt/DuckLake decisions, and `modern/` stay out. If a stack fact is not in these nine files, the notebook must **abstain**.
+
+### Night 2 ask → pack
 
 | Night 2 ask | Pack that can cite | Not this notebook |
 |---|---|---|
@@ -29,6 +30,31 @@ Staff beat (Day 2 query): [`../../run/d2/05-query-brain.md`](../../run/d2/05-que
 | J4 sanitize (tokenize, last4) | `01` privacy; `03` field notes | `legacy/processor/src` |
 | J5 is the Java parser here? | `00` says no | uploading Java to “help” |
 | Research: first modern artifact | `01` architecture: parser → **sanitized Parquet**; must not call Java | `plans/modern.md` (repo, Research Q3) |
+
+### Night 3 ask → pack (Constructor · Type 01 Gold)
+
+| Night 3 ask | Pack that can cite | Not this notebook (repo) |
+|---|---|---|
+| J1 does the lakehouse re-parse, or only register landing? | `01` architecture: parser → Parquet → Bronze/Silver/Gold. **Abstain on “dlt”** if the word is missing | `docs/adrs/0006`, `run/d3/02` |
+| J2 privacy at parse or in Gold? | `01` privacy boundary; `03` | a dbt model |
+| J3 Bronze / Silver / Gold | `01` architecture sketch (mail, **not a grain**) | lakehouse ADRs (tonight’s Pass 2) |
+| J4 must Gold “fix” 173.44? | `08` + Marina: keep the declaration, refuse | a repaired trailer |
+| J5 DuckDB / dlt / dbt decision? | **Abstain.** Not in inbound | `plans/modern.md`, `docs/adrs/` |
+| Research: lineage; parsing not in the orchestrator | `01` architecture (parser stays the second reader of raw bytes); `02` Days 3–4 build the vertical | `plans/modern.md` Milestone 4 (Dagster) |
+| Research: Type 05 subject line only | `07` (`normal-rounding` / HALF_UP). Do not implement | Type 05 leaves (Thursday) |
+
+### Night 4 ask → pack (Orchestrator · remaining types + Type 05)
+
+| Night 4 ask | Pack that can cite | Not this notebook |
+|---|---|---|
+| Type `02`–`04` inbound (when generating remaining SWE+DE) | `04`, `05`, `06` | empty type packages |
+| Type `05` HALF_UP / `normal-rounding` / `df-source-005` | `07` | Python default; `expected/` rewrite |
+| Same shape of lie on every live type | `08` | a unique Type 05 story |
+| Research: factory / flywheel | `02` (Type `06` arrives day five as the unseen kit) | `plans/dark-factory.md` details; Type `06` files |
+
+### Night 5 (Friday) — new inbound, not this zip
+
+Type `06` is **sealed** until Friday morning. When that drop lands under `spec/`, add a **new pack** and rebuild. Do not invent it now. Do not upload it into the Day 1 notebook in advance.
 
 Rebuild packs from `spec/` whenever inbound changes:
 

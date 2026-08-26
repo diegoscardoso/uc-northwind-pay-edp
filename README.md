@@ -97,16 +97,16 @@ Update **Status** as each night closes. Do not invent a Pass the brief did not a
 |---|---|---|---|---|---|
 | **1** | Archaeologist (SA + AI) | Prompt + context | **0 Capture → 1 Intent** | MATCHED plant. Second Brain (nine packs). OntoLayer without/with. BRD + tech-spec in [`docs/`](docs/README.md). **No product code.** | **live** |
 | **2** | Translator (SWE) | Harness (Bind) | Recap 0–1. **2–4**, then **5** Task-Spec. Mesh internals. Factory 6–8 is Day 4 | Recap MATCHED + papers. Bind fail-closed. Query. ADRs, seams, **Consensus signed**. One leaf in `docs/tasks/`. **No `modern/` required** | **live** |
-| **3** | Constructor (DE + analytics) | Harness + loop seed | 5–8 on dlt → Gold | Bronze → Gold. Golden-match attached | — |
-| **4** | Orchestrator | Loop + eval | 7–8. Type `05` unattended | Small `HALF_UP` pill. Bind + Loop | — |
+| **3** | Constructor (DE + analytics) | Harness + loop seed | Recap. **2–4–5** on dlt → Gold. Mesh seed | Type 01 **steel thread**: landing → Gold + golden-match. `02`–`04` parked | **next** |
+| **4** | Orchestrator | Loop + eval | SeamWise again. Generate remaining SWE+DE. **6–8** crank. Linear. Type `05` unattended | Queue cranks. Small `HALF_UP` pill | — |
 | **5** | Dark Factory | Orchestration | Full 0–8 on sealed Type `06` | Classify. Do not patch `legacy/` | sealed |
 
 ```mermaid
 flowchart LR
   D1["1 Archaeologist — 0-1 understand"]
   D2["2 Translator — 2-4 then Task-Spec"]
-  D3["3 Constructor — dlt to Gold"]
-  D4["4 Orchestrator — Type 05 loop"]
+  D3["3 Constructor — Type 01 Gold steel thread"]
+  D4["4 Orchestrator — generate remaining then loop"]
   D5["5 Dark Factory — Type 06 classify"]
   D1 --> D2 --> D3 --> D4 --> D5
 ```
@@ -114,12 +114,12 @@ flowchart LR
 | Role tonight | Owns |
 |---|---|
 | **Scope** | [`agenda/`](agenda/README.md) — what the night closes |
-| **Staff clock** | Night 1: [`run/d1/`](run/d1/README.md) (17 beats, six boards). Night 2: [`run/d2/`](run/d2/README.md) (12 beats, five boards). Days 3–5 still stubs |
-| **What the room sees** | [`presentation/`](presentation/README.md) — Night 1 HTML **live** (44). Night 2 HTML **live** (`d2-translator-java2py.html`, 34 slides). Identify Night 2 by `data-act-name` |
-| **Converge papers** | [`docs/`](docs/README.md) — BRD + tech-spec exist; ADRs / sign / tasks are Night 2 |
+| **Staff clock** | Night 1: [`run/d1/`](run/d1/README.md) (17 beats, six boards). Night 2: [`run/d2/`](run/d2/README.md) (12 beats, five boards). Night 3: [`run/d3/`](run/d3/README.md) (12 beats, four boards). Days 4–5 still stubs |
+| **What the room sees** | [`presentation/`](presentation/README.md) — Night 1 HTML **live** (44). Night 2 HTML **live** (`d2-translator.html`, 34). Night 3 HTML **live** (`d3-constructor.html`). Identify by `data-act-name` |
+| **Converge papers** | [`docs/`](docs/README.md) — ingest papers exist; Day 3 writes lakehouse ADRs, seam 2, `consensus-lakehouse.md`, Type 01 Gold leaves |
 | **Engagement map** | [`plans/`](plans/README.md) — legacy, modern, factory seed |
 
-Day 1 public page lists *P1 Intent · P2 Structure*. **This week keeps Capture + Intent on Day 1** so the brain and the graph exist before ADRs. Night 2 **recaps** 0–1, **Binds** the Agent Harness, then Structure → Consensus → one Task-Spec leaf. First write is landing Parquet **when the mesh later runs** — not required Tuesday. An unsigned Consensus is not a license to code.
+Day 1 public page lists *P1 Intent · P2 Structure*. **This week keeps Capture + Intent on Day 1** so the brain and the graph exist before ADRs. Nights 2–3 are **Type 01 steel threads** (SWE ingest → landing, then DE landing → Gold). Night 4 **generates remaining swimlanes / SWE+DE tasks**, cranks them (Mesh + Pass 6–8, Linear), then Type `05` unattended. An unsigned Consensus is not a license to code.
 
 ---
 

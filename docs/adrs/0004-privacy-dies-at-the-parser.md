@@ -1,56 +1,57 @@
-# 0004. Privacy transforms happen inside the parser — nothing downstream sees a raw PAN or CPF
+# ADR 0004 — Privacy dies at the parser
 
-**Status:** Accepted — Pass 2 Structure, human-led, 2026-08-25
-**Deciders:** Priya Shah (privacy)
+- Status: Accepted (Structure). Binding after Consensus.
+- Date: 2026-08-25
+- Pass: 2 Structure
+- Decider: Helena Dias (owner). Unsigned until `docs/consensus.md`.
+- Privacy: Priya Shah — privacy finished before any landing row.
 
 ## Context
 
-The NorthWind Pay privacy policy (`spec/estate/policies/privacy.md`,
-2026-06-16, "applies to every type in this drop") states that PAN,
-CPF, CNPJ, account numbers, and holder names "must not exist after
-sanitize" in any CSV, Parquet, log, evidence packet, ticket, or
-warehouse table, unless a type policy names an approved transform
-(token, last4, mask); that a missing tokenization key must fail
-closed; and that a leak "stalls the type. There is no 'just this
-demo.'"
+Type 01 raw detail records carry a PAN and a CPF in clear text. On
+the live line, Java is the mandatory privacy boundary: tokenize PAN,
+keep last4, mask CPF, then publish sanitized CSV. The second plant
+must not leak those raw values into landing, logs, evidence, or any
+later zone.
 
-Type 01's contract makes this concrete
-(`contracts/types/01-card-settlement/privacy.yaml`,
-`layout.yaml` detail record):
-
-- `pan` — `privacy: tokenize`, algorithm `HMAC-SHA-256`, keyed by
-  `NWP_TOKENIZATION_KEY`, output `tok_<first-24-lowercase-hex-characters>`,
-  `missing_key_behavior: fail_closed`.
-- `cpf` — `privacy: mask`, algorithm `retain_last4`, output
-  `*******<last4>`.
-- Both fields carry the same `prohibited_outputs` list: `sanitized_csv`,
-  `application_logs`, `error_messages`, `batch_evidence`,
-  `database_staging`, `database_operational`.
-- `handling.evidence.store_raw_content: false`;
-  `handling.failure_messages.include_field_value_for_pan_or_cpf: false`.
-
-This is written against the legacy Java line, but the obligation is
-type-level, not implementation-level — it applies equally to the
-modern plant's own parser.
+The judge is `contracts/types/01-card-settlement/privacy.yaml`, not
+inbound policy prose and not Java source.
 
 ## Decision
 
-For the modern plant, PAN tokenization and CPF masking happen inside
-the **parser** file of the five-file package (ADR 0002) — the same
-step that turns raw fixed-width bytes into the typed model. Past that
-point, no code path in `schema`, `writer`, or `handler` may hold, log,
-or emit a raw PAN or raw CPF digit sequence, in memory, in an error
-message, in evidence, or in the eventual Parquet row. A missing
-`NWP_TOKENIZATION_KEY` fails the batch closed — it does not fall back
-to skipping tokenization or emitting the field unmasked.
+**Privacy dies at the parser.** Clear PAN and CPF do not leave the
+parse boundary. Contract transformations apply **before** any
+Parquet publication:
+
+| Field | Allowed after parse | Never in landing, logs, evidence, or later zones |
+|---|---|---|
+| PAN | HMAC token `tok_` + 24 hex; last 4 digits | raw 16 digits |
+| CPF | `*******` + last 4 digits | raw 11 digits |
+
+Missing tokenization key fails closed. Evidence may store the raw
+SHA-256, never the raw line.
+
+Legacy Java remains the live privacy boundary for CSV. The second
+plant does not import that Java to obtain tokens.
+
+## What this is not
+
+How to implement HMAC, where to store the key, or a copy of the Java
+tokenizer.
 
 ## Consequences
 
-- `schema`, `writer`, and `handler` can assume every value they
-  receive is already sanitized; none of them is ever given a code path
-  that sees the raw record.
-- Debugging output and evidence capture anywhere downstream of `parser`
-  must treat raw PAN/CPF as absent by construction, not as something to
-  remember to redact.
-- A leak found in `writer` or later is a `parser`-boundary defect, not
-  a missing filter to bolt on downstream.
+- Schema and writer see only contract-approved fields.
+- A landing file that contains a PAN or CPF is a failed batch, not a
+  warning.
+- Second Brain may teach tokenize / last4 / mask. It does not contain
+  the Java parser.
+
+## Evidence
+
+- `contracts/types/01-card-settlement/privacy.yaml`
+- `contracts/types/01-card-settlement/README.md` — Java is the live
+  privacy boundary
+- `docs/tech-spec-type-01-card-settlement.md` R-6, §4
+- Second Brain packs 01 and 03 — privacy policy and layout field notes
+- `plans/modern.md` — transform prohibited values before Parquet

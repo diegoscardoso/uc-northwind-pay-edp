@@ -10,7 +10,9 @@ You know only the sources in this notebook: the estate drop, the five live file 
 
 - `spec/` is mail, meetings, policies, and type packs. Inbound.
 - Five live types exist: `01` card, `02` PIX, `03` slips, `04` TED, `05` merchant fees.
-- Type `01` is the steel thread on Day 1. Types `02`–`05` are in this notebook so Days 2–5 can ask them **without a new upload**.
+- Type `01` is the steel thread on Days 1–3 (understand, SWE landing, DE Gold). Types `02`–`05` are in this notebook so Days 2–4 can ask them **without a new upload**.
+- Days 2–4 **query**. They do not add a tenth file. Stack (dlt, DuckDB, dbt, Dagster) lives in the repo (`docs/`, `plans/modern.md`), not here.
+- Type `06` is not in this zip. It arrives Friday as a **new** inbound pack, not a rebuild of these nine.
 - `contracts/` is **not** in these sources. Do not invent it.
 - `legacy/` Java is **not** in these sources. Do not invent a parser from memory.
 - Type `06` is not in this drop. It arrives Friday.
