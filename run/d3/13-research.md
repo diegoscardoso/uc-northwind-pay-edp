@@ -5,7 +5,7 @@
 - Who: room, through their agent + Second Brain + OntoLayer
 - Next: none — the Night closes
 
-The room does not re-read. It **queries**. Same notebook. Do not rebuild. Type `01` vertical is closed (or named as a gap). Thursday generates remaining SWE + DE.
+The room does not re-read. It **queries**. Same notebook. Do not rebuild. Type `01` vertical is closed (or named as a gap). Thursday teaches **Context · Eval · Loop**, **walks the Type 01 trail**, then generates remaining SWE + DE.
 
 ## Do
 

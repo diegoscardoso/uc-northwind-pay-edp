@@ -16,13 +16,13 @@ Two shapes live here:
 | **Method / reference** | Manual or workshop. Teach the kit, not the clock. | `seamwise.html`, `task-spec.html`, `cvg-…`, `asd-…`, `boot-…`, `wrkp-…`, `yt-…` |
 
 If a night’s HTML and [`run/dN/`](../run/) disagree, **agenda wins on
-scope**; **run wins on the clock**. Identify Night 2–3 slides by
+scope**; **run wins on the clock**. Identify Night 2–4 slides by
 **`data-act-name`**, not a HUD integer. Type `06` is not in `spec/` until
 Friday.
 
 **Live this week:** Night 1 (44), Night 2 (34), Night 3 (Constructor +
-[`run/d3/`](../run/d3/README.md) — Type 01 Gold steel thread). **Not built:**
-Days 4–5 HTML (Thursday generates remaining SWE+DE then cranks).
+[`run/d3/`](../run/d3/README.md)). Night 4 live ([`d4-orchestrator.html`](d4-orchestrator.html) · [`run/d4/`](../run/d4/README.md)
+— 28 slides, 9 beats, trail then factory). Identify by `data-act-name`. **Not built:** Night 5 HTML.
 
 ---
 
@@ -33,9 +33,9 @@ Days 4–5 HTML (Thursday generates remaining SWE+DE then cranks).
 | [`d1-archaeologist.html`](d1-archaeologist.html) | Night 1 deck | Onboard + Archaeologist. **44 slides**, six blocks, HUD `01`–`44`. Pass **0–1** only. **Live.** | Night 1. Staff: [`run/d1/`](../run/d1/README.md) |
 | [`d2-translator.html`](d2-translator.html) | Night 2 deck | Translator · java2py. **34 slides**, six blocks, five Hands-On boards (slices a–e). Identify by `data-act-name`. **Live.** | Night 2. Staff: [`run/d2/`](../run/d2/README.md) |
 | [`d3-constructor.html`](d3-constructor.html) | Night 3 deck | Constructor · DE + analytics. Six blocks, four Hands-On boards (A–D). Identify by `data-act-name`. **Live.** Lockstep with `run/d3/`. | Night 3. Staff: [`run/d3/`](../run/d3/README.md) |
-| Days 4–5 | — | Orchestrator / Dark Factory. **Not in this folder.** | Build from [`agenda/d4.md`](../agenda/d4.md)–[`d5.md`](../agenda/d5.md). Staff still stubs: [`run/d4.md`](../run/d4.md) |
-| [`seamwise.html`](seamwise.html) | Method kit | SeamWise internals. **Leave · SeamWise** parks here (Nights 2 and 3), then **returns** to the numbered beat | Pass 3 kit. Not the Night clock |
-| [`task-spec.html`](task-spec.html) | Method kit | Task-Spec internals. Dig **Show**, then return to Execute (Night 2: 11 · Night 3: 10) | Pass 5 kit. Not the Night clock |
+| [`d4-orchestrator.html`](d4-orchestrator.html) | Night 4 deck | Orchestrator. **28 slides**, six blocks. Identify by `data-act-name`. Lockstep with `run/d4/`. | Night 4. Staff: [`run/d4/`](../run/d4/README.md) |
+| [`seamwise.html`](seamwise.html) | Method kit | SeamWise internals. **Leave · SeamWise** parks here (Nights 2–4), then **returns** to the numbered beat | Pass 3 kit. Not the Night clock |
+| [`task-spec.html`](task-spec.html) | Method kit | Task-Spec internals. Dig **Show**, then return (Night 2: Execute 11 · Night 3: 09 · Night 4: 03–04) | Pass 5 kit. Mesh is **not** inside it |
 | [`cvg-aut-systems-spine-steps.html`](cvg-aut-systems-spine-steps.html) | Method manual | Converge spine — nine passes, two phases, one human barrier. **36 slides**, print-page layout. v7 · Converge 0.2.0 | When the room needs the kit, not the Night. Papers: [`docs/`](../docs/README.md) |
 | [`asd-agentic-loop.html`](asd-agentic-loop.html) | Method manual | ASD — the Agentic Loop. Scroll document, **12 sections** (not a HUD deck) | Doctrine |
 | [`boot-uc-northwind-pay-edp-oss.html`](boot-uc-northwind-pay-edp-oss.html) | Method manual | Bootcamp reference — case framing, Shapiro ladder, the week arc. **19 slides** | Framing. Not the follow-along |
@@ -46,8 +46,8 @@ One Night — no morning / afternoon split.
 
 **Week story on these HUDs:** Night 1 understands (0–1). Nights 2–3 are
 **Type 01 steel threads** (SWE ingest → landing, then DE landing → Gold).
-Night 4 (not built) generates remaining SWE+DE and cranks (Mesh + Pass 6–8,
-Linear), then Type `05` unattended.
+Night 4 clock teaches **Context · Eval · Loop**, **walks the Type 01 trail**,
+then generates remaining SWE+DE and cranks (Mesh + Pass 6–8, Linear), then Type `05` unattended. Stage live.
 
 ---
 
@@ -95,22 +95,41 @@ Staff: [`run/d2/README.md`](../run/d2/README.md).
 [`d3-constructor.html`](d3-constructor.html) — six blocks, four Hands-On
 boards (A–D). Identify by `data-act-name`. Extra Stage talk slides (Lakehouse,
 Agentic field) are talk only — they have **no** `run/d3/` file. **SA plan · mermaids**
-is Stage Show; the room **types** it as `run/d3/04` on Execute 08 after J5 abstains.
+is Stage Show; the room **types** it as `run/d3/04` on Execute 02–04 after J5 abstains.
 
 | Block | Mode |
 |---|---|
 | Opening | title · Constructor |
 | Stage | Recap, DE+analytics role, foundations, pipeline, engines, **SA plan mermaids**, medallion, agentic modeling |
 | Craft | Bind still on (Show). Kits. **No** fail-closed board |
-| Floor | Second Brain + OntoLayer Shows, **Execute 08** (`run/d3/` 02–04) |
-| Dig | Converge Show, Leave · SeamWise, **Execute 09** (05–08), Task-Spec Show, **Execute 10** (09), **Execute Gold** (10–12), Task-Mesh seed, Thursday queue |
+| Floor | Second Brain + OntoLayer Shows, **Execute 02–04** |
+| Dig | Converge Show, Leave · SeamWise, **Execute 05–08**, Task-Spec Show, **Execute 09**, **Execute 10–12**, Task-Mesh seed, Thursday queue |
 | Debrief | In hand, Research (`run/d3/13`), Next, silent Tomorrow |
 
 Type 01 **steel thread** tonight: leftover emit if no Parquet, then dlt
 register → Bronze → Silver → Gold → golden-match. Types `02`–`05` wait for
-Thursday. Unsigned lakehouse sign → skip Execute 10–Gold.
+Thursday. Unsigned lakehouse sign → skip Execute 09 and Execute 10–12.
 
 Staff: [`run/d3/README.md`](../run/d3/README.md).
+
+## Night 4 · Orchestrator
+
+`d4-orchestrator.html` — **not in this folder.** PPT brief: [`agenda/d4.md`](../agenda/d4.md).
+Staff: [`run/d4/README.md`](../run/d4/README.md) — 9 beats, four Hands-On boards A–D.
+Clone Night 3 chrome. Identify by `data-act-name`. If agenda and `run/d4/` disagree on Hands-On ranges, **run wins on the clock**.
+
+Public eight (same shape as Night 2): Recap · Orchestrator role · Context Engineering · Eval Engineering · Telemetry (packet) · Agent Harness (Loop+Eval) · Loop / Mesh · Converge 6–8 + Linear.
+
+Stage teaches **Context · Eval · Loop first**. Floor **walks the trail**. Then remaining lanes, Type 01 crank, Type `05` unattended + `HALF_UP`. Task-Mesh is **beside** Task-Spec. Recap Gold from disk; gap → dark 03–08.
+
+| Block | Mode |
+|---|---|
+| Opening | title · Orchestrator |
+| Stage | Recap Gold / papers, then Context · Eval · packet · rings |
+| Craft | Bind still on. Host pin Task-Spec 3.8.x + `cvg init`. Kits. |
+| Floor | Trail Show, **Execute 02** |
+| Dig | Leave · SeamWise, **Execute 03–04**, Task-Spec Show, Mesh+Linear Show, **Execute 05–06**, **Execute 07–08** |
+| Debrief | In hand, Research (`run/d4/09`), Next, silent Tomorrow |
 
 ---
 
@@ -157,7 +176,7 @@ not the HUD snap deck.
 - **Hands-On is one mold.** Clone Day 1 Execute 01–04: chip, `run/dN/` path,
   `.req` beat tiles, look-up / do not. Show slides teach; they do not invent a
   local “beat 01”. Point at `run/dN/NN`. Night 1: six boards. Night 2: five.
-  Night 3: four. Research is Close, not a Hands-On badge.
+  Night 3: four. Night 4: four (when built). Research is Close, not a Hands-On badge.
 - **Each Show slide shows its information differently.** Flow, annotated artifact,
   diff, matrix, gauges — repeating a mechanism is a smell. The Hands-On boards
   are the exception: they must look the same.

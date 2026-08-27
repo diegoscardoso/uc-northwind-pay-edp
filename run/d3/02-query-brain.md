@@ -1,6 +1,6 @@
 # 02 · Query Second Brain
 
-- Slide: Execute 08 (Hands-On **slice a · query** · chip `run/d3/` · **02–04**)
+- Slide: Execute 02–04 (Hands-On **slice a · query** · chip `run/d3/` · **02–04**)
 - Slice: **A · Query**
 - Who: every seat, **their** notebook from Day 1. Do not rebuild
 - Next: [`03-query-graph.md`](03-query-graph.md) on the **same board**

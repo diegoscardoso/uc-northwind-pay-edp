@@ -1,0 +1,26 @@
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.esm.min.mjs';
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  themeVariables: {
+    background: '#070A0F',
+    primaryColor: '#0D1828',
+    primaryBorderColor: '#2F6BFF',
+    primaryTextColor: '#F5F2EA',
+    secondaryColor: '#111720',
+    tertiaryColor: '#0A0E15',
+    lineColor: '#8D99A6',
+    textColor: '#F5F2EA',
+    mainBkg: '#0D1828',
+    nodeBorder: '#2F6BFF',
+    clusterBkg: '#0A0E15',
+    clusterBorder: '#29313A',
+    edgeLabelBackground: '#070A0F'
+  },
+  flowchart: { htmlLabels: true, curve: 'linear' }
+});
+await mermaid.run({ querySelector: '.mmd' });
+</script>
+</body>
+</html>

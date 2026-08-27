@@ -8,18 +8,18 @@ plant that already runs.
 
 They are **not** the night's clock. Scope is [`agenda/`](../agenda/README.md).
 Staff: [`run/d1/`](../run/d1/README.md) · [`run/d2/`](../run/d2/README.md) ·
-[`run/d3/`](../run/d3/README.md). Decks: Night 1–3 HTML live. Papers:
+[`run/d3/`](../run/d3/README.md) · [`run/d4/`](../run/d4/README.md). Decks: Night 1–3 HTML live. Night 4 Stage live, clock trail-first (9 beats). Papers:
 [`docs/`](../docs/README.md). **One Night** each day — no morning / afternoon
 split.
 
 **Week story:** Days 2–3 are **Type 01 steel threads** (SWE ingest → landing,
-then DE landing → Gold). Day 4 **generates remaining swimlanes / SWE+DE
+then DE landing → Gold). Day 4 teaches **Context · Eval · Loop**, **walks the Type 01 trail**, then **generates remaining swimlanes / SWE+DE
 leaves** and cranks them (Mesh + Pass 6–8, Linear). Day 5 is sealed Type `06`.
 
 | Plan | What it is | When you open it |
 |---|---|---|
 | [`legacy.md`](legacy.md) | The completed local baseline: architecture, operating model, 25-batch catalog, and the 2026-07-24 proof ledger | Before anyone touches a later fabric. This is what must stay true. Day 1 boots it until Type `01` **MATCHED**. |
-| [`modern.md`](modern.md) | The specification the second implementation must satisfy: independence rules, type map, golden-match, milestones, definition of done | Day 2 Structure (close or park). Day 3 unparks lakehouse facts and closes Type `01` Gold. Day 4 remaining types + loop. **Not** a license to write `modern/` on Day 1. |
+| [`modern.md`](modern.md) | The specification the second implementation must satisfy: independence rules, type map, golden-match, milestones, definition of done | Day 2 Structure (close or park). Day 3 unparks lakehouse facts and closes Type `01` Gold. Day 4 **Context · Eval · Loop**, trail, then remaining types. **Not** a license to write `modern/` on Day 1. |
 | [`dark-factory.md`](dark-factory.md) | The later idea: lights-out build, stages, gates, unattended loop | When the room needs the broader picture. Enhance it as the week writes the factory. Day 5 runs it on sealed Type `06`. |
 
 The detector is still later. It is not a finished `factory/` folder.
@@ -59,7 +59,8 @@ second implementation**. Neither may edit `contracts/`, `legacy/`,
 ## How to use them in the room
 
 Clock: [`agenda/`](../agenda/README.md). Day 1 staff: [`run/d1/`](../run/d1/README.md).
-Day 2 staff: [`run/d2/`](../run/d2/README.md). Day 3 staff: [`run/d3/`](../run/d3/README.md). Papers: [`docs/`](../docs/README.md).
+Day 2 staff: [`run/d2/`](../run/d2/README.md). Day 3 staff: [`run/d3/`](../run/d3/README.md).
+Day 4 staff: [`run/d4/`](../run/d4/README.md). Papers: [`docs/`](../docs/README.md).
 
 1. **Arrive (Day 1).** Boot the use case with `make deploy` and one
    `make run TYPE=01 SCENARIO=valid-minimal`. Confirm the packet in
@@ -81,9 +82,12 @@ Day 2 staff: [`run/d2/`](../run/d2/README.md). Day 3 staff: [`run/d3/`](../run/d
    not closed on Day 1.
 4. **Steel threads (Days 2–3).** Type `01` only. Tuesday: SWE ingest →
    landing. Wednesday: DE landing → Gold + golden-match. Park `02`–`04`.
-5. **Factory night (Day 4).** Generate remaining swimlanes, legs, and
-   SWE+DE leaves. Crank in Mesh + Pass 6–8 (Linear is the board). Type
-   `05` unattended. Type `06` stays sealed until day five.
+5. **Factory night (Day 4).** Context Layer · eval · loop packet. **Walk the
+   Type 01 trail** (requisites → problem → decisions → SWE → DE/AE → tonight).
+   Then generate remaining swimlanes, legs, and SWE+DE leaves. Crank in Mesh +
+   Pass 6–8 (Linear is the board, not the judge). Task-Mesh is **beside**
+   Task-Spec, not inside it. Type `05` unattended. Type `06` stays sealed until
+   day five. Staff: [`run/d4/`](../run/d4/README.md).
 6. **Adjudicate.** Golden-match asks two questions and never nets them:
    did modern match legacy, and did modern match the contract?
 7. **Do not repair a source lie.** Every `DF-SOURCE-*` batch is a

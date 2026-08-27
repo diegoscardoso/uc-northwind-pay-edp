@@ -57,4 +57,4 @@ choice. Medallion nouns in mail do not authorize a lakehouse ADR.
 - `docs/tech-spec-type-01-card-settlement.md` W-2, §5
 - `plans/modern.md` — Design decisions, questions 1–10
 - Second Brain pack 01 / cover.md — not sending a lakehouse model
-- `docs/README.md` — Loop / `modern/landing/` product is Day 4 factory
+- `docs/README.md` — rows 8–9 / orchestrate + remaining types are Day 4; landing Parquet is Days 2–3

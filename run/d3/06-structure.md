@@ -1,6 +1,6 @@
 # 06 · Pass 2 — Structure (unpark 0006)
 
-- Slide: Execute 09 (Hands-On **slice b · barrier**) — tile 06
+- Slide: Execute 05–08 (Hands-On **slice b · barrier**) — tile 06
 - Slice: **B · Barrier**
 - Who: instructor drafts the first lakehouse ADR in public, then every seat
 - Next: [`07-decompose.md`](07-decompose.md)

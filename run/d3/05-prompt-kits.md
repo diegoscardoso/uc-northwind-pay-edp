@@ -1,6 +1,6 @@
 # 05 · Prompt — Converge 2–4–5 + SeamWise (seam 2)
 
-- Slide: Execute 09 (Hands-On **slice b · barrier** · chip **05–08**) — tile 05
+- Slide: Execute 05–08 (Hands-On **slice b · barrier** · chip **05–08**) — tile 05
 - Slice: **B · Barrier**
 - Who: every seat, through **their** agent
 - Next: [`06-structure.md`](06-structure.md) on the **same board**

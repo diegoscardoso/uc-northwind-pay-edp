@@ -16,7 +16,7 @@ Handout: [`northwind-pay-brain.zip`](northwind-pay-brain.zip)
 | `07-type-05-inbound.md` | Merchant fees — HALF_UP. Day 4 lives here. |
 | `08-the-lie.md` | Same shape of lie on every live type. |
 
-Staff: Day 1 upload [`../../run/d1/12-notebooklm.md`](../../run/d1/12-notebooklm.md) · Day 2 query [`../../run/d2/05-query-brain.md`](../../run/d2/05-query-brain.md) · Day 3 query [`../../run/d3/02-query-brain.md`](../../run/d3/02-query-brain.md) · Day 3 SA mermaids [`../../run/d3/04-prompt-sa-plan.md`](../../run/d3/04-prompt-sa-plan.md) · Day 3 research [`../../run/d3/13-research.md`](../../run/d3/13-research.md)
+Staff: Day 1 upload [`../../run/d1/12-notebooklm.md`](../../run/d1/12-notebooklm.md) · Day 2 query [`../../run/d2/05-query-brain.md`](../../run/d2/05-query-brain.md) · Day 3 query [`../../run/d3/02-query-brain.md`](../../run/d3/02-query-brain.md) · Day 3 SA mermaids [`../../run/d3/04-prompt-sa-plan.md`](../../run/d3/04-prompt-sa-plan.md) · Day 3 research [`../../run/d3/13-research.md`](../../run/d3/13-research.md) · Day 4 trail [`../../run/d4/02-walk-trail.md`](../../run/d4/02-walk-trail.md) · Day 4 research [`../../run/d4/09-research.md`](../../run/d4/09-research.md)
 
 **Days 2–4 do not add a tenth source.** The room **queries** this notebook. Specs, OntoLayer, and `docs/` answer “what we build.” Java, contracts, the tech-spec, ADRs, dlt/dbt/DuckLake decisions, and `modern/` stay out. If a stack fact is not in these nine files, the notebook must **abstain**.
 

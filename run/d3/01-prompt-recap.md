@@ -3,7 +3,7 @@
 - Slide: Recap · closed, Recap · papers (talk; **no** Hands-On badge)
 - Slice: **Recap**
 - Who: every seat, through **their** agent — if they missed Tuesday, they type this
-- Next: Floor Shows (Second Brain, OntoLayer + specs), then [`02-query-brain.md`](02-query-brain.md) on Execute 08
+- Next: Floor Shows (Second Brain, OntoLayer + specs), then [`02-query-brain.md`](02-query-brain.md) on Execute 02–04
 
 Do not rerun Pass 0–1 or ingest 2–4. The agent **reads**. Map: [`docs/README.md`](../../docs/README.md).
 

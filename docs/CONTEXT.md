@@ -23,6 +23,10 @@ Papers live in `docs/`, not `cvg/docs/`.
 | **Privacy boundary** | Clear PAN and CPF die at the parser. Token + last4 / `*******` + last4 before landing (ADR 0004). Live line: Java. Second plant: the Type 01 parser, not a Java import. |
 | **Bind** | Rails on the harness. Frozen trees refuse writes. A polite prompt is not a fence. |
 | **Consensus** | Pass 4. Owner signs. No sign → no parser. |
-| **Lakehouse / dlt / dbt / Dagster** | Later nights. Not chosen in Structure (ADR 0006). |
+| **Lakehouse / dlt / dbt / Dagster** | Parked in ADR 0006 at Structure. Day 3 unparks rows 3–7 as **new** ADRs. Day 4 unparks rows 8–9. Do not recut this glossary. |
+| **Context Layer (Day 4)** | Brain (mail) · OntoLayer (where paid lives) · `docs/` (signed) · `contracts/` (judge). `evidence/` is observation. Query; do not grep SQL as the judge. |
+| **Eval / packet (Day 4)** | A Task-Spec eval is a runnable command. Golden-match: two questions, six codes, no tolerance. The loop writes a packet under `evidence/` before Linear moves. |
+
+This file is Day 2 Structure. Later nights add ADRs; they do not rewrite these rows.
 
 Do not upload this file into NotebookLM.

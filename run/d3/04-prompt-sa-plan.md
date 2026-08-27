@@ -1,13 +1,13 @@
 # 04 · Prompt — SA plan mermaids (`plans/modern.md`)
 
-- Slide: Execute 08 (Hands-On **slice a · query** · chip `run/d3/` · **02–04**) — tile 04
+- Slide: Execute 02–04 (Hands-On **slice a · query** · chip `run/d3/` · **02–04**) — tile 04
 - Slice: **A · Query**
 - Who: every seat, through **their** agent
-- Next: Dig Show Converge + SeamWise, Leave · SeamWise, then [`05-prompt-kits.md`](05-prompt-kits.md) on Execute 09
+- Next: Dig Show Converge + SeamWise, Leave · SeamWise, then [`05-prompt-kits.md`](05-prompt-kits.md) on Execute 05–08
 
 J5 just abstained: dlt / DuckDB / dbt are **not** in the nine-pack notebook.
 They live in the SA engagement spec. Read it. **Render the graphs.** Do not
-turn a mermaid into an ADR — that is Pass 2 on Execute 09.
+turn a mermaid into an ADR — that is Pass 2 on Execute 05–08.
 
 ## Prompt (verbatim)
 

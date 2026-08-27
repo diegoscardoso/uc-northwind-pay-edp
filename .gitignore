@@ -13,9 +13,16 @@ __pycache__/
 *.py[cod]
 *.log
 modern/.venv/
+modern/ingestion/.venv/
 modern/landing/
+modern/lakehouse/.venv/
+modern/lakehouse/duckdb/
 modern/lakehouse/ducklake/
+modern/lakehouse/.dlt_pipelines/
 modern/dbt/.user.yml
+modern/dbt/target/
+modern/dbt/dbt_packages/
+.dlt/
 ontology/output/
 
 # agent tooling (local, not repo content)

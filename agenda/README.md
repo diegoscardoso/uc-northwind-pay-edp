@@ -13,10 +13,10 @@ curve lands on **this** repo.
 | 1 | Archaeologist (SA + AI) | [`d1.md`](d1.md) | Prompt + context | **0–1** Capture → Intent | The system starts to understand the legacy (Second Brain + OntoLayer + tech-spec) |
 | 2 | Translator (SWE) | [`d2.md`](d2.md) | Harness (Bind) | Recap 0–1. **2–4**, then **5**. Mesh internals. Factory 6–8 is Day 4 | Design the second plant. Bind is the fence. Consensus is the barrier. Leaves in `docs/tasks/`. No `modern/` required |
 | 3 | Constructor (DE + analytics) | [`d3.md`](d3.md) | Harness + loop seed | Recap. **2–4–5** on dlt → Gold. Mesh seed | Type 01 **steel thread**: landing → Gold + golden-match. `02`–`04` parked |
-| 4 | Orchestrator | [`d4.md`](d4.md) | Loop + eval | SeamWise again (remaining swimlanes). Task-Spec **generate** remaining SWE+DE. **6–8** crank. Linear. Type `05` unattended | Queue cranks; small `HALF_UP` pill |
+| 4 | Orchestrator | [`d4.md`](d4.md) | Loop + eval | Context · Eval · Loop. Then **6–8** crank. Linear. Type `05` unattended | Remaining SWE+DE + packet; small `HALF_UP` pill |
 | 5 | Dark Factory | [`d5.md`](d5.md) | Orchestration | Full 0–8 on sealed Type `06` | Never-seen type onboarded live. Large pill: `CONFIRMED_LEGACY_DEFECT` |
 
-**Story of the week (steel threads, then the factory).** Days 2–3 **explain one seat and run one Type 01 lane** — SWE ingest → landing, then DE landing → Gold. Day 4 **generates the remaining swimlanes, legs, and SWE+DE tasks**, cranks them in Task-Mesh + Converge 6–8 (Linear is the board), then Type `05` unattended. Day 5 is sealed Type `06`. Do not dump Types `02`–`05` on Wednesday.
+**Story of the week (steel threads, then the factory).** Days 2–3 **explain one seat and run one Type 01 lane** — SWE ingest → landing, then DE landing → Gold. Day 4 teaches **Context · Eval · Loop**, **walks the Type 01 trail**, then generates remaining SWE+DE, cranks Mesh + Pass 6–8 (Linear), then Type `05` unattended. Day 5 is sealed Type `06`. Do not dump Types `02`–`05` on Wednesday.
 
 **The week starts at Day 1.** You arrive as an AI-native engineer from scratch.
 You do not inherit a brain, a graph, or last run's ADRs.
@@ -26,11 +26,11 @@ You do not inherit a brain, a graph, or last run's ADRs.
 | 1 | Plant **MATCHED**. Second Brain fed (whole drop, types `01`–`05`). OntoLayer via MCP. Capture + Intent. Research queries for Day 2. **No product code.** |
 | 2 | Recap Pass 0–1. **Bind** fail-closed. Query Second Brain + OntoLayer. ADRs, seams, **Consensus signed**. One Task-Spec leaf. Mesh internals. **No `modern/` required.** Research for Day 3. |
 | 3 | Type 01 DE steel thread: landing → Gold + golden-match. Mesh seed. `02`–`04` parked |
-| 4 | Generate remaining swimlanes / legs / SWE+DE tasks. Mesh + Pass 6–8 crank (Linear). Unattended Type `05` |
+| 4 | Context · Eval · Loop. Type 01 trail. Generate remaining SWE+DE. Mesh + Pass 6–8 (Linear). Unattended Type `05` |
 | 5 | Sealed Type `06`. Full spine. Classify, do not patch |
 
-Every day uses the same swing: **Stage → Craft → Floor → Debrief**.
-Day 1 also has **Dig** (read, brain, graph, spine) between Floor and Debrief.
+Every day uses the same swing: **Stage → Craft → Floor → Dig → Debrief**.
+Day 1 Dig is read / brain / graph / spine. Days 2–4 Dig is kits then Hands-On.
 
 Every day closes with three parts: **role skills** (the seat), **deliverables**
 (what you hold), and **Research** (what you query for tomorrow). See each
@@ -59,8 +59,9 @@ Tuesday night the legacy is specified, structured, and designed as leaves.
 |---|---|
 | 1 | [`presentation/d1-archaeologist.html`](../presentation/d1-archaeologist.html) — live. 44 slides. Staff: [`run/d1/`](../run/d1/README.md) — 17 beats, six slices A–F + Close 17 |
 | 2 | [`presentation/d2-translator.html`](../presentation/d2-translator.html) — live, 34 slides, six blocks. Staff: [`run/d2/`](../run/d2/README.md) — 12 beats, five Hands-On boards |
-| 3 | [`presentation/d3-constructor.html`](../presentation/d3-constructor.html) — **live**. Identify by `data-act-name`. Staff: [`run/d3/`](../run/d3/README.md) — 12 beats, four boards |
-| 4–5 | not built yet. Staff still stubs: [`run/d4.md`](../run/d4.md), [`run/d5.md`](../run/d5.md) |
+| 3 | [`presentation/d3-constructor.html`](../presentation/d3-constructor.html) — **live**. Identify by `data-act-name`. Staff: [`run/d3/`](../run/d3/README.md) — 13 beats, four boards |
+| 4 | Stage live. Staff: [`run/d4/`](../run/d4/README.md) — 9 beats. Trail, then factory |
+| 5 | not built. Staff stub: [`run/d5.md`](../run/d5.md) |
 
 ## What is frozen vs what the week writes
 

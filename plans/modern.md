@@ -13,7 +13,7 @@ that is already here.
 | Day 1 | **Do not write a parser.** Capture + Intent only (`docs/brd-…`, `docs/tech-spec-…`). Brain + graph exist; ADRs wait. |
 | Day 2 | Recap 0–1. Bind. Close landing facts as ADRs 0001–0005; **park** lakehouse as 0006. Ingest Consensus. One Type 01 **parser** leaf. Parquet **not** required on disk Tuesday. |
 | Day 3 | Unpark 0006. Lakehouse sign (`docs/consensus-lakehouse.md`). Type 01 **steel thread**: emit if missing → dlt register → B/S/G → golden-match. Types `02`–`05` parked. |
-| Day 4 | Generate remaining SWE + DE leaves (`02`–`04`, Type `05`, orchestrate). Mesh + Pass 6–8 crank (Linear). Type `05` unattended. Small red pill: `HALF_UP`. |
+| Day 4 | Context · Eval · Loop. Walk the Type 01 trail. Then generate remaining SWE + DE (`02`–`04`, Type `05`, orchestrate). Mesh + Pass 6–8 crank (Linear). Type `05` unattended. Small red pill: `HALF_UP`. |
 | Closing a type | The [completion checklist](#completion-checklist-for-each-type) and golden-match classifications |
 | A source-defect batch | The two questions stay separate. Classification is `CONFIRMED_SOURCE_DEFECT` |
 | Day 5 red pill | Type `06` unseen. A numeric miss may be `CONFIRMED_LEGACY_DEFECT` — the main system, not the file |
@@ -23,14 +23,14 @@ that is already here.
 **Day 1 does not construct this fabric.** It understands the legacy
 (MATCHED plant, Second Brain, OntoLayer, Capture → Intent). **Days 2–3**
 are Type `01` steel threads (SWE landing, then DE Gold). **Day 4**
-generates remaining Types `02`–`05` and cranks them. Day 5 is the
+teaches Context · Eval · Loop, walks the Type 01 trail, then generates remaining Types `02`–`05` and cranks them. Day 5 is the
 unattended factory on **Type `06`** — a kit the room has not unpacked —
 and the **red pill**: golden-match may classify a numeric miss as
 `CONFIRMED_LEGACY_DEFECT`. The main plant can be wrong. The factory
 finds it; it does not edit `legacy/` to hide it.
 
 Week clock: [`agenda/`](../agenda/README.md). Staff: [`run/d1/`](../run/d1/README.md)
-· [`run/d2/`](../run/d2/README.md) · [`run/d3/`](../run/d3/README.md).
+· [`run/d2/`](../run/d2/README.md) · [`run/d3/`](../run/d3/README.md) · [`run/d4/`](../run/d4/README.md).
 Papers: [`docs/`](../docs/README.md). **One Night.** Bind is on before any
 `modern/` write.
 
@@ -464,7 +464,7 @@ Map to the nights (see [`agenda/`](../agenda/README.md)):
 | 1 | Not this fabric. Brain + graph + Capture → Intent in `docs/`. Stop. |
 | 2 | Recap 0–1. Bind. Milestone 0 as ADRs (close landing facts; **park** lakehouse). Ingest Consensus. Milestone 1 **design** — parser leaf. Parquet not required on disk. |
 | 3 | Milestone 1 remainder if no Parquet. Milestones 2–3 (dlt → Gold, golden-match). Type `01` vertical closes. |
-| 4 | Milestone 5 generate (`02`–`04` + Type `05`) + Milestone 4 (Dagster) + unattended Type `05`. Linear. Mesh + Pass 6–8 crank. Small `HALF_UP` pill. |
+| 4 | Context · Eval · Loop first. Walk the Type 01 trail. Then Milestone 5 generate (`02`–`04` + Type `05`) + Milestone 4 (Dagster) + unattended Type `05`. Linear. Mesh + Pass 6–8 crank. Small `HALF_UP` pill. |
 | 5 | Repeat the order on sealed Type `06`. Classify, do not patch |
 
 ### Milestone 0 — approve the modern task specification

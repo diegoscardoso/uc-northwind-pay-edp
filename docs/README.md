@@ -23,18 +23,22 @@ Do not upload these files into NotebookLM. The brain is inbound only
 | **1** | Archaeologist | BRD + tech-spec (Pass 0–1) | none |
 | **2** | Translator (SWE) | Landing ADRs 0001–0005, **0006 parked**, `seams.md`, ingest **sign**, one parser leaf | parser may exist under `modern/ingestion/`; Parquet **not** required Tuesday |
 | **3** | Constructor (DE + analytics) | Unpark 0006 → ADRs 0007+; seam 2 legs; **`consensus-lakehouse.md`**; Type 01 lakehouse leaves | Type 01 **landing → Gold + golden-match**. Mesh **seed**. Types `02`–`05` **not** tasked |
-| **4** | Orchestrator | Remaining SWE + DE leaves (`02`–`04`, Type `05`, orchestrate) | Loop cranks the queue. Linear is the board. Type `05` unattended |
+| **4** | Orchestrator | Remaining SWE + DE leaves (`02`–`04`, Type `05`, orchestrate). Unpark 0006 rows 8–9 | Trail first, then loop cranks with a **packet**. Linear is the board. Type `05` unattended |
 | **5** | Dark Factory | Type `06` papers when that drop arrives | Classify. Do not patch `legacy/` |
 
-**Two nights, two seats, one type** (Tue–Wed). Thursday **generates** the
-rest and cranks it. Do not dump Types `02`–`05` on Wednesday.
+**Two nights, two seats, one type** (Tue–Wed). Thursday **walks that trail**, then **generates** the rest and cranks it.
+Do not dump Types `02`–`05` on Wednesday.
 
-Clocks: [`run/d2/`](../run/d2/README.md) · [`run/d3/`](../run/d3/README.md).
+Clocks: [`run/d2/`](../run/d2/README.md) · [`run/d3/`](../run/d3/README.md) · [`run/d4/`](../run/d4/README.md).
 Scope: [`agenda/d3.md`](../agenda/d3.md) · [`agenda/d4.md`](../agenda/d4.md).
 
 ---
 
-## On disk now (start of Day 3)
+## On disk now (start of Day 4)
+
+Thursday recap **reads this inventory**. Type 01 Gold papers are **not**
+pre-seeded on `main` — they exist only if Wednesday’s worktree wrote them.
+If they are missing, name the gap; do not dump Types `02`–`05`.
 
 ```text
 docs/
@@ -54,13 +58,21 @@ docs/
   tasks/_state.yaml                      total 1
 ```
 
-**Not on disk yet** (Day 3 writes — do not pre-seed):
+**Not on disk yet**
+
+Day 3 writes (room / worktree — do not pre-seed on `main`):
 
 - `adrs/0007-*.md` … lakehouse facts (dlt register-only, DuckLake local, B/S/G grains, match keys)
 - `consensus-lakehouse.md` — Pass 4 addendum. **Do not overwrite** `consensus.md`
 - Type 01 lakehouse leaves under `tasks/` (emit if no Parquet; dlt; Bronze; Silver; Gold; golden-match)
 
-Keep **173.44**. Ingest sign stays canonical.
+Day 4 writes ([`run/d4/`](../run/d4/README.md) — **dark 03–08** if Gold is missing):
+
+- Remaining type lanes in [`seams.md`](seams.md); ADRs for 0006 rows **8–9** (Dagster lineage, optional read-only serve)
+- Remaining SWE + DE leaves (`02`–`04`, Type `05`, orchestrate) with evals
+- Loop **packet** under `evidence/` (gitignored — open in the terminal)
+
+Keep **173.44**. Ingest sign stays canonical. Thursday **walks this folder as the trail** (requisites → problem → decisions → SWE → DE/AE → tonight), then remaining types. It does not recut Tuesday’s papers. It does not re-ask where paid lives.
 
 ---
 
@@ -68,15 +80,15 @@ Keep **173.44**. Ingest sign stays canonical.
 
 | Pass | Name | File | Night |
 |---|---|---|---|
-| 0 | Capture | [`brd-type-01-card-settlement.md`](brd-type-01-card-settlement.md) | Day 1 wrote it. Later nights **look** ([`run/d2/02-prompt-papers.md`](../run/d2/02-prompt-papers.md), [`run/d3/01-prompt-recap.md`](../run/d3/01-prompt-recap.md)) |
+| 0 | Capture | [`brd-type-01-card-settlement.md`](brd-type-01-card-settlement.md) | Day 1 wrote it. Later nights **look** ([`run/d2/02-prompt-papers.md`](../run/d2/02-prompt-papers.md), [`run/d3/01-prompt-recap.md`](../run/d3/01-prompt-recap.md), [`run/d4/01-prompt-recap.md`](../run/d4/01-prompt-recap.md)) |
 | 1 | Intent | [`tech-spec-type-01-card-settlement.md`](tech-spec-type-01-card-settlement.md) | Same |
 | 2 | Structure | `adrs/` + `CONTEXT.md` | Day 2 landing 0001–0005 + park 0006 ([`run/d2/08-structure.md`](../run/d2/08-structure.md)). Day 3: SA mermaids ([`run/d3/04-prompt-sa-plan.md`](../run/d3/04-prompt-sa-plan.md)), then unpark rows 3–7 as 0007+ ([`run/d3/06-structure.md`](../run/d3/06-structure.md)). Do not recut 0001–0005 |
 | 3 | Decompose | [`seams.md`](seams.md) | Day 2 named three seams; tasked seam 1 ([`run/d2/09-decompose.md`](../run/d2/09-decompose.md)). Day 3 writes **seam 2 legs** (register → medallion → match) ([`run/d3/07-decompose.md`](../run/d3/07-decompose.md)). Day 4 cuts remaining type lanes + orchestrate |
 | 4 | Consensus | [`consensus.md`](consensus.md) · `consensus-lakehouse.md` | Day 2 ingest sign ([`run/d2/10-consensus.md`](../run/d2/10-consensus.md)). Day 3 lakehouse sign ([`run/d3/08-consensus.md`](../run/d3/08-consensus.md)). No lakehouse sign → **skip Gold** (`run/d3` 09–12 dark) |
 | 5 | Tasking | `tasks/` | Day 2: one parser leaf ([`run/d2/11-taskspec.md`](../run/d2/11-taskspec.md)). Day 3: Type 01 remainder + lakehouse leaves ([`run/d3/09-taskspec.md`](../run/d3/09-taskspec.md)). Day 4: remaining SWE + DE (`02`–`04`, Type `05`, orchestrate) |
-| 6 | Register | opt-in / `cvg/` | Day 3 Mesh is **seed** (local Gold). Factory Register is Day 4 |
-| 7 | Bind | harness, not a doc | Shown Day 2 fail-closed; **still on** Day 3 ([`run/d3/README.md`](../run/d3/README.md)) |
-| 8 | Loop | product, not this folder | Type 01 Gold is Day 3 product ([`run/d3/10-landing.md`](../run/d3/10-landing.md)–[`12-golden-match.md`](../run/d3/12-golden-match.md)). Factory 6–8 + Linear = Day 4 |
+| 6 | Register | opt-in / `cvg/` | Day 3 Mesh is **seed**. Factory Register is Day 4 ([`run/d4/04-generate-queue.md`](../run/d4/04-generate-queue.md)) |
+| 7 | Bind | harness, not a doc | Shown Day 2 fail-closed; **still on** Days 3–4 |
+| 8 | Loop | product, not this folder | Type 01 Gold is Day 3 product. Factory 6–8 + Linear + packet = Day 4 ([`run/d4/05-mesh-crank.md`](../run/d4/05-mesh-crank.md)) |
 
 `cvg` may error (Task-Spec 3.9 vs Converge 3.8). The **agent still writes
 here**. Do not debug the CLI in front of the room. A dated signature in
@@ -106,8 +118,9 @@ here**. Do not debug the CLI in front of the room. A dated signature in
 | [`presentation/cvg-aut-systems-spine-steps.html`](../presentation/cvg-aut-systems-spine-steps.html) | Converge spine — nine passes, one human barrier |
 | [`presentation/asd-agentic-loop.html`](../presentation/asd-agentic-loop.html) | ASD — the Agentic Loop |
 | [`presentation/boot-uc-northwind-pay-edp-oss.html`](../presentation/boot-uc-northwind-pay-edp-oss.html) | Bootcamp reference |
-| [`presentation/seamwise.html`](../presentation/seamwise.html) | SeamWise kit — Leave · SeamWise on Nights 2 and 3, return to the numbered beat |
+| [`presentation/seamwise.html`](../presentation/seamwise.html) | SeamWise kit — Leave · SeamWise on Nights 2–4, return to the numbered beat |
 | [`presentation/d3-constructor.html`](../presentation/d3-constructor.html) | Night 3 HUD — not a paper |
+| [`presentation/task-spec.html`](../presentation/task-spec.html) | Task-Spec kit. Mesh is **not** inside it |
 
 Plans steer the plant: [`plans/`](../plans/README.md). This folder is
 the week’s **signed papers**.
@@ -123,5 +136,5 @@ the week’s **signed papers**.
 - Not `cvg/swimlanes/`. That tree is the referee workspace (Day 4 host: `cvg init`), projected from [`seams.md`](seams.md).
 - Not the Second Brain. Do not paste BRD, ADRs, or Consensus into NotebookLM.
 
-Do not pre-seed Day 3 lakehouse papers. Do not copy last run’s ADRs out of
-git history. Do not repair **173.44**.
+Do not pre-seed Day 3 lakehouse papers or Day 4 remaining-type leaves.
+Do not copy last run’s ADRs out of git history. Do not repair **173.44**.

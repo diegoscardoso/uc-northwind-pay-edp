@@ -1,6 +1,6 @@
 # 03 · Specs + OntoLayer
 
-- Slide: Execute 08 (Hands-On **slice a · query**) — tile 03
+- Slide: Execute 02–04 (Hands-On **slice a · query**) — tile 03
 - Slice: **A · Query**
 - Who: every seat, through **their** agent + MCP
 - Next: [`04-prompt-sa-plan.md`](04-prompt-sa-plan.md) on the **same board**

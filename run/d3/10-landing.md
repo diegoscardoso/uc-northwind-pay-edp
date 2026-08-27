@@ -1,6 +1,6 @@
 # 10 · Execute — Type 01 landing Parquet
 
-- Slide: Execute Gold (Hands-On **slice d · gold** · chip **10–12**) — tile 10
+- Slide: Execute 10–12 (Hands-On **slice d · gold** · chip **10–12**) — tile 10
 - Slice: **D · Gold**
 - Who: instructor first, then every seat through **their** agent
 - Next: [`11-lakehouse.md`](11-lakehouse.md) on the **same board**
